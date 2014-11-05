@@ -10,27 +10,99 @@ package entities;
  * @author jemacom
  */
 public class Utilisateur {
+    protected int Id;
     protected String nom;
     protected String prenom;
-    protected String email;
-    protected int cin; 
+    protected String email; 
+    protected int telephone;
+    protected String adresse;
     protected String login; 
-    protected String password;
+    protected String pass;
 
-    public Utilisateur(String nom, String prenom, String email, int cin, String login, String password) {
+    public Utilisateur(int Id, String nom, String prenom, String email, int telephone, String adresse, String login, String pass) {
+        this.Id = Id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.cin = cin;
+        this.telephone = telephone;
+        this.adresse = adresse;
         this.login = login;
-        this.password = password;
-    } 
-    
-    
-    public String toString(){
-        return "Nom : "+nom+"Prenom : "+prenom+"Email : "+email+"CIN : "+cin+"\n";
-        //On affiche PAS le login et password  
+        this.pass = pass;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "Id=" + Id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", telephone=" + telephone + ", adresse=" + adresse + '}';
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    
+    
+    
+    
     
     
 }

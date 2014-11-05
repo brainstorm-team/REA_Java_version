@@ -11,13 +11,15 @@ package entities;
  */
 public class Client extends Utilisateur{
 
+    public Client(int Id, String nom, String prenom, String email, int telephone, String adresse, String login, String pass) {
+        super(Id, nom, prenom, email, telephone, adresse, login, pass);
+    }
+
     /**
      * 
      Possibilite d'ajout des attributs 
      */
     
-    public Client(String nom, String prenom, String email, int cin, String login, String password) {
-        super(nom, prenom, email, cin, login, password);
-    }
+    
     
 }

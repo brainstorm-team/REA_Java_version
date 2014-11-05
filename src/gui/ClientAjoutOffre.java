@@ -9,6 +9,7 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
 import entities.Offre;
+import entities.Util;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +50,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
-        bt_ajouter = new javax.swing.JButton();
+        bt_sauver = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -109,10 +110,10 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         description.setRows(5);
         jScrollPane1.setViewportView(description);
 
-        bt_ajouter.setText("Sauver");
-        bt_ajouter.addActionListener(new java.awt.event.ActionListener() {
+        bt_sauver.setText("Sauver");
+        bt_sauver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_ajouterActionPerformed(evt);
+                bt_sauverActionPerformed(evt);
             }
         });
 
@@ -172,7 +173,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_sauver, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
@@ -182,7 +183,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_ajouter)
+                        .addComponent(bt_sauver)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -230,7 +231,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_prixActionPerformed
 
-    private void bt_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouterActionPerformed
+    private void bt_sauverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_sauverActionPerformed
         
         Offre offre = new Offre();
         
@@ -244,11 +245,11 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         offre.setVille(cb_ville.getSelectedItem().toString());
         offre.setSurface(Integer.parseInt(surface.getText() ));
 //        offre.setIdClient(); passing argument between screen
-
+        offre.setIdClient(Util.client.getId());
         IOffreDAO offreDao = OffreDAO.getInstance();
         offreDao.insertOffre(offre);
         JOptionPane.showMessageDialog(null, "Votre demande d'ajout d'offre est bien enregistré ! En attendant la validation", "ok", 1);
-    }//GEN-LAST:event_bt_ajouterActionPerformed
+    }//GEN-LAST:event_bt_sauverActionPerformed
 
     private void cb_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_typeActionPerformed
         // TODO add your handling code here:
@@ -294,7 +295,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_ajouter;
+    private javax.swing.JButton bt_sauver;
     private javax.swing.JComboBox cb_type;
     private javax.swing.JComboBox cb_ville;
     private javax.swing.JTextArea description;
