@@ -34,7 +34,10 @@ public class ListOffreValide extends AbstractTableModel{
     public int getColumnCount() {
     return header.length;
     }
-
+    @Override
+    public String getColumnName(int column) {
+        return header[column];
+    }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
     switch(columnIndex){
@@ -52,6 +55,7 @@ public class ListOffreValide extends AbstractTableModel{
                 return offres.get(rowIndex).getSurface();
             default:
                 return null;
+
     }
     
 }

@@ -56,8 +56,8 @@ public class AjoutOffre extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
         bt_ajouter = new javax.swing.JButton();
-        panel_images = new javax.swing.JPanel();
         bt_parcourir = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -75,32 +75,42 @@ public class AjoutOffre extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Ajout d'offre"); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Titre : ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 63, -1, -1));
 
         titre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titreActionPerformed(evt);
             }
         });
+        getContentPane().add(titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 58, 175, -1));
 
         jLabel2.setText("Type :  ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 108, -1, -1));
 
         cb_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Location", "Vente", "Vacance" }));
+        getContentPane().add(cb_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 103, -1, -1));
 
         jLabel3.setText("Prix : ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 153, -1, -1));
 
         prix.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prixActionPerformed(evt);
             }
         });
+        getContentPane().add(prix, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 148, 75, -1));
 
         jLabel4.setText("Description :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 237, -1, -1));
 
         description.setColumns(20);
         description.setRows(5);
         jScrollPane1.setViewportView(description);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 272, -1, -1));
 
         bt_ajouter.setText("Ajouter");
         bt_ajouter.addActionListener(new java.awt.event.ActionListener() {
@@ -108,20 +118,7 @@ public class AjoutOffre extends javax.swing.JFrame {
                 bt_ajouterActionPerformed(evt);
             }
         });
-
-        panel_images.setBackground(new java.awt.Color(218, 178, 137));
-        panel_images.setForeground(new java.awt.Color(254, 238, 238));
-
-        javax.swing.GroupLayout panel_imagesLayout = new javax.swing.GroupLayout(panel_images);
-        panel_images.setLayout(panel_imagesLayout);
-        panel_imagesLayout.setHorizontalGroup(
-            panel_imagesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
-        );
-        panel_imagesLayout.setVerticalGroup(
-            panel_imagesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
-        );
+        getContentPane().add(bt_ajouter, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 382, -1, -1));
 
         bt_parcourir.setText("Parcourir");
         bt_parcourir.addActionListener(new java.awt.event.ActionListener() {
@@ -129,67 +126,10 @@ public class AjoutOffre extends javax.swing.JFrame {
                 bt_parcourirActionPerformed(evt);
             }
         });
+        getContentPane().add(bt_parcourir, new org.netbeans.lib.awtextra.AbsoluteConstraints(509, 198, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                .addComponent(panel_images, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bt_ajouter)
-                        .addGap(136, 136, 136))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bt_parcourir)
-                        .addGap(63, 63, 63))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(panel_images, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(bt_parcourir)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(bt_ajouter)
-                .addGap(42, 42, 42))
-        );
+        image.setText("image");
+        getContentPane().add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -274,6 +214,7 @@ public class AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JButton bt_parcourir;
     private javax.swing.JComboBox cb_type;
     private javax.swing.JTextArea description;
+    private javax.swing.JLabel image;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -285,7 +226,6 @@ public class AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panel_images;
     private javax.swing.JTextField prix;
     private javax.swing.JTextField titre;
     // End of variables declaration//GEN-END:variables

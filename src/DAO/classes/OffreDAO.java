@@ -137,14 +137,20 @@ public class OffreDAO implements IOffreDAO {
                     .createStatement();
             ResultSet resultat = statement.executeQuery(requete);
 
-            while (resultat.next()) {
+             while (resultat.next()) {
                 Offre offre = new Offre();
 
                 offre.setId(resultat.getInt(1));
                 offre.setTitre(resultat.getString(2));
-                offre.setDescription(resultat.getString(3));
-                offre.setPrix(resultat.getDouble(5));
-                offre.setType(resultat.getString(6));
+                offre.setType(resultat.getString(3));
+                offre.setCategorie(resultat.getString(4));
+                offre.setVille(resultat.getString(5));
+                offre.setPrix(resultat.getDouble(6));
+                offre.setSurface(resultat.getInt(7));
+                offre.setDescription(resultat.getString(8));
+                offre.setValidation(resultat.getBoolean(9));
+                offre.setIdClient(resultat.getInt(10));
+                offre.setIdGerant(resultat.getInt(11));
 
                 listeOffres.add(offre);
             }
@@ -161,12 +167,12 @@ public class OffreDAO implements IOffreDAO {
     public List<Offre> getAllValidatedOffers() {
         List<Offre> listeOffres = new ArrayList<Offre>();
 
-        String requete = "SELECT `Id`, `titre`, `type`, `categorie`, `ville`, `prix`, `surface`, `description`, `validation`, `Id_client`, `Id_gerant` FROM offre where validation=1";
+        String requete = "SELECT * FROM offre where validation=1";
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-
+            System.out.println("Selection des offres validés.........");
             while (resultat.next()) {
                 Offre offre = new Offre();
 
@@ -181,11 +187,14 @@ public class OffreDAO implements IOffreDAO {
                 offre.setValidation(resultat.getBoolean(9));
                 offre.setIdClient(resultat.getInt(10));
                 offre.setIdGerant(resultat.getInt(11));
+                
+                System.out.println(offre.getId());
 
                 listeOffres.add(offre);
             }
 
             return listeOffres;
+            
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des depots " + ex.getMessage());
@@ -193,21 +202,24 @@ public class OffreDAO implements IOffreDAO {
             return null;
         }
     }
+    
+    
     public List<Offre> recherche(String titre, String type, String categorie,String ville, Double prix ,int surface )
     {
-    
+     
     return null;
     }
     
     public List<Offre> getAllUnValidatedOffers() {
+        
         List<Offre> listeOffres = new ArrayList<Offre>();
 
-        String requete = "SELECT * FROM offre"; // where validation=0
+        String requete = "SELECT * FROM offre where validation=0";
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            System.out.println("Requete traité !");
+            System.out.println("Selection des offres non validés...........");
             while (resultat.next()) {
                 Offre offre = new Offre();
 
@@ -222,6 +234,7 @@ public class OffreDAO implements IOffreDAO {
                 offre.setValidation(resultat.getBoolean(9));
                 offre.setIdClient(resultat.getInt(10));
                 offre.setIdGerant(resultat.getInt(11));
+                System.out.println(offre.getId());
 
                 listeOffres.add(offre);
             }
@@ -229,7 +242,7 @@ public class OffreDAO implements IOffreDAO {
             return listeOffres;
         } catch (SQLException ex) {
             //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des depots " + ex.getMessage());
+            System.out.println("erreur lors du chargement des offres " + ex.getMessage());
 
             return null;
         }

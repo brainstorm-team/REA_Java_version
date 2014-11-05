@@ -22,7 +22,7 @@ public class ListOffreNonValide extends AbstractTableModel{
     
     public ListOffreNonValide() {
         IOffreDAO offreDAO=OffreDAO.getInstance();
-        offres=offreDAO.getAllValidatedOffers();
+        offres=offreDAO.getAllUnValidatedOffers();
     
     }
     @Override

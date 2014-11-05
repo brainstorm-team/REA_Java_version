@@ -6,10 +6,12 @@
 package gui;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -25,6 +27,7 @@ public class Acceuil extends javax.swing.JFrame {
     public Acceuil() {
         initComponents();
         this.setLocationRelativeTo(null);
+        acceuil.setIcon(createIcon("/images/home.gif"));
     }
 
     /**
@@ -42,12 +45,13 @@ public class Acceuil extends javax.swing.JFrame {
         bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
+        table_offres = new javax.swing.JTable();
+        acceuil = new javax.swing.JLabel();
         bt_mes_favoris = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        bt_refrech = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -74,6 +78,7 @@ public class Acceuil extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_mon_compte.setText("Mon compte");
         bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +86,7 @@ public class Acceuil extends javax.swing.JFrame {
                 bt_mon_compteActionPerformed(evt);
             }
         });
+        getContentPane().add(bt_mon_compte, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 53, -1, -1));
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -88,23 +94,23 @@ public class Acceuil extends javax.swing.JFrame {
                 bt_rechercheActionPerformed(evt);
             }
         });
+        getContentPane().add(bt_recherche, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 180, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        table_offres.setModel(new ListOffreValide());
+        jScrollPane1.setViewportView(table_offres);
 
-        jLabel5.setText("Acceuil :");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
+
+        acceuil.setText("Acceuil :");
+        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 77, 25));
 
         bt_mes_favoris.setText("Mes favoris");
+        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_favorisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bt_mes_favoris, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 93, -1, -1));
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -112,54 +118,21 @@ public class Acceuil extends javax.swing.JFrame {
                 bt_a_proposActionPerformed(evt);
             }
         });
+        getContentPane().add(bt_a_propos, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 221, -1, -1));
 
         bt_mes_offres.setText("Mes offres");
+        getContentPane().add(bt_mes_offres, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 133, -1, -1));
 
         jLabel1.setText("Liste des offres disponibles :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_recherche)
-                    .addComponent(bt_mon_compte)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_mes_favoris)
-                    .addComponent(bt_a_propos)
-                    .addComponent(bt_mes_offres))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_mon_compte)
-                        .addGap(11, 11, 11)
-                        .addComponent(bt_mes_favoris)
-                        .addGap(11, 11, 11)
-                        .addComponent(bt_mes_offres)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_recherche)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_a_propos))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        bt_refrech.setText("Refrech");
+        bt_refrech.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_refrechActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bt_refrech, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 12, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,6 +143,17 @@ public class Acceuil extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
+    private ImageIcon createIcon(String path){
+        URL url = getClass().getResource(path);
+        if (url == null){
+            System.err.println("Unable de load the image !"+path);
+            return null;
+        }
+        
+        ImageIcon icon = new ImageIcon(url);
+        return icon;
+        
+    }
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
         RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
@@ -182,6 +166,18 @@ public class Acceuil extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
+    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mes_favorisActionPerformed
+
+    private void bt_refrechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refrechActionPerformed
+        table_offres = new javax.swing.JTable();
+
+        table_offres.setModel(new ListOffreValide());
+
+        jScrollPane1.setViewportView(table_offres);
+    }//GEN-LAST:event_bt_refrechActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -215,6 +211,7 @@ public class Acceuil extends javax.swing.JFrame {
             public void run() {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
+                    
                     new Acceuil().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Acceuil.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,18 +223,19 @@ public class Acceuil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
+    private javax.swing.JButton bt_refrech;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table_offres;
     // End of variables declaration//GEN-END:variables
 
     private AjoutOffre AjoutOffre() {
