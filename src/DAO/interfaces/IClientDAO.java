@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO.classes;
-
+package DAO.interfaces;
 
 /**
  *
  * @author jemacom
  */
-public class ClientDAO {
+public interface IClientDAO {
     
 }

@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO.classes;
-
+package test;
 
 /**
  *
  * @author jemacom
  */
-public class ClientDAO {
-    
+public class TestModifierOffre {
+    public static void main(String[] args) {
+        
+    }
 }

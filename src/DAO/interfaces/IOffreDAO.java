@@ -11,21 +11,8 @@ import entities.Offre;
  *
  * @author jemacom
  */
-public interface IOffre {
-  /*
-    void insertDepot(Depot depot);
-
-    void updateDepot(Depot d);
-
-    void deleteDepot(int id);
-
-    Depot findDepotById(int id);
-
-    Depot findDepotByAdresse(String adr);
-
-    List<Depot> DisplayAllDepots();
+public interface IOffreDAO {
     
-    */  
     
     void insertOffre(Offre offre);
     void updateOffre(Offre offre);

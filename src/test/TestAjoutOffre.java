@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO.interfaces;
+package test;
+
+import DAO.classes.OffreDAO;
 
 /**
  *
  * @author jemacom
  */
-public interface IClient {
-    
+public class TestAjoutOffre {
+    public static void main(String[] args) {
+        OffreDAO offreDAO = new OffreDAO();
+        
+    }
 }
