@@ -8,9 +8,15 @@ package gui;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
+import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Offre;
 import entities.Util;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -245,7 +251,10 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         offre.setVille(cb_ville.getSelectedItem().toString());
         offre.setSurface(Integer.parseInt(surface.getText() ));
 //        offre.setIdClient(); passing argument between screen
-        offre.setIdClient(Util.client.getId());
+//        offre.setIdClient(Util.client.getId());
+        /*-1 : pas de Id pour le gérant */
+        offre.setIdGerant(-1);
+        
         IOffreDAO offreDao = OffreDAO.getInstance();
         offreDao.insertOffre(offre);
         JOptionPane.showMessageDialog(null, "Votre demande d'ajout d'offre est bien enregistré ! En attendant la validation", "ok", 1);
@@ -288,7 +297,15 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientAjoutOffre().setVisible(true);
+                try {
+                    UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
+                    new ClientAjoutOffre().setVisible(true);
+            }   catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(AjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(AjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
 

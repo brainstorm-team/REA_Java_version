@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class DataSource {
 
     //Properties properties;
-    private String url = "jdbc:mysql://localhost:3306/agence";
+    private String url = "jdbc:mysql://localhost:3306/data";
     private String login = "root";
     private String password = "root";
     private Connection connection;
