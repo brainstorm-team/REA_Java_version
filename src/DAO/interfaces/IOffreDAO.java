@@ -6,6 +6,7 @@
 package DAO.interfaces;
 
 import entities.Offre;
+import java.util.List;
 
 /**
  *
@@ -17,5 +18,9 @@ public interface IOffreDAO {
     void insertOffre(Offre offre);
     void updateOffre(Offre offre);
     void deleteOffre(int id);
-    
+    List<Offre> getAllUnValidatedOffers();
+    List<Offre> getAllValidatedOffers();
+    List<Offre> DisplayAllOffre();
+    Offre findOffreById(int id);
+    List<Offre> recherche (String titre, String type, String categorie,String ville, Double prix ,int surface );
 }

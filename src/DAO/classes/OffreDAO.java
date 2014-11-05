@@ -193,16 +193,21 @@ public class OffreDAO implements IOffreDAO {
             return null;
         }
     }
+    public List<Offre> recherche(String titre, String type, String categorie,String ville, Double prix ,int surface )
+    {
+    
+    return null;
+    }
     
     public List<Offre> getAllUnValidatedOffers() {
         List<Offre> listeOffres = new ArrayList<Offre>();
 
-        String requete = "SELECT `Id`, `titre`, `type`, `categorie`, `ville`, `prix`, `surface`, `description`, `validation`, `Id_client`, `Id_gerant` FROM offre where validation=0";
+        String requete = "SELECT * FROM offre"; // where validation=0
 
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-
+            System.out.println("Requete traité !");
             while (resultat.next()) {
                 Offre offre = new Offre();
 
@@ -223,7 +228,7 @@ public class OffreDAO implements IOffreDAO {
 
             return listeOffres;
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des depots " + ex.getMessage());
 
             return null;
