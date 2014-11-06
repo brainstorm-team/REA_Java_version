@@ -279,7 +279,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="bt_sauver">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sauver"/>
+        <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_sauverActionPerformed"/>
@@ -356,6 +356,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mon compte"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mon_compteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_acceuil">
       <Properties>
@@ -369,21 +372,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mes favoris"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mes_favorisActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_mes_offres">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mes offres"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mes_offresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_about">
       <Properties>
         <Property name="text" type="java.lang.String" value="About"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_aboutActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_recherche">
       <Properties>
         <Property name="text" type="java.lang.String" value="Recherche avanc&#xe9;e"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_rechercheActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

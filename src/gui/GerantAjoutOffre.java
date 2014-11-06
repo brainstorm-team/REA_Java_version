@@ -123,7 +123,7 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         description.setRows(5);
         jScrollPane1.setViewportView(description);
 
-        bt_sauver.setText("Sauver");
+        bt_sauver.setText("Ajouter");
         bt_sauver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_sauverActionPerformed(evt);
@@ -150,6 +150,11 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         jLabel9.setText("m²");
 
         bt_mon_compte.setText("Mon compte");
+        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mon_compteActionPerformed(evt);
+            }
+        });
 
         bt_acceuil.setText("Acceuil");
         bt_acceuil.addActionListener(new java.awt.event.ActionListener() {
@@ -159,12 +164,32 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         });
 
         bt_mes_favoris.setText("Mes favoris");
+        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_favorisActionPerformed(evt);
+            }
+        });
 
         bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_offresActionPerformed(evt);
+            }
+        });
 
         bt_about.setText("About");
+        bt_about.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_aboutActionPerformed(evt);
+            }
+        });
 
         bt_recherche.setText("Recherche avancée");
+        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rechercheActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,24 +229,21 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
                                     .addComponent(bt_sauver, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel7))
-                                        .addGap(47, 47, 47)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(surface, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                            .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(surface, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -327,6 +349,32 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_bt_acceuilActionPerformed
+
+    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mon_compteActionPerformed
+
+    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mes_favorisActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        MesOffres mo = new MesOffres();
+        mo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
+        RechercheAvancee ra = new RechercheAvancee();
+        ra.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_rechercheActionPerformed
+
+    private void bt_aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_aboutActionPerformed
+        Apropos ap = new Apropos();
+        ap.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_aboutActionPerformed
 
     /**
      * @param args the command line arguments

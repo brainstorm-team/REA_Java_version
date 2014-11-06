@@ -17,15 +17,15 @@ import static entities.Util.client;
 Cette classe contient des infos qu'on a besoin de les transmettent entre les fenetres
 */
 public class Util {
-    /*Au moment de l'authentification cet attribut contient les infos de client connecté*/
+    
+    /*Au moment de l'authentification ces attributs contient les infos de client connecté*/
     public static Client client; 
     public static Offre offreRecherchee;
-    public static int UN = 1;
+    public static Double prixMin ;
+    public static Double prixMax ; 
+    public static int surfaceMin ;
+    public static int surfaceMax ; 
     
-    public static int getId(){
-       return client.getId();
-    }   
-    public static void setId(int UN ){
-        client.Id = UN;
-    }
+    
+    
  }

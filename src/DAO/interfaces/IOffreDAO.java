@@ -22,7 +22,7 @@ public interface IOffreDAO {
     List<Offre> getAllValidatedOffers();
     List<Offre> DisplayAllOffre();
     Offre findOffreById(int id);
-    List<Offre> recherche (String titre, String type, String categorie,String ville, Double prix ,int surface );
     List<Offre> getMesOffres();
+    List<Offre> recherche();
 
 }

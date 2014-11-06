@@ -43,17 +43,7 @@ public class ResultatSansPhotos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(new ResultatRechercheOffre());
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Resultat de recherche :");
@@ -82,7 +72,7 @@ public class ResultatSansPhotos extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(bt_acceuil)
                     .addComponent(bt_retour))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -100,7 +90,7 @@ public class ResultatSansPhotos extends javax.swing.JFrame {
                         .addComponent(bt_acceuil)
                         .addGap(18, 18, 18)
                         .addComponent(bt_retour)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
