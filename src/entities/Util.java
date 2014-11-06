@@ -5,6 +5,8 @@
  */
 package entities;
 
+import static entities.Util.client;
+
 /**
  *
  * @author jemacom
@@ -18,4 +20,12 @@ public class Util {
     /*Au moment de l'authentification cet attribut contient les infos de client connecté*/
     public static Client client; 
     public static Offre offreRecherchee;
-}
+    public static int UN = 1;
+    
+    public static int getId(){
+       return client.getId();
+    }   
+    public static void setId(int UN ){
+        client.Id = UN;
+    }
+ }

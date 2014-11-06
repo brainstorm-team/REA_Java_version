@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
 import entities.Offre;
@@ -15,16 +16,15 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author jemacom
  */
-public class ListOffreValide extends AbstractTableModel{
-    
+public class ListTousOffres extends AbstractTableModel {
     String [] header={"Titre","Type", "Catégorie", "Ville", "Prix", "Surface"};
     List<Offre> offres=new ArrayList<>();
     
-    public ListOffreValide() {
+    public ListTousOffres() {
         IOffreDAO offreDAO=OffreDAO.getInstance();
         offres=offreDAO.DisplayAllOffre();
-    
     }
+
     @Override
     public int getRowCount() {
         return offres.size();
@@ -32,7 +32,7 @@ public class ListOffreValide extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-    return header.length;
+       return header.length ;
     }
     @Override
     public String getColumnName(int column) {
@@ -40,7 +40,7 @@ public class ListOffreValide extends AbstractTableModel{
     }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-    switch(columnIndex){
+        switch(columnIndex){
             case 0: 
                 return offres.get(rowIndex).getTitre();
             case 1: 
@@ -57,6 +57,5 @@ public class ListOffreValide extends AbstractTableModel{
                 return null;
 
     }
-    
-}
+    }
 }

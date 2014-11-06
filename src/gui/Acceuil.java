@@ -121,6 +121,11 @@ public class Acceuil extends javax.swing.JFrame {
         getContentPane().add(bt_a_propos, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 221, -1, -1));
 
         bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_offresActionPerformed(evt);
+            }
+        });
         getContentPane().add(bt_mes_offres, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 133, -1, -1));
 
         jLabel1.setText("Liste des offres disponibles :");
@@ -138,9 +143,9 @@ public class Acceuil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-        AjoutOffre ao = AjoutOffre();
-        ao.setVisible(true);
-        this.setVisible(false);
+//        ClientAjoutOffre ao = new ClientAjoutOffre();
+//        ao.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){
@@ -177,6 +182,12 @@ public class Acceuil extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(table_offres);
     }//GEN-LAST:event_bt_refrechActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        MesOffres mo = new MesOffres();
+        mo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
     
     /**
      * @param args the command line arguments
@@ -237,9 +248,5 @@ public class Acceuil extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_offres;
     // End of variables declaration//GEN-END:variables
-
-    private AjoutOffre AjoutOffre() {
-      return null;  
-    }
 
 }

@@ -377,9 +377,9 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     new GerantAjoutOffre().setVisible(true);
             }   catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(AjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GerantAjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(AjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GerantAjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }

@@ -5,6 +5,13 @@
  */
 package gui;
 
+import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author jemacom
@@ -16,6 +23,7 @@ public class MesOffres extends javax.swing.JFrame {
      */
     public MesOffres() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,30 +38,66 @@ public class MesOffres extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        bt_acceuil = new javax.swing.JButton();
+        bt_mon_compte = new javax.swing.JButton();
+        bt_mes_favoris = new javax.swing.JButton();
+        bt_recherche = new javax.swing.JButton();
+        bt_a_propos = new javax.swing.JButton();
+        bt_ajouter_offre = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(new ListMesOffres());
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Mes offres");
+
+        bt_acceuil.setText("Acceuil");
+        bt_acceuil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_acceuilActionPerformed(evt);
+            }
+        });
+
+        bt_mon_compte.setText("Mon compte");
+        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mon_compteActionPerformed(evt);
+            }
+        });
+
+        bt_mes_favoris.setText("Mes favoris");
+
+        bt_recherche.setText("Recherche avancee");
+        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rechercheActionPerformed(evt);
+            }
+        });
+
+        bt_a_propos.setText("A propos");
+
+        bt_ajouter_offre.setText("Ajouter offre");
+        bt_ajouter_offre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ajouter_offreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_acceuil)
+                    .addComponent(bt_mon_compte)
+                    .addComponent(bt_recherche)
+                    .addComponent(bt_mes_favoris, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_a_propos)
+                    .addComponent(bt_ajouter_offre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -62,15 +106,53 @@ public class MesOffres extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(13, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(bt_acceuil)
+                        .addGap(19, 19, 19)
+                        .addComponent(bt_ajouter_offre)
+                        .addGap(16, 16, 16)
+                        .addComponent(bt_mon_compte)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_mes_favoris)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_recherche)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_a_propos)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(34, 34, 34))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
+        Acceuil acc = new Acceuil();
+        acc.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_acceuilActionPerformed
+
+    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mon_compteActionPerformed
+
+    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
+        RechercheAvancee ra = new RechercheAvancee();
+        ra.setVisible(true);
+        ra.setVisible(false);
+    }//GEN-LAST:event_bt_rechercheActionPerformed
+
+    private void bt_ajouter_offreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouter_offreActionPerformed
+        ClientAjoutOffre cao = new ClientAjoutOffre();
+        cao.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_ajouter_offreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,12 +184,27 @@ public class MesOffres extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MesOffres().setVisible(true);
+                try{
+                    UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
+                    
+                    new MesOffres().setVisible(true);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Acceuil.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Acceuil.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_acceuil;
+    private javax.swing.JButton bt_ajouter_offre;
+    private javax.swing.JButton bt_mes_favoris;
+    private javax.swing.JButton bt_mon_compte;
+    private javax.swing.JButton bt_recherche;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

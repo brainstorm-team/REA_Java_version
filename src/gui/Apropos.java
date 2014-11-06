@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jemacom
@@ -17,6 +20,7 @@ public class Apropos extends javax.swing.JFrame {
     public Apropos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jLabel1.setIcon(createIcon("/images/agence.gif"));
     }
 
     /**
@@ -35,8 +39,6 @@ public class Apropos extends javax.swing.JFrame {
         bt_ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Logos de l'application");
 
         team.setColumns(20);
         team.setRows(5);
@@ -57,7 +59,7 @@ public class Apropos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(113, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -68,7 +70,7 @@ public class Apropos extends javax.swing.JFrame {
                         .addGap(156, 156, 156)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(175, 175, 175)
                         .addComponent(bt_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -77,13 +79,13 @@ public class Apropos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addComponent(bt_ok)
-                .addGap(48, 48, 48))
+                .addContainerGap())
         );
 
         pack();
@@ -94,7 +96,17 @@ public class Apropos extends javax.swing.JFrame {
        acc.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_bt_okActionPerformed
-
+    private ImageIcon createIcon(String path){
+        URL url = getClass().getResource(path);
+        if (url == null){
+            System.err.println("Unable de load the image !"+path);
+            return null;
+        }
+        
+        ImageIcon icon = new ImageIcon(url);
+        return icon;
+        
+    }
     /**
      * @param args the command line arguments
      */

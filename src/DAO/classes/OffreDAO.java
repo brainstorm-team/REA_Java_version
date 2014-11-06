@@ -8,6 +8,7 @@ package DAO.classes;
 import DAO.interfaces.IOffreDAO;
 import entities.Date;
 import entities.Offre;
+import entities.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -129,12 +130,11 @@ public class OffreDAO implements IOffreDAO {
 
     public List<Offre> DisplayAllOffre() {
 
-        List<Offre> listeOffres = new ArrayList<Offre>();
+        List<Offre> listeOffres = new ArrayList<>();
 
         String requete = "select * from offre";
         try {
-            Statement statement = connection
-                    .createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
 
              while (resultat.next()) {
@@ -164,8 +164,9 @@ public class OffreDAO implements IOffreDAO {
         }
     }
 
+    @Override
     public List<Offre> getAllValidatedOffers() {
-        List<Offre> listeOffres = new ArrayList<Offre>();
+        List<Offre> listeOffres = new ArrayList<>();
 
         String requete = "SELECT * FROM offre where validation=1";
 
@@ -212,7 +213,7 @@ public class OffreDAO implements IOffreDAO {
     
     public List<Offre> getAllUnValidatedOffers() {
         
-        List<Offre> listeOffres = new ArrayList<Offre>();
+        List<Offre> listeOffres = new ArrayList<>();
 
         String requete = "SELECT * FROM offre where validation=0";
 
@@ -220,6 +221,41 @@ public class OffreDAO implements IOffreDAO {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
             System.out.println("Selection des offres non validés...........");
+            while (resultat.next()) {
+                Offre offre = new Offre();
+
+                offre.setId(resultat.getInt(1));
+                offre.setTitre(resultat.getString(2));
+                offre.setType(resultat.getString(3));
+                offre.setCategorie(resultat.getString(4));
+                offre.setVille(resultat.getString(5));
+                offre.setPrix(resultat.getDouble(6));
+                offre.setSurface(resultat.getInt(7));
+                offre.setDescription(resultat.getString(8));
+                offre.setValidation(resultat.getBoolean(9));
+                offre.setIdClient(resultat.getInt(10));
+                offre.setIdGerant(resultat.getInt(11));
+                System.out.println(offre.getId());
+
+                listeOffres.add(offre);
+            }
+
+            return listeOffres;
+        } catch (SQLException ex) {
+            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des offres " + ex.getMessage());
+
+            return null;
+        }
+    }
+    public List<Offre> getMesOffres(){
+    List<Offre> listeOffres = new ArrayList<>();
+//    Util.client.setId(5);
+    String requete = "SELECT * FROM offre where Id_client=5";
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
             while (resultat.next()) {
                 Offre offre = new Offre();
 
