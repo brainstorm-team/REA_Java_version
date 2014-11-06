@@ -168,7 +168,7 @@ public class Acceuil extends javax.swing.JFrame {
     private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
         Apropos ap = new Apropos();
         ap.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed

@@ -67,6 +67,11 @@ public class MesOffres extends javax.swing.JFrame {
         });
 
         bt_mes_favoris.setText("Mes favoris");
+        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_favorisActionPerformed(evt);
+            }
+        });
 
         bt_recherche.setText("Recherche avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +81,11 @@ public class MesOffres extends javax.swing.JFrame {
         });
 
         bt_a_propos.setText("A propos");
+        bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_a_proposActionPerformed(evt);
+            }
+        });
 
         bt_ajouter_offre.setText("Ajouter offre");
         bt_ajouter_offre.addActionListener(new java.awt.event.ActionListener() {
@@ -145,14 +155,23 @@ public class MesOffres extends javax.swing.JFrame {
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
         RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
-        ra.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_rechercheActionPerformed
 
     private void bt_ajouter_offreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouter_offreActionPerformed
         ClientAjoutOffre cao = new ClientAjoutOffre();
         cao.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_bt_ajouter_offreActionPerformed
+
+    private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
+        Apropos ap = new Apropos();
+        ap.setVisible(true);
+    }//GEN-LAST:event_bt_a_proposActionPerformed
+
+    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
+        
+    }//GEN-LAST:event_bt_mes_favorisActionPerformed
 
     /**
      * @param args the command line arguments

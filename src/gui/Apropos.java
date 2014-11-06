@@ -93,7 +93,7 @@ public class Apropos extends javax.swing.JFrame {
 
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
        Acceuil acc =  new Acceuil();
-       acc.setVisible(true);
+       
        this.setVisible(false);
     }//GEN-LAST:event_bt_okActionPerformed
     private ImageIcon createIcon(String path){

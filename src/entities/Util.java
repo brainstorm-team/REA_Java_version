@@ -27,5 +27,12 @@ public class Util {
     public static int surfaceMax ; 
     
     
+    public static int idR;
+    public static String titreR;
+    public static String typeR;
+    public static String categorieR;
+    public static String villeR;
+ 
+    
     
  }

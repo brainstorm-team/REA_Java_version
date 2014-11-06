@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import technique.DataSource;
 
 /**
@@ -311,12 +312,12 @@ public class OffreDAO implements IOffreDAO {
     
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "select * from offre where (titre like '%?%' )and ( type like  '%?%' ) and (categorie like '%?%' )and ( ville like '%?%' )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?)";
+        String requete = "select * from offre where (titre like ? )and ( type like  ? ) and (categorie like ? )and ( ville like ? )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete); 
             
-            if (Util.offreRecherchee.getTitre() != null){
+            /*if (Util.offreRecherchee.getTitre() != null){
                ps.setString(1, Util.offreRecherchee.getTitre());              
             }else{
                 ps.setString(1, "");               
@@ -341,14 +342,19 @@ public class OffreDAO implements IOffreDAO {
                 ps.setString(4, Util.offreRecherchee.getVille());
             }else{
                 ps.setString(4, "");
-            }
+            }*/
+            ps.setString(1, "%"+Util.titreR+"%");
+            ps.setString(2, "%"+Util.typeR+"%");
+            ps.setString(3, "%"+Util.categorieR+"%");
+            ps.setString(4, "%"+Util.villeR+"%");
+            
             ps.setDouble(5, Util.prixMin);
             ps.setDouble(6, Util.prixMax);
             ps.setInt(7, Util.surfaceMin);
             ps.setInt(8, Util.surfaceMax);
             
-            ResultSet resultat = ps.executeQuery();
             
+            ResultSet resultat = ps.executeQuery();
             
             System.out.println("Recherche des offres demandées.........");
             while (resultat.next()) {
@@ -376,7 +382,7 @@ public class OffreDAO implements IOffreDAO {
             
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des depots " + ex.getMessage());
+            System.out.println("erreur lors du chargement des offres " + ex.getMessage());
         }
     return null;
     }

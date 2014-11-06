@@ -93,7 +93,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jScrollPane1" min="-2" pref="356" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="bt_sauver" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Component id="bt_ajouter" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -198,7 +198,7 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="bt_sauver" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_ajouter" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="93" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -268,12 +268,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="bt_sauver">
+    <Component class="javax.swing.JButton" name="bt_ajouter">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sauver"/>
+        <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_sauverActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_ajouterActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -365,6 +365,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mes offres"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mes_offresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_a_propos">
       <Properties>
@@ -375,6 +378,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Recherche avanc&#xe9;e"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_rechercheActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

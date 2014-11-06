@@ -104,7 +104,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
 
         jLabel6.setText("Surface : ");
 
-        cb_ville.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ariana", "Tunis", "Bizerte", "Tabarka", "Sfax", "Gabes", "Medenine" }));
+        cb_ville.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ariana ville", "El ghezella", "Roued", "Bizerte", "Beja", "Tunis", "Manar", "Carthage" }));
 
         check_photos.setText("Avec photos");
         check_photos.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +138,11 @@ public class RechercheAvancee extends javax.swing.JFrame {
         bt_mon_compte.setText("Mon compte");
 
         bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_offresActionPerformed(evt);
+            }
+        });
 
         bt_mes_favoris.setText("Mes favoris");
 
@@ -286,7 +291,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
            else
            {
                /*Enregistrement des infos de l'offre à rechercher dans Util*/
-               if (titre.getText() == null){
+               /*if (titre.getText() == null){
                    Util.offreRecherchee.setTitre("");
                }else{
                    Util.offreRecherchee.setTitre(titre.getText());
@@ -305,11 +310,17 @@ public class RechercheAvancee extends javax.swing.JFrame {
                    Util.offreRecherchee.setVille("");
                }else{
                Util.offreRecherchee.setVille(cb_ville.getSelectedItem().toString());
-               }
+               }*/
+               Util.titreR = titre.getText();
+               Util.typeR = cb_type.getSelectedItem().toString();
+               Util.categorieR = ls_categorie.getSelectedValue().toString();
+               Util.villeR = cb_ville.getSelectedItem().toString();
+               
                Util.prixMin = Double.parseDouble(prixMin.getText());
                Util.prixMax = Double.parseDouble(prixMax.getText());
                Util.surfaceMax = Integer.parseInt(surfaceMax.getText());
                Util.surfaceMin = Integer.parseInt(surfaceMin.getText());
+               
                /*FIn enregistrement*/
                
                ResultatSansPhotos rsp = new ResultatSansPhotos();
@@ -324,7 +335,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
 
     private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
                     
-       Acceuil acc = new Acceuil();
+        Acceuil acc = new Acceuil();
         acc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_acceuilActionPerformed
@@ -334,8 +345,16 @@ public class RechercheAvancee extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_typeActionPerformed
 
     private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
-        // TODO add your handling code here:
+        Apropos ap = new Apropos();
+        ap.setVisible(true);
+       
     }//GEN-LAST:event_bt_a_proposActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        MesOffres mo = new MesOffres();
+        mo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
 
     /**
      * @param args the command line arguments

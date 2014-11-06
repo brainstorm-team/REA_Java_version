@@ -57,7 +57,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
-        bt_sauver = new javax.swing.JButton();
+        bt_ajouter = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -123,10 +123,10 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         description.setRows(5);
         jScrollPane1.setViewportView(description);
 
-        bt_sauver.setText("Sauver");
-        bt_sauver.addActionListener(new java.awt.event.ActionListener() {
+        bt_ajouter.setText("Ajouter");
+        bt_ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_sauverActionPerformed(evt);
+                bt_ajouterActionPerformed(evt);
             }
         });
 
@@ -161,10 +161,20 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         bt_mes_favoris.setText("Mes favoris");
 
         bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_offresActionPerformed(evt);
+            }
+        });
 
         bt_a_propos.setText("A propos");
 
         bt_recherche.setText("Recherche avancée");
+        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rechercheActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +198,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
-                                    .addComponent(bt_sauver, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -268,7 +278,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                         .addComponent(bt_a_propos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bt_sauver)
+                    .addComponent(bt_ajouter)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -286,7 +296,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_prixActionPerformed
 
-    private void bt_sauverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_sauverActionPerformed
+    private void bt_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouterActionPerformed
         
         Offre offre = new Offre();
         
@@ -307,7 +317,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         IOffreDAO offreDao = OffreDAO.getInstance();
         offreDao.insertOffre(offre);
         JOptionPane.showMessageDialog(null, "Votre demande d'ajout d'offre est bien enregistré ! En attendant la validation", "ok", 1);
-    }//GEN-LAST:event_bt_sauverActionPerformed
+    }//GEN-LAST:event_bt_ajouterActionPerformed
 
     private void cb_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_typeActionPerformed
         // TODO add your handling code here:
@@ -319,6 +329,15 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_bt_acceuilActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
+       RechercheAvancee ra = new RechercheAvancee();
+       ra.setVisible(true);
+    }//GEN-LAST:event_bt_rechercheActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,11 +389,11 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_acceuil;
+    private javax.swing.JButton bt_ajouter;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
-    private javax.swing.JButton bt_sauver;
     private javax.swing.JComboBox cb_type;
     private javax.swing.JComboBox cb_ville;
     private javax.swing.JTextArea description;
