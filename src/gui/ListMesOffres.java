@@ -57,7 +57,8 @@ public class ListMesOffres extends AbstractTableModel {
                 return offres.get(rowIndex).getPrix();
             case 5: 
                 return offres.get(rowIndex).getSurface();
-            
+            case 10:
+                return offres.get(rowIndex).getId();
             default:
                 return null;
     }

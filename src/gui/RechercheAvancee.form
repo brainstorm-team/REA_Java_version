@@ -320,6 +320,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mon compte"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mon_compteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_mes_offres">
       <Properties>
@@ -333,6 +336,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mes favoris"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mes_favorisActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_a_propos">
       <Properties>

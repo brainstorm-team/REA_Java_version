@@ -5,10 +5,20 @@
  */
 package gui;
 
+import DAO.classes.OffreDAO;
+import DAO.interfaces.IOffreDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import entities.Offre;
+import entities.Util;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -18,12 +28,41 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MesOffres extends javax.swing.JFrame {
 
+    private JPopupMenu popup;
     /**
      * Creates new form MesOffres
      */
     public MesOffres() {
         initComponents();
         this.setLocationRelativeTo(null);
+        popup = new JPopupMenu();
+        
+        JMenuItem removeItem =  new JMenuItem("Supprimer Offre");
+        popup.add(removeItem);
+        table.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                int row = table.rowAtPoint(e.getPoint());
+                System.out.println(row);
+                if (e.getButton() ==  MouseEvent.BUTTON3){
+                    popup.show(table , e.getX() , e.getY());
+                }
+            }
+        });
+        removeItem.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int row =table.getSelectedRow();
+                int    column = table.getSelectedColumn();
+                System.out.println(row+" ---- "+column);
+                System.out.println("my id "+table.getModel().getValueAt(table.getSelectedRow(), 10));
+//                Util.idOffreASupprimer = row;
+                OffreDAO.getInstance().deleteOffre((int)table.getModel().getValueAt(table.getSelectedRow(), 10));
+                
+            }
+            
+        });
+        table.repaint(); 
     }
 
     /**
@@ -36,7 +75,7 @@ public class MesOffres extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         bt_acceuil = new javax.swing.JButton();
         bt_mon_compte = new javax.swing.JButton();
@@ -44,11 +83,12 @@ public class MesOffres extends javax.swing.JFrame {
         bt_recherche = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
         bt_ajouter_offre = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new ListMesOffres());
-        jScrollPane1.setViewportView(jTable1);
+        table.setModel(new ListMesOffres());
+        jScrollPane1.setViewportView(table);
 
         jLabel1.setText("Mes offres");
 
@@ -94,6 +134,8 @@ public class MesOffres extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Supprimer offre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,7 +148,8 @@ public class MesOffres extends javax.swing.JFrame {
                     .addComponent(bt_recherche)
                     .addComponent(bt_mes_favoris, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_a_propos)
-                    .addComponent(bt_ajouter_offre))
+                    .addComponent(bt_ajouter_offre)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -127,11 +170,13 @@ public class MesOffres extends javax.swing.JFrame {
                         .addComponent(bt_acceuil)
                         .addGap(19, 19, 19)
                         .addComponent(bt_ajouter_offre)
-                        .addGap(16, 16, 16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(8, 8, 8)
                         .addComponent(bt_mon_compte)
                         .addGap(18, 18, 18)
                         .addComponent(bt_mes_favoris)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_a_propos)
@@ -224,8 +269,9 @@ public class MesOffres extends javax.swing.JFrame {
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

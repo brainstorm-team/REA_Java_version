@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -114,6 +114,7 @@ public class OffreDAO implements IOffreDAO {
             PreparedStatement ps = connection.prepareStatement(DELETE_OFFRE);
             ps.setInt(1, id);
             ps.executeUpdate();
+            
             System.out.println("Offre supprimée ! \n");
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);

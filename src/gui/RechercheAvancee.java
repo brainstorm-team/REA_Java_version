@@ -136,6 +136,11 @@ public class RechercheAvancee extends javax.swing.JFrame {
         jLabel10.setText("Max");
 
         bt_mon_compte.setText("Mon compte");
+        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mon_compteActionPerformed(evt);
+            }
+        });
 
         bt_mes_offres.setText("Mes offres");
         bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +150,11 @@ public class RechercheAvancee extends javax.swing.JFrame {
         });
 
         bt_mes_favoris.setText("Mes favoris");
+        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_favorisActionPerformed(evt);
+            }
+        });
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -355,6 +365,14 @@ public class RechercheAvancee extends javax.swing.JFrame {
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mon_compteActionPerformed
+
+    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_mes_favorisActionPerformed
 
     /**
      * @param args the command line arguments

@@ -32,6 +32,8 @@ public class Util {
     public static String typeR;
     public static String categorieR;
     public static String villeR;
+    
+    public static int idOffreASupprimer;
  
     
     
