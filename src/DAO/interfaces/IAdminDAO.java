@@ -5,7 +5,7 @@
  */
 package DAO.interfaces;
 
-import entities.Client;
+import entities.Admin;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +13,13 @@ import java.util.List;
  *
  * @author jemacom
  */
-public interface IClientDAO {
-    ArrayList<Client> SelectClient();
+public interface IAdminDAO {
+    List<Admin> SelectAdmin();
     ArrayList<String> SelectLogin(String pattern);
-    void ajoutClient(   Client client);
-    void deleteClient(String login);
-    void updateClient(String login, String password);
-    Client findClientByLogin (String login);
-    List<Client> DiplayAllClient();
-    
-    
+    void insertAdmin(Admin admin);
+    void updateAdmin(String login, String password);
+    void deleteAdmin(String login);
+    Admin findAdministrateurByLogin (String login);
+    Admin findById(int id);
+    void update(Admin user) ;
 }
-    

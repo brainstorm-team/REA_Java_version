@@ -30,6 +30,9 @@ public class Utilisateur {
         this.pass = pass;
     }
 
+    public Utilisateur() {
+    }
+
     @Override
     public String toString() {
         return "Utilisateur{" + "Id=" + Id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", telephone=" + telephone + ", adresse=" + adresse + '}';

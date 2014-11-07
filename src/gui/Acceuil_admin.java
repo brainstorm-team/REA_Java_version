@@ -43,15 +43,15 @@ public class Acceuil_admin extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
         bt_mon_compte = new javax.swing.JButton();
-        bt_recherche = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_offres = new javax.swing.JTable();
         acceuil = new javax.swing.JLabel();
-        bt_mes_favoris = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
-        bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bt_refrech = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -78,7 +78,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_mon_compte.setText("Mon compte");
         bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
@@ -86,31 +85,11 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 bt_mon_compteActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mon_compte, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 53, -1, -1));
 
-        bt_recherche.setText("Recherche Avancee");
-        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_rechercheActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_recherche, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 180, -1, -1));
-
-        table_offres.setModel(new ListOffreValide());
+        table_offres.setModel(new ListOffreNonValide());
         jScrollPane1.setViewportView(table_offres);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
-
         acceuil.setText("Acceuil :");
-        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 77, 25));
-
-        bt_mes_favoris.setText("Mes favoris");
-        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mes_favorisActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_mes_favoris, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 93, -1, -1));
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -118,18 +97,8 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 bt_a_proposActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_a_propos, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 221, -1, -1));
 
-        bt_mes_offres.setText("Mes offres");
-        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mes_offresActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_mes_offres, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 133, -1, -1));
-
-        jLabel1.setText("Liste des offres disponibles :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
+        jLabel1.setText("Liste des offres à validé");
 
         bt_refrech.setText("Refrech");
         bt_refrech.addActionListener(new java.awt.event.ActionListener() {
@@ -137,13 +106,71 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 bt_refrechActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_refrech, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 12, -1, -1));
+
+        jButton1.setText("Gestion des comptes clients");
+
+        jButton2.setText("Gestion des comptes gérants");
+
+        jButton3.setText("Visualiser statistique");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_mon_compte)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(bt_a_propos)
+                    .addComponent(jButton3)
+                    .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(125, 125, 125)
+                        .addComponent(bt_refrech))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bt_refrech))
+                        .addGap(12, 12, 12)
+                        .addComponent(bt_mon_compte)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(24, 24, 24)
+                        .addComponent(bt_a_propos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-
+            CompteAdmin ca = new CompteAdmin();
+            ca.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){
@@ -157,21 +184,11 @@ public class Acceuil_admin extends javax.swing.JFrame {
         return icon;
         
     }
-    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
-        RechercheAvancee ra = new RechercheAvancee();
-        ra.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_rechercheActionPerformed
-
     private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
         Apropos ap = new Apropos();
         ap.setVisible(true);
         
     }//GEN-LAST:event_bt_a_proposActionPerformed
-
-    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_mes_favorisActionPerformed
 
     private void bt_refrechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refrechActionPerformed
         table_offres = new javax.swing.JTable();
@@ -180,12 +197,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(table_offres);
     }//GEN-LAST:event_bt_refrechActionPerformed
-
-    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        ClientMesOffres mo = new ClientMesOffres();
-        mo.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_mes_offresActionPerformed
     
     /**
      * @param args the command line arguments
@@ -237,11 +248,11 @@ public class Acceuil_admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
-    private javax.swing.JButton bt_mes_favoris;
-    private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
-    private javax.swing.JButton bt_recherche;
     private javax.swing.JButton bt_refrech;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;

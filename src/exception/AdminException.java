@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO.interfaces;
-
-import entities.Offre;
-import java.util.List;
+package exception;
 
 /**
  *
  * @author jemacom
  */
-public interface IFavorisDAO {
-    void insertFavoris(int id);
-    void deleteFavoris(int id);
-    List<Offre> DisplayAllFavoris();
+public class AdminException extends Exception {
+    public AdminException(String msg){
+    super(msg);
+    }
+    
 }

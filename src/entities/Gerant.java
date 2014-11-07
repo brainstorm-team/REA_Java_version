@@ -15,6 +15,9 @@ public class Gerant extends Utilisateur{
         super(Id, nom, prenom, email, telephone, adresse, login, pass);
     }
 
+    public Gerant() {
+    }
+    
     /**
      * 
      Possibilite d'ajout des attributs

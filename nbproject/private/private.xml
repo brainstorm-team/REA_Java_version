@@ -5,7 +5,9 @@
         <group>
             <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/ClientMesFavoris.java</file>
             <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Acceuil_client.java</file>
+            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/entities/Util.java</file>
             <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/DAO/classes/OffreDAO.java</file>
+            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/ClientAjoutOffre.java</file>
             <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/DAO/classes/FavorisDAO.java</file>
         </group>
     </open-files>

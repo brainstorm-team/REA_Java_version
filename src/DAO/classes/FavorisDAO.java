@@ -91,4 +91,20 @@ public class FavorisDAO implements IFavorisDAO{
         
         return listeFavoris;
     }
+
+    @Override
+    public void deleteFavoris(int id) {
+        String requete = "delete from favoris where Id =?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(requete);
+            
+            ps.setInt(1 , id); //id de l'offre selectionne
+            ps.executeUpdate();
+            
+            System.out.println("offre supprimé des favoris ... ! \n");
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la suppression aux favoris " + ex.getMessage());
+        }
+    }
 }

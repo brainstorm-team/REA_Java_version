@@ -5,10 +5,19 @@
  */
 package gui;
 
+import DAO.classes.FavorisDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -18,14 +27,42 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ClientMesFavoris extends javax.swing.JFrame {
 
+    private JPopupMenu popup;
     /**
      * Creates new form Favoris
      */
     public ClientMesFavoris() {
         initComponents();
         this.setLocationRelativeTo(null);
+        popup = new JPopupMenu();
+        
+        JMenuItem DeleteItem =  new JMenuItem("Supprimer favoris");
+        popup.add(DeleteItem);
+        table.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                JTable table =(JTable) e.getSource();
+                Point p = e.getPoint();
+                int row = table.rowAtPoint(p);
+                
+                
+                System.out.println(row);
+                if (e.getButton() ==  MouseEvent.BUTTON3){
+                    popup.show(table , e.getX() , e.getY());
+                }
+            }
+            
+        }); 
+        DeleteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               int row =table.getSelectedRow(); 
+               System.out.println("my id "+table.getModel().getValueAt(table.getSelectedRow(), 10));
+                FavorisDAO.getInstance().deleteFavoris((int)table.getModel().getValueAt(table.getSelectedRow(), 10));
+                table.setModel(new ListFavoris());
+            }
+        });
     }
-
+                
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +73,7 @@ public class ClientMesFavoris extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         bt_acceuil = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -45,8 +82,8 @@ public class ClientMesFavoris extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new ListFavoris());
-        jScrollPane1.setViewportView(jTable1);
+        table.setModel(new ListFavoris());
+        jScrollPane1.setViewportView(table);
 
         bt_acceuil.setText("Acceuil");
         bt_acceuil.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +198,6 @@ public class ClientMesFavoris extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,23 +5,21 @@
  */
 package DAO.interfaces;
 
-import entities.Client;
+import entities.Gerant;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author jemacom
  */
-public interface IClientDAO {
-    ArrayList<Client> SelectClient();
+public interface IGerantDAO {
+    
+    ArrayList<Gerant> SelectGerant();
     ArrayList<String> SelectLogin(String pattern);
-    void ajoutClient(   Client client);
-    void deleteClient(String login);
-    void updateClient(String login, String password);
-    Client findClientByLogin (String login);
-    List<Client> DiplayAllClient();
+    void ajoutGerant(  Gerant  gerant);
+    void deleteGerant(String login);
+    void updateGerant(String login, String password);
+    Gerant findGerantByLogin (String login);
     
     
 }
-    

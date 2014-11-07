@@ -5,8 +5,14 @@
  */
 package gui;
 
+import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import java.net.URL;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -137,7 +143,16 @@ public class Apropos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Apropos().setVisible(true);
+                try{
+                    UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
+                    
+                    new Apropos().setVisible(true);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Apropos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Apropos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
     }

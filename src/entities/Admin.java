@@ -15,6 +15,12 @@ public class Admin extends Utilisateur{
         super(Id, nom, prenom, email, telephone, adresse, login, pass);
     }
 
+    public Admin() {
+    }
+
+    
+   
+
     
     
     

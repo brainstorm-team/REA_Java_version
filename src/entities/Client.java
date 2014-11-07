@@ -15,6 +15,11 @@ public class Client extends Utilisateur{
         super(Id, nom, prenom, email, telephone, adresse, login, pass);
     }
 
+    
+    public Client() {
+    }
+
+    
     /**
      * 
      Possibilite d'ajout des attributs 
