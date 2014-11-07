@@ -54,7 +54,7 @@ public class OffreDAO implements IOffreDAO {
     @Override
     public void insertOffre(Offre offre) {
 
-        String AJOUT_OFFRE = "insert into offre (titre , type , categorie ,ville, prix , surface , description , validation) values (?,?,?,?,?,?,?,?)";
+        String AJOUT_OFFRE = "insert into offre (titre , type , categorie ,ville, prix , surface , description , validation , Id_client , Id_gerant) values (?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(AJOUT_OFFRE);
             ps.setString(1, offre.getTitre());
@@ -66,7 +66,9 @@ public class OffreDAO implements IOffreDAO {
             ps.setInt(6, offre.getSurface());
             ps.setString(7, offre.getDescription());
             ps.setBoolean(8, offre.isValidation());
-
+            ps.setInt(9 , offre.getIdClient());
+            ps.setInt(10, offre.getIdGerant());
+            
             ps.executeUpdate();
             System.out.println("Insertion ........");
         } catch (SQLException ex) {
@@ -138,21 +140,21 @@ public class OffreDAO implements IOffreDAO {
             while (resultat.next()) {
                 offre.setId(resultat.getInt(1));
                 offre.setTitre(resultat.getString(2));
-                offre.setDescription(resultat.getString(3));
-//                Date d = new Date();
-//                d.setJour(03);
-//                d.setMois(11);
-//                d.setAnnee(2014);
-//                offre.setDate(d);
-                offre.setPrix(resultat.getDouble(5));
-                offre.setType(resultat.getString(6));
+                offre.setType(resultat.getString(3));
+                offre.setCategorie(resultat.getString(4));
+                offre.setVille(resultat.getString(5));
+                offre.setPrix(resultat.getDouble(6));
+                offre.setSurface(resultat.getInt(7));
+                offre.setDescription(resultat.getString(8));
+                offre.setValidation(resultat.getBoolean(9));
+                offre.setIdClient(resultat.getInt(10));
 
             }
             return offre;
 
         } catch (SQLException ex) {
             //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors de la recherche du depot " + ex.getMessage());
+            System.out.println("erreur lors de la recherche du l'offre .. " + ex.getMessage());
             return null;
         }
     }
@@ -317,33 +319,6 @@ public class OffreDAO implements IOffreDAO {
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete); 
-            
-            /*if (Util.offreRecherchee.getTitre() != null){
-               ps.setString(1, Util.offreRecherchee.getTitre());              
-            }else{
-                ps.setString(1, "");               
-            }
-            
-            
-            if (Util.offreRecherchee.getType() != null){
-                ps.setString(2, Util.offreRecherchee.getType());
-            }else{
-                ps.setString(2, "");
-            }
-            
-            
-            if (Util.offreRecherchee.getCategorie() != null){
-            ps.setString(3, Util.offreRecherchee.getCategorie());
-            }else{
-                ps.setString(3, "");
-            }
-            
-            
-            if (Util.offreRecherchee.getVille() != null){
-                ps.setString(4, Util.offreRecherchee.getVille());
-            }else{
-                ps.setString(4, "");
-            }*/
             ps.setString(1, "%"+Util.titreR+"%");
             ps.setString(2, "%"+Util.typeR+"%");
             ps.setString(3, "%"+Util.categorieR+"%");
@@ -382,7 +357,7 @@ public class OffreDAO implements IOffreDAO {
             return listeOffres;
             
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            
             System.out.println("erreur lors du chargement des offres " + ex.getMessage());
         }
     return null;
@@ -430,11 +405,12 @@ public class OffreDAO implements IOffreDAO {
 
             return listeOffres;
         } catch (SQLException ex) {
-            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
+            
             System.out.println("erreur lors du chargement des offres " + ex.getMessage());
 
             return null;
         }
     }
+
 }   
 

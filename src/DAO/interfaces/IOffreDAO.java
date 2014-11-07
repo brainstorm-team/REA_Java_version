@@ -24,5 +24,6 @@ public interface IOffreDAO {
     Offre findOffreById(int id);
     List<Offre> getMesOffres();
     List<Offre> recherche();
+    
 
 }

@@ -6,7 +6,7 @@
 package agence_immobiliere_v1;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
-import gui.Acceuil;
+import gui.Acceuil_client;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +29,7 @@ public class Agence_immobiliere_v1 {
         } catch (ParseException ex) {
             Logger.getLogger(Agence_immobiliere_v1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Acceuil acc = new Acceuil();
+        Acceuil_client acc = new Acceuil_client();
         acc.setVisible(true);
         
     }

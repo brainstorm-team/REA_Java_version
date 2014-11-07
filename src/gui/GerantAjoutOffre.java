@@ -69,7 +69,6 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         bt_mon_compte = new javax.swing.JButton();
         bt_acceuil = new javax.swing.JButton();
-        bt_mes_favoris = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         bt_about = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
@@ -130,7 +129,7 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Ajout d'un offre coté client :");
+        jLabel5.setText("Ajout d'un offre coté gérant :");
 
         jLabel6.setText("Catégorie : ");
 
@@ -160,13 +159,6 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         bt_acceuil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_acceuilActionPerformed(evt);
-            }
-        });
-
-        bt_mes_favoris.setText("Mes favoris");
-        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mes_favorisActionPerformed(evt);
             }
         });
 
@@ -203,7 +195,6 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bt_mon_compte)
                             .addComponent(bt_acceuil)
-                            .addComponent(bt_mes_favoris)
                             .addComponent(bt_mes_offres)
                             .addComponent(bt_about, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_recherche))
@@ -289,14 +280,12 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_mon_compte)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_mes_favoris)
-                        .addGap(18, 18, 18)
                         .addComponent(bt_mes_offres)
                         .addGap(18, 18, 18)
                         .addComponent(bt_recherche)
                         .addGap(12, 12, 12)
                         .addComponent(bt_about)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bt_sauver)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -326,17 +315,16 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         //ajouter la date du system au moment de l'ajout 
         offre.setPrix(Double.parseDouble( prix.getText()));
         offre.setDescription(description.getText());
-        offre.setValidation(false);
         offre.setVille(cb_ville.getSelectedItem().toString());
         offre.setSurface(Integer.parseInt(surface.getText() ));
-//        offre.setIdClient(); passing argument between screen
-//        offre.setIdClient(Util.client.getId());
-        /*-1 : pas de Id pour le gérant */
-        offre.setIdGerant(-1);
+        offre.setValidation(true);
+        offre.setIdClient(-1);
+
+        offre.setIdGerant(9);  /*A changer avec l'Id du gérant connecté from Util Id_gerant_connecte*/
         
         IOffreDAO offreDao = OffreDAO.getInstance();
         offreDao.insertOffre(offre);
-        JOptionPane.showMessageDialog(null, "Votre demande d'ajout d'offre est bien enregistré ! En attendant la validation", "ok", 1);
+        JOptionPane.showMessageDialog(null, "Votre demande d'ajout d'offre est bien enregistré ", "ok", 1);
     }//GEN-LAST:event_bt_sauverActionPerformed
 
     private void cb_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_typeActionPerformed
@@ -344,7 +332,7 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_typeActionPerformed
 
     private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
-        Acceuil acc = new Acceuil();
+        Acceuil_client acc = new Acceuil_client();
         acc.setVisible(true);
         this.setVisible(false);
         
@@ -354,12 +342,8 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
-    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_mes_favorisActionPerformed
-
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        MesOffres mo = new MesOffres();
+        ClientMesOffres mo = new ClientMesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
@@ -373,7 +357,7 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
     private void bt_aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_aboutActionPerformed
         Apropos ap = new Apropos();
         ap.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_bt_aboutActionPerformed
 
     /**
@@ -404,19 +388,6 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -438,7 +409,6 @@ public class GerantAjoutOffre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_about;
     private javax.swing.JButton bt_acceuil;
-    private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;

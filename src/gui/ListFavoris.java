@@ -5,10 +5,9 @@
  */
 package gui;
 
-import DAO.classes.OffreDAO;
-import DAO.interfaces.IOffreDAO;
+import DAO.classes.FavorisDAO;
+import DAO.interfaces.IFavorisDAO;
 import entities.Offre;
-import entities.Util;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -17,23 +16,22 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author jemacom
  */
-public class ListMesOffres extends AbstractTableModel {
-    String [] header={"Titre","Type", "Catégorie", "Ville", "Prix", "Surface"};
-    List<Offre> offres=new ArrayList<Offre>();
+public class ListFavoris extends AbstractTableModel{
+    String[] header = {"Titre" , "Type" , "Catégorie" , "Ville" , "Prix" , "Surface"};
+    List<Offre> list_favoris = new ArrayList<>();
     
-
+    public ListFavoris (){
+        IFavorisDAO favorisDAO = FavorisDAO.getInstance();
+        list_favoris = favorisDAO.DisplayAllFavoris();
+    }
     
-     public ListMesOffres() {
-        IOffreDAO offreDAO=OffreDAO.getInstance();
-        offres=offreDAO.getMesOffres();
-     }
-    @Override
+     @Override
        public String getColumnName(int column) {
         return header[column];
     }
     @Override
     public int getRowCount() {
-        return offres.size();
+        return list_favoris.size();
     }
 
     @Override
@@ -43,29 +41,27 @@ public class ListMesOffres extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-         switch(columnIndex){
+             switch(columnIndex){
             
             case 0: 
-                return offres.get(rowIndex).getTitre();
+                return list_favoris.get(rowIndex).getTitre();
             case 1: 
-                return offres.get(rowIndex).getType();
+                return list_favoris.get(rowIndex).getType();
             case 2: 
-                return offres.get(rowIndex).getCategorie();
+                return list_favoris.get(rowIndex).getCategorie();
             case 3: 
-                return offres.get(rowIndex).getVille();
+                return list_favoris.get(rowIndex).getVille();
             case 4: 
-                return offres.get(rowIndex).getPrix();
+                return list_favoris.get(rowIndex).getPrix();
             case 5: 
-                return offres.get(rowIndex).getSurface();
-            
+                return list_favoris.get(rowIndex).getSurface();
             //Pour pouvoir recuperer l'id de l'offre dans le table 
             case 10:
-                return offres.get(rowIndex).getId();
+                return list_favoris.get(rowIndex).getId();
                 
              /*******/
             default:
                 return null;
     }
-    
-    } 
+    }
 }

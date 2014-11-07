@@ -31,6 +31,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     public ClientAjoutOffre() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -73,6 +74,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         bt_mes_offres = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
+        err_titre = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -168,6 +170,11 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         });
 
         bt_a_propos.setText("A propos");
+        bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_a_proposActionPerformed(evt);
+            }
+        });
 
         bt_recherche.setText("Recherche avancée");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -192,39 +199,43 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                             .addComponent(bt_mes_offres)
                             .addComponent(bt_a_propos, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_recherche))
-                        .addGap(65, 65, 65)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jLabel2))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(48, 48, 48)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(48, 48, 48)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(surface, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(119, 119, 119)))
+                                        .addGap(0, 119, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(surface, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(119, 119, 119)))
+                                .addComponent(err_titre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
                             .addComponent(jLabel8)
                             .addComponent(jLabel3)
                             .addComponent(jLabel7))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +246,8 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(err_titre, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -297,7 +309,10 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     }//GEN-LAST:event_prixActionPerformed
 
     private void bt_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouterActionPerformed
-        
+
+        if (titre.getText() == ""){
+            err_titre.setText("Veuillez tapez le titre");
+        }
         Offre offre = new Offre();
         
         offre.setTitre(titre.getText());
@@ -309,7 +324,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
         offre.setValidation(false);
         offre.setVille(cb_ville.getSelectedItem().toString());
         offre.setSurface(Integer.parseInt(surface.getText() ));
-//        offre.setIdClient(); passing argument between screen
+        offre.setIdClient(5); //passing argument Util.Id_client_connecte
 //        offre.setIdClient(Util.client.getId());
         /*-1 : pas de Id pour le gérant */
         offre.setIdGerant(-1);
@@ -324,13 +339,15 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_typeActionPerformed
 
     private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
-        Acceuil acc = new Acceuil();
+        Acceuil_client acc = new Acceuil_client();
         acc.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_bt_acceuilActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        ClientMesOffres cmo = new ClientMesOffres();
+        cmo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
 
@@ -338,6 +355,11 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
        RechercheAvancee ra = new RechercheAvancee();
        ra.setVisible(true);
     }//GEN-LAST:event_bt_rechercheActionPerformed
+
+    private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
+        Apropos ap = new Apropos();
+        ap.setVisible(true);
+    }//GEN-LAST:event_bt_a_proposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +419,7 @@ public class ClientAjoutOffre extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_type;
     private javax.swing.JComboBox cb_ville;
     private javax.swing.JTextArea description;
+    private javax.swing.JLabel err_titre;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

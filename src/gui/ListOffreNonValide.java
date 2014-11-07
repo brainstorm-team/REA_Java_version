@@ -54,6 +54,11 @@ public class ListOffreNonValide extends AbstractTableModel{
                 return offres.get(rowIndex).getSurface();
             case 7: 
                 return offres.get(rowIndex).getIdClient();
+            //Pour pouvoir recuperer l'id de l'offre dans le table 
+            case 10:
+                return offres.get(rowIndex).getId();
+                
+             /*******/
             default:
                 return null;
     }

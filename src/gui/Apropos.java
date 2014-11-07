@@ -92,7 +92,7 @@ public class Apropos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
-       Acceuil acc =  new Acceuil();
+       Acceuil_client acc =  new Acceuil_client();
        
        this.setVisible(false);
     }//GEN-LAST:event_bt_okActionPerformed

@@ -19,12 +19,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class Acceuil extends javax.swing.JFrame {
+public class Acceuil_gerant extends javax.swing.JFrame {
 
     /**
      * Creates new form Acceuil
      */
-    public Acceuil() {
+    public Acceuil_gerant() {
         initComponents();
         this.setLocationRelativeTo(null);
         acceuil.setIcon(createIcon("/images/home.gif"));
@@ -182,7 +182,7 @@ public class Acceuil extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_refrechActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        MesOffres mo = new MesOffres();
+        ClientMesOffres mo = new ClientMesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
@@ -204,14 +204,17 @@ public class Acceuil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acceuil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -221,11 +224,11 @@ public class Acceuil extends javax.swing.JFrame {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     
-                    new Acceuil().setVisible(true);
+                    new Acceuil_gerant().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Acceuil.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Acceuil.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

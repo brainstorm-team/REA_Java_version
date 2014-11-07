@@ -154,7 +154,7 @@ public class ResultatAvecPhotos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
-        Acceuil acc = new Acceuil();
+        Acceuil_client acc = new Acceuil_client();
         acc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_acceuilActionPerformed

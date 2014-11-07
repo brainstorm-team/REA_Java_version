@@ -26,7 +26,7 @@ public class Util {
     public static int surfaceMin ;
     public static int surfaceMax ; 
     
-    
+    public static int id_client_connecte = 5;
     public static int idR;
     public static String titreR;
     public static String typeR;

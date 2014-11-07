@@ -345,7 +345,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
 
     private void bt_acceuilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_acceuilActionPerformed
                     
-        Acceuil acc = new Acceuil();
+        Acceuil_client acc = new Acceuil_client();
         acc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_acceuilActionPerformed
@@ -361,7 +361,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        MesOffres mo = new MesOffres();
+        ClientMesOffres mo = new ClientMesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
