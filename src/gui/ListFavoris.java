@@ -55,6 +55,7 @@ public class ListFavoris extends AbstractTableModel{
                 return list_favoris.get(rowIndex).getPrix();
             case 5: 
                 return list_favoris.get(rowIndex).getSurface();
+           
             //Pour pouvoir recuperer l'id de l'offre dans le table 
             case 10:
                 return list_favoris.get(rowIndex).getId();

@@ -43,6 +43,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         JMenuItem FavorisItem =  new JMenuItem("Ajouter aux favoris");
         popup.add(FavorisItem);
         table_offres.addMouseListener(new MouseAdapter(){
+            @Override
             public void mousePressed(MouseEvent e){
                 JTable table =(JTable) e.getSource();
                 Point p = e.getPoint();
@@ -62,6 +63,7 @@ public class Acceuil_client extends javax.swing.JFrame {
                int row =table_offres.getSelectedRow(); 
                System.out.println("my id "+table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
                 FavorisDAO.getInstance().insertFavoris((int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
+               
             }
         });
     }

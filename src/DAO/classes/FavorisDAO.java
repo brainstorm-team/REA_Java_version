@@ -52,7 +52,7 @@ public class FavorisDAO implements IFavorisDAO{
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setInt(1, Util.id_agent_connecte);
-            ps.setInt(2 , id); //id de l'offre selectionne
+            ps.setInt(2 , id); //id de l'offre selectionnee
             ps.executeUpdate();
             
             System.out.println("offre ajouté aux favoris ... ! \n");
@@ -66,7 +66,7 @@ public class FavorisDAO implements IFavorisDAO{
     public List<Offre> DisplayAllFavoris() {
         List<Offre> listeFavoris = new ArrayList<>();
         List<Integer> listeIdOffres = new ArrayList<>();
-        String requete ="select * from favoris where Id_client = ?";
+        String requete ="select * from favoris where Id_client= ? ";
         try{
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setInt(1, Util.id_agent_connecte);
@@ -76,13 +76,13 @@ public class FavorisDAO implements IFavorisDAO{
             
             //Ajout des Id extracté dans d'une liste
             while (resultat.next()){
-                listeIdOffres.add(resultat.getInt(1));
+                listeIdOffres.add(resultat.getInt(3));
             } 
             
             //parcours des id, extraction de l'offre et ajout dans listeFavoris
             int i=0;
-            while (i<=listeIdOffres.size()){
-                listeFavoris.add(OffreDAO.getInstance().findOffreById(i));
+            while (i<listeIdOffres.size()){
+                listeFavoris.add(OffreDAO.getInstance().findOffreById(listeIdOffres.get(i)));
                 i++;
             }
         } catch (SQLException ex) {
@@ -94,17 +94,18 @@ public class FavorisDAO implements IFavorisDAO{
 
     @Override
     public void deleteFavoris(int id) {
-        String requete = "delete from favoris where Id =?";
+        String requete = "delete from favoris where Id_offre =?";
         try {
-            PreparedStatement ps = connection.prepareStatement(requete);
             
+            PreparedStatement ps = connection.prepareStatement(requete);  
             ps.setInt(1 , id); //id de l'offre selectionne
             ps.executeUpdate();
-            
             System.out.println("offre supprimé des favoris ... ! \n");
+            
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors de la suppression aux favoris " + ex.getMessage());
         }
     }
 }
+
+

@@ -18,6 +18,7 @@ public interface IOffreDAO {
     void insertOffre(Offre offre);
     void updateOffre(Offre offre);
     void deleteOffre(int id);
+    void validerOffre(int id);
     List<Offre> getAllUnValidatedOffers();
     List<Offre> getAllValidatedOffers();
     List<Offre> DisplayAllOffre();

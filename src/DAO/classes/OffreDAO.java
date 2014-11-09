@@ -105,12 +105,10 @@ public class OffreDAO implements IOffreDAO {
             ps.setString(3, offre.getCategorie());
             ps.setDouble(4, offre.getPrix());
             ps.setInt(5, offre.getSurface());
-//            ps.setString(4, offre.getDate().toString());
             ps.setString(6, offre.getDescription());
             ps.setInt(7, offre.getId());
 
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors de la mise à jour " + ex.getMessage());
         }
     }
@@ -131,7 +129,6 @@ public class OffreDAO implements IOffreDAO {
             
             System.out.println("Offre supprimée ! \n");
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors de la suppression " + ex.getMessage());
         }
     }
@@ -150,6 +147,7 @@ public class OffreDAO implements IOffreDAO {
             ps.setInt(1, id);
             ResultSet resultat = ps.executeQuery();
             while (resultat.next()) {
+                
                 offre.setId(resultat.getInt(1));
                 offre.setTitre(resultat.getString(2));
                 offre.setType(resultat.getString(3));
@@ -165,7 +163,6 @@ public class OffreDAO implements IOffreDAO {
             return offre;
 
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors de la recherche du l'offre .. " + ex.getMessage());
             return null;
         }
@@ -207,7 +204,6 @@ public class OffreDAO implements IOffreDAO {
 
             return listeOffres;
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des depots " + ex.getMessage());
 
             return null;
@@ -255,16 +251,11 @@ public class OffreDAO implements IOffreDAO {
             return listeOffres;
             
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des depots " + ex.getMessage());
 
             return null;
         }
-    }
-    
-    //String titre, String type, String categorie,String ville, Double prix ,int surface
-   
-    
+    }      
     
     
     
@@ -305,7 +296,6 @@ public class OffreDAO implements IOffreDAO {
 
             return listeOffres;
         } catch (SQLException ex) {
-            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des offres " + ex.getMessage());
 
             return null;
@@ -455,11 +445,15 @@ public class OffreDAO implements IOffreDAO {
 
             return listeOffres;
         } catch (SQLException ex) {
-            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des offres " + ex.getMessage());
 
             return null;
         }
+    }
+
+    @Override
+    public void validerOffre(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }   

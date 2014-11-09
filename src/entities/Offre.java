@@ -42,6 +42,11 @@ public class Offre {
     public Offre() {
         
     }
+
+    @Override
+    public String toString() {
+        return "Offre{" + "id=" + id + ", titre=" + titre + ", type=" + type + ", categorie=" + categorie + ", ville=" + ville + ", prix=" + prix + ", surface=" + surface + ", description=" + description + ", validation=" + validation + ", idClient=" + idClient + ", idGerant=" + idGerant + '}';
+    }
     
     /**
      * 
