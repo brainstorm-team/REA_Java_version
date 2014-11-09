@@ -121,11 +121,11 @@
     </Container>
     <Component class="javax.swing.JLabel" name="acceuil">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Acceuil :"/>
+        <Property name="text" type="java.lang.String" value="Acceuil client:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="12" y="16" width="77" height="25"/>
+          <AbsoluteConstraints x="12" y="16" width="110" height="25"/>
         </Constraint>
       </Constraints>
     </Component>

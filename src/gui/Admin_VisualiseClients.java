@@ -9,12 +9,12 @@ package gui;
  *
  * @author jemacom
  */
-public class AdminVisualiseClients extends javax.swing.JFrame {
+public class Admin_VisualiseClients extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminVisualiseClients
      */
-    public AdminVisualiseClients() {
+    public Admin_VisualiseClients() {
         initComponents();
     }
 
@@ -141,20 +141,21 @@ public class AdminVisualiseClients extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminVisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_VisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminVisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_VisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminVisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_VisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminVisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Admin_VisualiseClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminVisualiseClients().setVisible(true);
+                new Admin_VisualiseClients().setVisible(true);
             }
         });
     }

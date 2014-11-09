@@ -21,12 +21,12 @@ import technique.TableGerant;
  *
  * @author CLIENT
  */
-public class GestionCompteGerant extends javax.swing.JFrame {
+public class Gestion_CompteGerant extends javax.swing.JFrame {
 
     /**
      * Creates new form gestcompclient_adm
      */
-    public GestionCompteGerant() {
+    public Gestion_CompteGerant() {
         initComponents();
     }
 
@@ -186,35 +186,35 @@ public class GestionCompteGerant extends javax.swing.JFrame {
         jPanel4.add(jLabel10);
         jLabel10.setBounds(10, 220, 70, 14);
         jPanel4.add(jTF_prenom);
-        jTF_prenom.setBounds(110, 70, 100, 20);
+        jTF_prenom.setBounds(110, 70, 100, 27);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setText("Téléphone");
         jPanel4.add(jLabel11);
         jLabel11.setBounds(10, 100, 70, 14);
         jPanel4.add(jTF_password);
-        jTF_password.setBounds(110, 220, 100, 20);
+        jTF_password.setBounds(110, 220, 100, 27);
         jPanel4.add(jTF_nom);
-        jTF_nom.setBounds(110, 40, 100, 20);
+        jTF_nom.setBounds(110, 40, 100, 27);
         jPanel4.add(jTF_telephone);
-        jTF_telephone.setBounds(110, 100, 100, 20);
+        jTF_telephone.setBounds(110, 100, 100, 27);
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel12.setText("Adresse Postal");
         jPanel4.add(jLabel12);
         jLabel12.setBounds(0, 160, 90, 14);
         jPanel4.add(jTF_email);
-        jTF_email.setBounds(110, 130, 100, 20);
+        jTF_email.setBounds(110, 130, 100, 27);
         jPanel4.add(jTF_postal);
-        jTF_postal.setBounds(110, 160, 100, 20);
+        jTF_postal.setBounds(110, 160, 100, 27);
         jPanel4.add(jTF_login);
-        jTF_login.setBounds(110, 190, 100, 20);
+        jTF_login.setBounds(110, 190, 100, 27);
 
         jLabel3.setText("Id");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(10, 10, 34, 14);
+        jLabel3.setBounds(10, 10, 34, 17);
         jPanel4.add(Jtf_id);
-        Jtf_id.setBounds(110, 10, 100, 20);
+        Jtf_id.setBounds(110, 10, 100, 27);
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.setLayout(null);
@@ -228,7 +228,7 @@ public class GestionCompteGerant extends javax.swing.JFrame {
             }
         });
         jPanel7.add(jB_modifier);
-        jB_modifier.setBounds(20, 60, 90, 21);
+        jB_modifier.setBounds(20, 60, 90, 20);
 
         jB_ajouter.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jB_ajouter.setText("Ajouter");
@@ -250,7 +250,7 @@ public class GestionCompteGerant extends javax.swing.JFrame {
             }
         });
         jPanel7.add(jB_suuprimer);
-        jB_suuprimer.setBounds(20, 90, 90, 21);
+        jB_suuprimer.setBounds(20, 90, 90, 20);
 
         jB_clear.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jB_clear.setText("vider");
@@ -261,7 +261,7 @@ public class GestionCompteGerant extends javax.swing.JFrame {
             }
         });
         jPanel7.add(jB_clear);
-        jB_clear.setBounds(20, 120, 90, 21);
+        jB_clear.setBounds(20, 120, 90, 20);
 
         jLabel7.setText("Commande");
 
@@ -333,7 +333,7 @@ public class GestionCompteGerant extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GestionCompteGerant admin=new  GestionCompteGerant();
+        Gestion_CompteGerant admin=new  Gestion_CompteGerant();
           admin.setVisible(true);
         this.setVisible(false);
         pack();
@@ -452,7 +452,7 @@ public class GestionCompteGerant extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          GestionCompteClient admin=new GestionCompteClient();
+          Gestion_CompteClient admin=new Gestion_CompteClient();
           admin.setVisible(true);
         this.setVisible(false);
         pack();
@@ -475,14 +475,15 @@ public class GestionCompteGerant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_CompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_CompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_CompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_CompteGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -490,11 +491,11 @@ public class GestionCompteGerant extends javax.swing.JFrame {
             public void run() { 
                 try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-                    new GestionCompteGerant().setVisible(true);
+                    new Gestion_CompteGerant().setVisible(true);
                 } catch (ParseException ex) {
-                    Logger.getLogger(GestionCompteGerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gestion_CompteGerant.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(GestionCompteGerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gestion_CompteGerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

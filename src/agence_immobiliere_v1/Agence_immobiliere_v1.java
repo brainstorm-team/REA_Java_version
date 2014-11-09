@@ -7,6 +7,7 @@ package agence_immobiliere_v1;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import gui.Acceuil_client;
+import gui.Authentification;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,8 +27,9 @@ public class Agence_immobiliere_v1 {
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
         try {
             UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-            Acceuil_client acc = new Acceuil_client();
-            acc.setVisible(true);
+            Authentification a = new Authentification();
+            
+            a.setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(Agence_immobiliere_v1.class.getName()).log(Level.SEVERE, null, ex);
         }

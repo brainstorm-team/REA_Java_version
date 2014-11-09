@@ -29,7 +29,7 @@ import technique.TableClient;
  *
  * @author anwer
  */
-public class GestionCompteClient extends javax.swing.JFrame {
+public class Gestion_CompteClient extends javax.swing.JFrame {
 
     /**
      * Creates new form SuperAdmin
@@ -54,7 +54,7 @@ public class GestionCompteClient extends javax.swing.JFrame {
     }
     
     
-    public GestionCompteClient() {
+    public Gestion_CompteClient() {
         initComponents();
         
     }
@@ -104,7 +104,6 @@ public class GestionCompteClient extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(857, 593));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(null);
@@ -437,7 +436,7 @@ public class GestionCompteClient extends javax.swing.JFrame {
                ps.executeUpdate();
                  JOptionPane.showMessageDialog(this, "Vous avez supprimer un client!!");
             } catch (SQLException ex) {
-                Logger.getLogger(GestionCompteClient.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Gestion_CompteClient.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         }
@@ -446,7 +445,7 @@ public class GestionCompteClient extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GestionCompteGerant admin=new  GestionCompteGerant();
+        Gestion_CompteGerant admin=new  Gestion_CompteGerant();
           admin.setVisible(true);
         this.setVisible(false);
         pack();
@@ -474,7 +473,7 @@ public class GestionCompteClient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         GestionCompteClient admin=new GestionCompteClient();
+         Gestion_CompteClient admin=new Gestion_CompteClient();
           admin.setVisible(true);
         this.setVisible(false);
         pack();
@@ -498,8 +497,9 @@ public class GestionCompteClient extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_CompteClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -509,12 +509,12 @@ public class GestionCompteClient extends javax.swing.JFrame {
                     try {
                         UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     } catch (ParseException ex) {
-                        Logger.getLogger(GestionCompteClient.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Gestion_CompteClient.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(GestionCompteClient.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Gestion_CompteClient.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                new GestionCompteClient().setVisible(true);
+                new Gestion_CompteClient().setVisible(true);
             }
         });
     }

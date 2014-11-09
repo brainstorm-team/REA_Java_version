@@ -142,8 +142,8 @@ public class Acceuil_client extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
 
-        acceuil.setText("Acceuil :");
-        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 77, 25));
+        acceuil.setText("Acceuil client:");
+        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 110, 25));
 
         bt_mes_favoris.setText("Mes favoris");
         bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +213,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        ClientMesFavoris cmf = new ClientMesFavoris();
+        Client_MesFavoris cmf = new Client_MesFavoris();
         cmf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_favorisActionPerformed
@@ -227,7 +227,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_refrechActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        ClientMesOffres mo = new ClientMesOffres();
+        Client_MesOffres mo = new Client_MesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed

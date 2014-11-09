@@ -30,13 +30,13 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class ClientMesOffres extends javax.swing.JFrame {
+public class Client_MesOffres extends javax.swing.JFrame {
 
     private JPopupMenu popup;
     /**
      * Creates new form MesOffres
      */
-    public ClientMesOffres() {
+    public Client_MesOffres() {
         initComponents();
         this.setLocationRelativeTo(null);
         popup = new JPopupMenu();
@@ -231,7 +231,7 @@ public class ClientMesOffres extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_rechercheActionPerformed
 
     private void bt_ajouter_offreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouter_offreActionPerformed
-        ClientAjoutOffre cao = new ClientAjoutOffre();
+        Client_AjoutOffre cao = new Client_AjoutOffre();
         cao.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_ajouter_offreActionPerformed
@@ -242,7 +242,7 @@ public class ClientMesOffres extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        ClientMesFavoris cmf = new ClientMesFavoris();
+        Client_MesFavoris cmf = new Client_MesFavoris();
         cmf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_favorisActionPerformed
@@ -264,14 +264,16 @@ public class ClientMesOffres extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientMesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_MesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientMesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_MesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientMesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_MesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientMesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Client_MesOffres.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -281,7 +283,7 @@ public class ClientMesOffres extends javax.swing.JFrame {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     
-                    new ClientMesOffres().setVisible(true);
+                    new Client_MesOffres().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Acceuil_client.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {

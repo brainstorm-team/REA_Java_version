@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ListOffreNonValide extends AbstractTableModel{
     
-    String [] header={"id","Titre","Type", "Catégorie", "Ville", "Prix", "Surface","Id client"};
+    String [] header={"id","Titre","Type", "Catégorie", "Ville", "Prix", "Surface","Id client" , "  "};
     List<Offre> offres=new ArrayList<>();
     
     public ListOffreNonValide() {
@@ -54,7 +54,7 @@ public class ListOffreNonValide extends AbstractTableModel{
                 return offres.get(rowIndex).getSurface();
             case 7: 
                 return offres.get(rowIndex).getIdClient();
-            //Pour pouvoir recuperer l'id de l'offre dans le table 
+            //Pour pouvoir recuperer l'id de l'offre de la table sans l'afficher
             case 10:
                 return offres.get(rowIndex).getId();
                 

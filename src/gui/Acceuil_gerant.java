@@ -47,11 +47,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_offres = new javax.swing.JTable();
         acceuil = new javax.swing.JLabel();
-        bt_mes_favoris = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bt_refrech = new javax.swing.JButton();
+        bt_validation_offres = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -78,7 +78,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_mon_compte.setText("Mon compte");
         bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +85,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 bt_mon_compteActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mon_compte, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 53, -1, -1));
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -94,23 +92,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 bt_rechercheActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_recherche, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 180, -1, -1));
 
         table_offres.setModel(new ListOffreValide());
         jScrollPane1.setViewportView(table_offres);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
-
-        acceuil.setText("Acceuil :");
-        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 77, 25));
-
-        bt_mes_favoris.setText("Mes favoris");
-        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mes_favorisActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_mes_favoris, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 93, -1, -1));
+        acceuil.setText("Acceuil gérant:");
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +104,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 bt_a_proposActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_a_propos, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 221, -1, -1));
 
         bt_mes_offres.setText("Mes offres");
         bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
@@ -126,10 +111,8 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 bt_mes_offresActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mes_offres, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 133, -1, -1));
 
         jLabel1.setText("Liste des offres disponibles :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
 
         bt_refrech.setText("Refrech");
         bt_refrech.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +120,64 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 bt_refrechActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_refrech, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 12, -1, -1));
+
+        bt_validation_offres.setText("Validation des offres ");
+        bt_validation_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_validation_offresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)
+                        .addGap(191, 191, 191)
+                        .addComponent(bt_refrech))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_mes_offres)
+                            .addComponent(bt_mon_compte)
+                            .addComponent(bt_a_propos)
+                            .addComponent(bt_recherche)
+                            .addComponent(bt_validation_offres))
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1))
+                    .addComponent(bt_refrech))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(bt_mon_compte)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_mes_offres)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_validation_offres)
+                        .addGap(7, 7, 7)
+                        .addComponent(bt_recherche)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_a_propos))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,10 +209,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
-    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_mes_favorisActionPerformed
-
     private void bt_refrechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refrechActionPerformed
         table_offres = new javax.swing.JTable();
 
@@ -182,10 +218,16 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_refrechActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        ClientMesOffres mo = new ClientMesOffres();
+        Client_MesOffres mo = new Client_MesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void bt_validation_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_validation_offresActionPerformed
+        Gerant_ValideOffre gvo = new Gerant_ValideOffre();
+        gvo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_validation_offresActionPerformed
     
     /**
      * @param args the command line arguments
@@ -237,11 +279,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
-    private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JButton bt_refrech;
+    private javax.swing.JButton bt_validation_offres;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;

@@ -9,12 +9,12 @@ package gui;
  *
  * @author jemacom
  */
-public class GestionComptesClients extends javax.swing.JFrame {
+public class Gestion_ComptesClients extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionComptesClients
      */
-    public GestionComptesClients() {
+    public Gestion_ComptesClients() {
         initComponents();
     }
 
@@ -146,7 +146,7 @@ public class GestionComptesClients extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_mon_comptesActionPerformed
 
     private void bt_visualise_clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_visualise_clientsActionPerformed
-        AdminVisualiseClients avc = new AdminVisualiseClients();
+        Admin_VisualiseClients avc = new Admin_VisualiseClients();
         avc.setVisible(true);
     }//GEN-LAST:event_bt_visualise_clientsActionPerformed
 
@@ -167,20 +167,21 @@ public class GestionComptesClients extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_ComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_ComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_ComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gestion_ComptesClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionComptesClients().setVisible(true);
+                new Gestion_ComptesClients().setVisible(true);
             }
         });
     }

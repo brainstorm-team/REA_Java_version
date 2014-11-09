@@ -46,7 +46,11 @@ public class OffreDAO implements IOffreDAO {
     }
     /*******************************/
 
-    
+    /**
+     * 
+     * J'ai ajouté une colonne date_insertion de type TIMESTAMP 
+     * qui prend par défault la date now() de système  CURRENT_TIMESTAMP
+     */
     
     
     
