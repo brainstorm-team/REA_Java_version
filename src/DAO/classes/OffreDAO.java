@@ -107,7 +107,8 @@ public class OffreDAO implements IOffreDAO {
             ps.setInt(5, offre.getSurface());
             ps.setString(6, offre.getDescription());
             ps.setInt(7, offre.getId());
-
+            
+            ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("erreur lors de la mise à jour " + ex.getMessage());
         }
@@ -453,7 +454,15 @@ public class OffreDAO implements IOffreDAO {
 
     @Override
     public void validerOffre(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String requete = "update offre set validation = 1 where Id= ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(requete);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(OffreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 }   
