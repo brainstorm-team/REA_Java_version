@@ -242,7 +242,9 @@ public class ClientMesOffres extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
-        
+        ClientMesFavoris cmf = new ClientMesFavoris();
+        cmf.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_mes_favorisActionPerformed
 
     /**

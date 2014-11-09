@@ -20,6 +20,7 @@ public interface IClientDAO {
     void deleteClient(String login);
     void updateClient(String login, String password);
     Client findClientByLogin (String login);
+    //Client findClientById (int id);
     List<Client> DiplayAllClient();
     
     

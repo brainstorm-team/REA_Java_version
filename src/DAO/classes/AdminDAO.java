@@ -23,6 +23,7 @@ import technique.DataSource;
  * @author jemacom
  */
 public class AdminDAO implements IAdminDAO{
+    
     /*********Singleton*********/
     private static AdminDAO instance;
 
@@ -37,7 +38,7 @@ public class AdminDAO implements IAdminDAO{
 
 
     public AdminDAO() {
-        connection = DataSource.getInstance().getConnection();
+        connection = DataSource.getInstance();
     }
     /*******************************/
 

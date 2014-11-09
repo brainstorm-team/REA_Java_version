@@ -34,7 +34,7 @@ public class GerantDAO implements IGerantDAO {
 
 
     public GerantDAO() {
-        connection = DataSource.getInstance().getConnection();
+        connection = DataSource.getInstance();
     }
     /*******************************/
     
@@ -139,7 +139,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public Gerant findGerantByLogin(String login) {
         Gerant gerant =null;
-        String requete = "select login,pass from Gerant where login='"+login+"'";
+        String requete = "select login,pass from gerant where login='"+login+"'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);

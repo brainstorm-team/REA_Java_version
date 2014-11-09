@@ -133,6 +133,11 @@ public class Acceuil_client extends javax.swing.JFrame {
         getContentPane().add(bt_recherche, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 180, -1, -1));
 
         table_offres.setModel(new ListOffreValide());
+        table_offres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_offresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_offres);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
@@ -179,7 +184,9 @@ public class Acceuil_client extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-
+        CompteClient cc = new CompteClient();
+        cc.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){
@@ -224,6 +231,10 @@ public class Acceuil_client extends javax.swing.JFrame {
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
+        
+    }//GEN-LAST:event_table_offresMouseClicked
     
     /**
      * @param args the command line arguments

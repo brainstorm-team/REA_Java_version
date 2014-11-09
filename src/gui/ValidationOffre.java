@@ -24,6 +24,7 @@ public class ValidationOffre extends javax.swing.JFrame {
     public ValidationOffre() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**

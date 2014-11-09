@@ -13,6 +13,7 @@ import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Admin;
 import entities.Client;
 import entities.Gerant;
+import entities.Util;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ import sun.swing.AccumulativeRunnable;
  */
 public class Authentification extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Authentification
      */
@@ -117,6 +119,7 @@ public class Authentification extends javax.swing.JFrame {
       if( agent != null){
           if(agent.getPass().equals(pass.getText())){
               Acceuil_admin aa = new Acceuil_admin();
+              Util.id_agent_connecte = agent.getId();
               aa.setVisible(true);
               this.setVisible(false);
           }

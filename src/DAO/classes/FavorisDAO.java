@@ -38,7 +38,7 @@ public class FavorisDAO implements IFavorisDAO{
 
 
     public FavorisDAO() {
-        connection = DataSource.getInstance().getConnection();
+        connection = DataSource.getInstance();
     }
     /*******************************/
     
@@ -51,7 +51,7 @@ public class FavorisDAO implements IFavorisDAO{
         String requete = "insert into favoris (Id_client , Id_offre) values (?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
-            ps.setInt(1, Util.id_client_connecte);
+            ps.setInt(1, Util.id_agent_connecte);
             ps.setInt(2 , id); //id de l'offre selectionne
             ps.executeUpdate();
             
@@ -69,7 +69,7 @@ public class FavorisDAO implements IFavorisDAO{
         String requete ="select * from favoris where Id_client = ?";
         try{
             PreparedStatement ps = connection.prepareStatement(requete);
-            ps.setInt(1, Util.id_client_connecte);
+            ps.setInt(1, Util.id_agent_connecte);
             
             ResultSet resultat = ps.executeQuery();
             System.out.println("Extraction des (id) des offres en favoris......\n");

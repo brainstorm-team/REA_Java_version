@@ -37,7 +37,7 @@ public class ClientDAO implements IClientDAO{
 
 
     public ClientDAO() {
-        connection = DataSource.getInstance().getConnection();
+        connection = DataSource.getInstance();
     }
     /*******************************/
     
@@ -196,6 +196,31 @@ public class ClientDAO implements IClientDAO{
      
      
      }
+
+    //@Override
+    /*public Client findClientById(int id) {
+        Client client =null;
+        String requete = "select * from client where Id='"+id+"'";
+        try {
+           Statement statement =  connection.createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+            while(resultat.next()){
+               client = new  Client();
+               
+               client.setPrenom(resultat.getString(2));
+               client.setNom
+               
+               client.setLogin(resultat.getString(1));
+               client.setPass(resultat.getString(2));
+            }
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des client "+ex.getMessage());
+        }
+        return client
+    }
+    
+    */
 
     
 }

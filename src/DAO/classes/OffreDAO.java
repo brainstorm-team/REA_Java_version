@@ -42,7 +42,7 @@ public class OffreDAO implements IOffreDAO {
 
 
     public OffreDAO() {
-        connection = DataSource.getInstance().getConnection();
+        connection = DataSource.getInstance();
     }
     /*******************************/
 
@@ -170,7 +170,7 @@ public class OffreDAO implements IOffreDAO {
 
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "select * from offre";
+        String requete = "select * from offre order by date_insertion";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -214,7 +214,7 @@ public class OffreDAO implements IOffreDAO {
     public List<Offre> getAllValidatedOffers() {
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "SELECT * FROM offre where validation=1";
+        String requete = "SELECT * FROM offre where validation=1 ORDER BY date_insertion DESC";
 
         try {
             Statement statement = connection.createStatement();
@@ -266,7 +266,7 @@ public class OffreDAO implements IOffreDAO {
     public List<Offre> getMesOffres(){
     List<Offre> listeOffres = new ArrayList<>();
 //    Util.client.setId(5);
-    String requete = "SELECT * FROM offre where Id_client=5";
+    String requete = "SELECT * FROM offre where Id_client=?";
 
         try {
             Statement statement = connection.createStatement();
@@ -378,7 +378,7 @@ public class OffreDAO implements IOffreDAO {
         
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "SELECT * FROM offre where validation=0";
+        String requete = "SELECT * FROM offre where validation=0 order by date_insertion desc";
 
         try {
             Statement statement = connection.createStatement();
