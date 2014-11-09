@@ -139,14 +139,15 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public Gerant findGerantByLogin(String login) {
         Gerant gerant =null;
-        String requete = "select login,pass from gerant where login='"+login+"'";
+        String requete = "select Id , login,pass from gerant where login='"+login+"'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
               gerant = new  Gerant();
-               gerant.setLogin(resultat.getString(1));
-               gerant.setPass(resultat.getString(2));
+              gerant.setId(resultat.getInt(1));
+               gerant.setLogin(resultat.getString(2));
+               gerant.setPass(resultat.getString(3));
             }
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);

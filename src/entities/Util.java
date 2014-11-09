@@ -27,6 +27,7 @@ public class Util {
     public static int surfaceMax ; 
     
     public static int id_agent_connecte;
+    public static String role_agent_connecte;
     public static int idR;
     public static String titreR;
     public static String typeR;

@@ -144,14 +144,15 @@ public class ClientDAO implements IClientDAO{
     @Override
     public Client findClientByLogin(String login) {
         Client client =null;
-        String requete = "select login,pass from client where login='"+login+"'";
+        String requete = "select * from client where login='"+login+"'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
                client  = new  Client();
-               client.setLogin(resultat.getString(1));
-               client.setPass(resultat.getString(2));
+               client.setId(resultat.getInt(1)) ;
+               client.setLogin(resultat.getString(7));
+               client.setPass(resultat.getString(8));
             }
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);

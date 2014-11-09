@@ -149,14 +149,15 @@ public class AdminDAO implements IAdminDAO{
     public Admin findAdministrateurByLogin(String login) {
         // return admin par id
       Admin admin =null;
-        String requete = "select login,pass from administrateur where login='"+login+"'";
+        String requete = "select * from administrateur where login='"+login+"'";
         try {
            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
                admin = new Admin();
-               admin.setLogin(resultat.getString(1));
-               admin.setPass(resultat.getString(2));
+               admin.setId(1);
+               admin.setLogin(resultat.getString(7));
+               admin.setPass(resultat.getString(8));
             }
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);

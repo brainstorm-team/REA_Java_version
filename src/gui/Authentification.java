@@ -68,23 +68,31 @@ public class Authentification extends javax.swing.JFrame {
       if( agent != null){
           if(agent.getPass().equals(pass.getText())){
               Acceuil_admin aa = new Acceuil_admin();
-              Util.id_agent_connecte = agent.getId();
+              System.out.println("id agent = "+agent.getId());
+              Util.id_agent_connecte = agent.getId(); 
+              Util.role_agent_connecte = "ADMIN";
               aa.setVisible(true);
               this.setVisible(false);
           }
       }else if( agent1 != null){
           if(agent1.getPass().equals(pass.getText())){
               Acceuil_client ac = new Acceuil_client();
+              System.out.println("id agent = "+agent1.getId());
                Util.id_agent_connecte = agent1.getId();
+               Util.role_agent_connecte = "CLIENT";
               ac.setVisible(true);
+              System.out.println(Util.id_agent_connecte);
               this.setVisible(false);
           }
       }
       else if (agent2 != null){
           if (agent2.getPass().equals(pass.getText())){
               Acceuil_gerant ag = new Acceuil_gerant();
+              System.out.println("id agent = "+agent2.getId());
                Util.id_agent_connecte = agent2.getId();
-              ag.setVisible(true);
+               Util.role_agent_connecte = "GERANT";
+              System.out.println(Util.id_agent_connecte);
+               ag.setVisible(true);
               this.setVisible(false);
           }
       }

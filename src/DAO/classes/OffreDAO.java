@@ -70,9 +70,17 @@ public class OffreDAO implements IOffreDAO {
             ps.setInt(6, offre.getSurface());
             ps.setString(7, offre.getDescription());
             ps.setBoolean(8, offre.isValidation());
-            ps.setInt(9 , offre.getIdClient());
-            ps.setInt(10, offre.getIdGerant());
-            
+            if (Util.role_agent_connecte.equals("CLIENT")){
+                ps.setInt(9 , Util.id_agent_connecte);
+                ps.setInt(10, 0);
+            }else if (Util.role_agent_connecte.equals("GERANT")){
+                ps.setInt(9, 0);
+                ps.setInt(10 , Util.id_agent_connecte);    
+            }
+            else{
+                ps.setInt(9, 0);
+                ps.setInt(10, 0);
+            }
             ps.executeUpdate();
             System.out.println("Insertion ........");
         } catch (SQLException ex) {
@@ -267,6 +275,7 @@ public class OffreDAO implements IOffreDAO {
     
     
     
+    @Override
     public List<Offre> getClientMesOffres(){
     List<Offre> listeOffres = new ArrayList<>();
     String requete = "SELECT * FROM offre where Id_client=? order by date_insertion desc";
