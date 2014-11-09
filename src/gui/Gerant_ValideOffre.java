@@ -31,11 +31,11 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         accueil = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        by_mon_compte = new javax.swing.JButton();
+        bt_mes_offres = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bt_retour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,16 +45,36 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
         jLabel1.setText("Liste des offres non validés :");
 
         accueil.setText("Accueil ");
+        accueil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accueilActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Mon compte");
+        by_mon_compte.setText("Mon compte");
+        by_mon_compte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                by_mon_compteActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Mes offres");
+        bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_mes_offresActionPerformed(evt);
+            }
+        });
 
         bt_recherche.setText("Recherche avancée");
 
         bt_a_propos.setText("A propos");
 
-        jButton5.setText("Retour");
+        bt_retour.setText("Retour");
+        bt_retour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_retourActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,11 +83,11 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_retour, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(accueil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(by_mon_compte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_mes_offres, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_recherche)
                     .addComponent(bt_a_propos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
@@ -82,7 +102,7 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton5))
+                    .addComponent(bt_retour))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -91,9 +111,9 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(accueil)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(by_mon_compte)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(bt_mes_offres)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -103,6 +123,28 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void accueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accueilActionPerformed
+        Acceuil_gerant ag = new Acceuil_gerant();
+        ag.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_accueilActionPerformed
+
+    private void bt_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_retourActionPerformed
+        Acceuil_gerant ag = new Acceuil_gerant();
+        ag.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_retourActionPerformed
+
+    private void by_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_by_mon_compteActionPerformed
+        CompteGerant cg = new CompteGerant();
+        cg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_by_mon_compteActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +187,10 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accueil;
     private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_recherche;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton bt_retour;
+    private javax.swing.JButton by_mon_compte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

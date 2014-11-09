@@ -25,7 +25,7 @@ public class ListMesOffres extends AbstractTableModel {
     
      public ListMesOffres() {
         IOffreDAO offreDAO=OffreDAO.getInstance();
-        offres=offreDAO.getMesOffres();
+        offres=offreDAO.getClientMesOffres();
      }
     @Override
        public String getColumnName(int column) {

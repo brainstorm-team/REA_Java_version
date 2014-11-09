@@ -14,6 +14,9 @@ import entities.Admin;
 import entities.Client;
 import entities.Gerant;
 import entities.Util;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +38,51 @@ public class Authentification extends javax.swing.JFrame {
     public Authentification() {
         initComponents();
         this.setLocationRelativeTo(null);
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher(){
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER){
+                    seConnecter();
+                }
+                return false;
+            }
+    
+        });
         
+        
+    }
+    /**On a besoin de cette fonction pour se connecter 
+    *soit en click sur le button "Se connecter" soit en tapant sur ENTRER
+    */
+    private void seConnecter(){
+       Admin agent  = AdminDAO.getInstance().findAdministrateurByLogin(login.getText());
+      Client agent1 = ClientDAO.getInstance().findClientByLogin(login.getText());
+      Gerant agent2 = GerantDAO.getInstance().findGerantByLogin(login.getText());
+      if( agent != null){
+          if(agent.getPass().equals(pass.getText())){
+              Acceuil_admin aa = new Acceuil_admin();
+              Util.id_agent_connecte = agent.getId();
+              aa.setVisible(true);
+              this.setVisible(false);
+          }
+      }else if( agent1 != null){
+          if(agent1.getPass().equals(pass.getText())){
+              Acceuil_client ac = new Acceuil_client();
+              ac.setVisible(true);
+              this.setVisible(false);
+          }
+      }
+      else if (agent2 != null){
+          if (agent2.getPass().equals(pass.getText())){
+              Acceuil_gerant ag = new Acceuil_gerant();
+              ag.setVisible(true);
+              this.setVisible(false);
+          }
+      }
+      else {
+          JOptionPane.showMessageDialog(null, "Login incorrect ! ou pass incorrect ", "Error", 1);
+      } 
     }
 
     /**
@@ -58,6 +105,11 @@ public class Authentification extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Login :");
@@ -122,11 +174,11 @@ public class Authentification extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(248, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bt_se_connecter)
-                        .addGap(142, 142, 142)
+                        .addGap(150, 150, 150)
                         .addComponent(bt_inscrire, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -142,23 +194,18 @@ public class Authentification extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_inscrire)
-                        .addContainerGap(53, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_se_connecter)
-                        .addGap(34, 34, 34))))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_inscrire)
+                    .addComponent(bt_se_connecter))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jLabel3.getAccessibleContext().setAccessibleDescription("");
@@ -167,33 +214,7 @@ public class Authentification extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_se_connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_se_connecterActionPerformed
-      Admin agent  = AdminDAO.getInstance().findAdministrateurByLogin(login.getText());
-      Client agent1 = ClientDAO.getInstance().findClientByLogin(login.getText());
-      Gerant agent2 = GerantDAO.getInstance().findGerantByLogin(login.getText());
-      if( agent != null){
-          if(agent.getPass().equals(pass.getText())){
-              Acceuil_admin aa = new Acceuil_admin();
-              Util.id_agent_connecte = agent.getId();
-              aa.setVisible(true);
-              this.setVisible(false);
-          }
-      }else if( agent1 != null){
-          if(agent1.getPass().equals(pass.getText())){
-              Acceuil_client ac = new Acceuil_client();
-              ac.setVisible(true);
-              this.setVisible(false);
-          }
-      }
-      else if (agent2 != null){
-          if (agent2.getPass().equals(pass.getText())){
-              Acceuil_gerant ag = new Acceuil_gerant();
-              ag.setVisible(true);
-              this.setVisible(false);
-          }
-      }
-      else {
-          JOptionPane.showMessageDialog(null, "Login incorrect ! ou pass incorrect ", "Error", 1);
-      }
+       seConnecter();
     }//GEN-LAST:event_bt_se_connecterActionPerformed
 
     private void bt_inscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inscrireActionPerformed
@@ -201,6 +222,10 @@ public class Authentification extends javax.swing.JFrame {
         ins.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_inscrireActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments

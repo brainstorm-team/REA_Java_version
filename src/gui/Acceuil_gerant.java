@@ -183,7 +183,9 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-
+            CompteGerant cg = new CompteGerant();
+            cg.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){

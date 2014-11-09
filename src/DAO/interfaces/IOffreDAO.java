@@ -22,7 +22,8 @@ public interface IOffreDAO {
     List<Offre> getAllValidatedOffers();
     List<Offre> DisplayAllOffre();
     Offre findOffreById(int id);
-    List<Offre> getMesOffres();
+    List<Offre> getClientMesOffres();
+    List<Offre> getGerantMesOffres();
     List<Offre> recherche();
     
 

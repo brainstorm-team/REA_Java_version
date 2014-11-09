@@ -174,7 +174,7 @@ public class OffreDAO implements IOffreDAO {
 
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "select * from offre order by date_insertion";
+        String requete = "select * from offre order by date_insertion desc";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -267,14 +267,14 @@ public class OffreDAO implements IOffreDAO {
     
     
     
-    public List<Offre> getMesOffres(){
+    public List<Offre> getClientMesOffres(){
     List<Offre> listeOffres = new ArrayList<>();
-//    Util.client.setId(5);
-    String requete = "SELECT * FROM offre where Id_client=?";
+    String requete = "SELECT * FROM offre where Id_client=? order by date_insertion desc";
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultat = statement.executeQuery(requete);
+            PreparedStatement ps = connection.prepareStatement(requete);
+            ps.setInt(1, Util.id_agent_connecte);
+            ResultSet resultat =  ps.executeQuery();
             while (resultat.next()) {
                 Offre offre = new Offre();
 
@@ -410,6 +410,43 @@ public class OffreDAO implements IOffreDAO {
             return listeOffres;
         } catch (SQLException ex) {
             
+            System.out.println("erreur lors du chargement des offres " + ex.getMessage());
+
+            return null;
+        }
+    }
+
+    @Override
+    public List<Offre> getGerantMesOffres() {
+        List<Offre> listeOffres = new ArrayList<>();
+    String requete = "SELECT * FROM offre where Id_gerant=?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(requete);
+            ps.setInt(1 , Util.id_agent_connecte);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+                Offre offre = new Offre();
+
+                offre.setId(resultat.getInt(1));
+                offre.setTitre(resultat.getString(2));
+                offre.setType(resultat.getString(3));
+                offre.setCategorie(resultat.getString(4));
+                offre.setVille(resultat.getString(5));
+                offre.setPrix(resultat.getDouble(6));
+                offre.setSurface(resultat.getInt(7));
+                offre.setDescription(resultat.getString(8));
+                offre.setValidation(resultat.getBoolean(9));
+                offre.setIdClient(resultat.getInt(10));
+                offre.setIdGerant(resultat.getInt(11));
+                System.out.println(offre.getId());
+
+                listeOffres.add(offre);
+            }
+
+            return listeOffres;
+        } catch (SQLException ex) {
+            //Logger.getLogger(OffreDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("erreur lors du chargement des offres " + ex.getMessage());
 
             return null;
