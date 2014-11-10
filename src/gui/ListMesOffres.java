@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ListMesOffres extends AbstractTableModel {
     String [] header={"Titre","Type", "Catégorie", "Ville", "Prix", "Surface"};
-    List<Offre> offres=new ArrayList<Offre>();
+    List<Offre> offres=new ArrayList<>();
     
 
     

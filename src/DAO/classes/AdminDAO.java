@@ -6,7 +6,6 @@
 package DAO.classes;
 
 import DAO.interfaces.IAdminDAO;
-import com.sun.jndi.ldap.Connection;
 import entities.Admin;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -99,7 +98,7 @@ public class AdminDAO implements IAdminDAO{
     @Override
     public void insertAdmin(Admin admin) {
         try {
-            String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`) VALUES (null,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`) VALUES (null,?,?,?,?,?,?,?) where role='administrateur'";
             
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, admin.getPrenom());
@@ -119,7 +118,7 @@ public class AdminDAO implements IAdminDAO{
     @Override
     public void updateAdmin(String login, String password) {
         //apdate selon login et pass
-        String requete = "UPDATE administrateur SET pass=? WHERE login=?";
+        String requete = "UPDATE user SET pass=? WHERE login=? and role='administrateur'";
         try {
             PreparedStatement ps =  connection.prepareStatement(requete);
             ps.setString(1, password);
@@ -134,7 +133,7 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     public void deleteAdmin(String login) {
-        String requete = "delete from administrateur where login=?";
+        String requete = "delete from user where login=? and role='administrateur'";
         try {
             PreparedStatement ps =connection.prepareStatement(requete);
             ps.setString(1, login);
@@ -173,7 +172,7 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     public Admin findById(int id) {
-        String SQL_FIND =  "SELECT * FROM administrateur WHERE id=?";
+        String SQL_FIND =  "SELECT * FROM user WHERE id=? and role='administrateur'";
        Admin found = null;
         
         PreparedStatement pstmt = null;
@@ -208,7 +207,7 @@ public class AdminDAO implements IAdminDAO{
     public void update(Admin user) {
         if(findById(user.getId())!= null){
             PreparedStatement pstmt = null;
-            String SQL_UPDATE =  "UPDATE administrateur SET prenom=?, nom=?, email=?,  telephone=?,adresse=?,login=?,pass=? WHERE id=?";
+            String SQL_UPDATE =  "UPDATE user SET prenom=?, nom=?, email=?,  telephone=?,adresse=?,login=?,pass=? WHERE id=? and role='administrateur'";
             try {
                 pstmt = connection.prepareStatement(SQL_UPDATE);
                 pstmt.setString(1, user.getPrenom());

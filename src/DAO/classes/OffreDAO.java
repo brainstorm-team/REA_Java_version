@@ -175,6 +175,7 @@ public class OffreDAO implements IOffreDAO {
     
     
     
+    @Override
     public List<Offre> DisplayAllOffre() {
 
         List<Offre> listeOffres = new ArrayList<>();
@@ -269,7 +270,7 @@ public class OffreDAO implements IOffreDAO {
     @Override
     public List<Offre> getClientMesOffres(){
     List<Offre> listeOffres = new ArrayList<>();
-    String requete = "SELECT * FROM offre where Id_client=? order by date_insertion desc";
+    String requete = "SELECT * FROM offre where Id_user=? order by date_insertion desc";
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
@@ -418,7 +419,7 @@ public class OffreDAO implements IOffreDAO {
     @Override
     public List<Offre> getGerantMesOffres() {
         List<Offre> listeOffres = new ArrayList<>();
-    String requete = "SELECT * FROM offre where Id_gerant=?";
+    String requete = "SELECT * FROM offre where Id_user=?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete);

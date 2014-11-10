@@ -5,15 +5,23 @@
  */
 package gui;
 
+import DAO.classes.ClientDAO;
+import DAO.classes.ImagesDAO;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Offre;
 import entities.Util;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.FileChooser;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -75,6 +83,8 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         err_titre = new javax.swing.JLabel();
+        bt_pacourir = new javax.swing.JButton();
+        label_image = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -183,6 +193,15 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
             }
         });
 
+        bt_pacourir.setText("Parcourir");
+        bt_pacourir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_pacourirActionPerformed(evt);
+            }
+        });
+
+        label_image.setMaximumSize(new java.awt.Dimension(323, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,7 +209,9 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bt_mon_compte)
@@ -201,11 +222,7 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                             .addComponent(bt_recherche))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,24 +235,42 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 119, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(surface, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(prix, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(119, 119, 119)))
-                                .addComponent(err_titre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7))))
-                .addContainerGap())
+                                            .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(err_titre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(216, 216, 216)
+                                        .addComponent(bt_pacourir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(49, 49, 49))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel7))
+                                        .addGap(396, 396, 396)
+                                        .addComponent(label_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(141, 141, 141)
+                                                .addComponent(bt_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(12, 12, 12))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +278,21 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(bt_acceuil)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_mon_compte)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_mes_favoris)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_mes_offres)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_recherche)
+                        .addGap(12, 12, 12)
+                        .addComponent(bt_a_propos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(err_titre, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +308,7 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -275,24 +325,14 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
-                                .addGap(18, 18, 18))))
+                                .addGap(18, 18, 18)))
+                        .addGap(93, 93, 93))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(bt_acceuil)
+                        .addComponent(label_image, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_mon_compte)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_mes_favoris)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_mes_offres)
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_recherche)
-                        .addGap(12, 12, 12)
-                        .addComponent(bt_a_propos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bt_ajouter)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bt_pacourir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_ajouter)))
                 .addContainerGap())
         );
 
@@ -362,6 +402,22 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
         ap.setVisible(true);
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
+    private void bt_pacourirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pacourirActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(this);
+        File f = fc.getSelectedFile();
+        String path = f.getAbsolutePath();
+        label_image.setIcon(new ImageIcon(path));
+        try{
+            FileInputStream fin = new FileInputStream(f);
+            int len = (int)f.length();
+            ImagesDAO.getInstance().insertImage(fin, len);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Client_AjoutOffre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_bt_pacourirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +476,7 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
+    private javax.swing.JButton bt_pacourir;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JComboBox cb_type;
     private javax.swing.JComboBox cb_ville;
@@ -442,6 +499,7 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel label_image;
     private javax.swing.JList ls_categorie;
     private javax.swing.JTextField prix;
     private javax.swing.JTextField surface;

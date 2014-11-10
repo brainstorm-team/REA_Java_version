@@ -43,7 +43,7 @@ public class GerantDAO implements IGerantDAO {
     public ArrayList<Gerant> SelectGerant() {
          try {
         
-            String requete = "select * from gerant";
+            String requete = "select * from user where role='gerant'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
@@ -75,7 +75,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public ArrayList<String> SelectLogin(String pattern) {
         try {
-            String requete = "select login from gerant where login like'" + pattern + "%'";
+            String requete = "select login from user where login like'" + pattern + "%' and role='gerant'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
@@ -94,7 +94,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public void ajoutGerant(Gerant gerant) {
         try {
-            String requete = "INSERT INTO `gerant`(`Id`, `prenom`, `nom`, `email`,`telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `user`(`Id`, `prenom`, `nom`, `email`,`telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?) where role='gerant'";
              PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, gerant.getPrenom());
             ps.setString(2, gerant.getNom());
@@ -112,7 +112,7 @@ public class GerantDAO implements IGerantDAO {
 
     @Override
     public void deleteGerant(String login) {
-        String requete = "delete from gerant where login=?";
+        String requete = "delete from user where login=? and role='gerant'";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, login);
@@ -125,7 +125,7 @@ public class GerantDAO implements IGerantDAO {
 
     @Override
     public void updateGerant(String login, String password) {
-        String requete = "delete from gerant where login=?";
+        String requete = "delete from user where login=? and role='gerant'";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, login);
@@ -139,7 +139,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public Gerant findGerantByLogin(String login) {
         Gerant gerant =null;
-        String requete = "select Id , login,pass from gerant where login='"+login+"' and  and role='gerant'";
+        String requete = "select Id , login,pass from user where login='"+login+"' and  and role='gerant'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);

@@ -46,7 +46,7 @@ public class ClientDAO implements IClientDAO{
     public ArrayList<Client> SelectClient() {
                 try {
         
-            String requete = "select * from client";
+            String requete = "select * from user where role='client'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
@@ -78,7 +78,7 @@ public class ClientDAO implements IClientDAO{
     @Override
     public ArrayList<String> SelectLogin(String pattern) {//authentification
         try {
-            String requete = "select login from client where login like'" + pattern + "%'";
+            String requete = "select login from user where login like'" + pattern + "%' and role='client'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
@@ -97,7 +97,7 @@ public class ClientDAO implements IClientDAO{
     @Override
     public void ajoutClient(Client client) {
           try {
-            String requete = "INSERT INTO `client`(`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?) where role='client'";
              PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(2, client.getPrenom());
             ps.setString(1, client.getNom());
@@ -115,7 +115,7 @@ public class ClientDAO implements IClientDAO{
 
     @Override
     public void deleteClient(String login) {
-        String requete = "delete from client where login=?";
+        String requete = "delete from user where login=? and role='client'";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, login);
@@ -128,7 +128,7 @@ public class ClientDAO implements IClientDAO{
 
     @Override
     public void updateClient(String login, String password) {
-        String requete = "UPDATE client SET pass=? WHERE login=?";
+        String requete = "UPDATE user SET pass=? WHERE login=? and role='client' ";
         try {
             PreparedStatement ps =  connection.prepareStatement(requete);
             ps.setString(1, password);
@@ -144,7 +144,7 @@ public class ClientDAO implements IClientDAO{
     @Override
     public Client findClientByLogin(String login) {
         Client client =null;
-        String requete = "select * from client where login='"+login+"'  and role='client'";
+        String requete = "select * from user where login='"+login+"'  and role='client'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -165,7 +165,7 @@ public class ClientDAO implements IClientDAO{
      public   List<Client> DiplayAllClient(){
          List<Client> listeClient = new ArrayList<>();
 
-        String requete = "select * from client";
+        String requete = "select * from user role='client'";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -193,35 +193,5 @@ public class ClientDAO implements IClientDAO{
 
             return null;
         }
-     
-     
-     
      }
-
-    //@Override
-    /*public Client findClientById(int id) {
-        Client client =null;
-        String requete = "select * from client where Id='"+id+"'";
-        try {
-           Statement statement =  connection.createStatement();
-            ResultSet resultat = statement.executeQuery(requete);
-            while(resultat.next()){
-               client = new  Client();
-               
-               client.setPrenom(resultat.getString(2));
-               client.setNom
-               
-               client.setLogin(resultat.getString(1));
-               client.setPass(resultat.getString(2));
-            }
-        } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des client "+ex.getMessage());
-        }
-        return client
-    }
-    
-    */
-
-    
 }

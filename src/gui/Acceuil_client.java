@@ -89,7 +89,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        bt_refrech = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -174,13 +174,8 @@ public class Acceuil_client extends javax.swing.JFrame {
         jLabel1.setText("Liste des offres disponibles :");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
 
-        bt_refrech.setText("Refrech");
-        bt_refrech.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_refrechActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bt_refrech, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 12, -1, -1));
+        jButton1.setText("Déconnecter");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,14 +214,6 @@ public class Acceuil_client extends javax.swing.JFrame {
         cmf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_favorisActionPerformed
-
-    private void bt_refrechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refrechActionPerformed
-        table_offres = new javax.swing.JTable();
-
-        table_offres.setModel(new ListOffreValide());
-
-        jScrollPane1.setViewportView(table_offres);
-    }//GEN-LAST:event_bt_refrechActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
         Client_MesOffres mo = new Client_MesOffres();
@@ -290,7 +277,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
-    private javax.swing.JButton bt_refrech;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
