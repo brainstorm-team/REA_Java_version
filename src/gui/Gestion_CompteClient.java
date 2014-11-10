@@ -351,7 +351,7 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
         // TODO add your handling code here:
       
      
-      Client client=new  Client(WIDTH,jTF_nom.getText() , jTF_prenom.getText(), jTF_email.getText(), Integer.parseInt(jTF_telephone.getText()), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
+      Client client=new  Client(WIDTH,jTF_nom.getText() , jTF_prenom.getText(), jTF_email.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
         ClientDAO clientDAO=new ClientDAO();
         clientDAO.ajoutClient(client);
         JOptionPane.showMessageDialog(this, " vous avez ajouter un client!!");

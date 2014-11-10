@@ -6,7 +6,6 @@
 package DAO.classes;
 
 import DAO.interfaces.IOffreDAO;
-import entities.Date;
 import entities.Offre;
 import entities.Util;
 import java.sql.Connection;

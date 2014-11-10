@@ -44,7 +44,7 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     public List<Admin> SelectAdmin() {
-        String requete = "select * from administrateur";
+        String requete = "select * from user where role='administrateur'";
         try{    
         PreparedStatement ps;
             ps = connection.prepareStatement(requete);
@@ -60,7 +60,7 @@ public class AdminDAO implements IAdminDAO{
                 admin.setNom(result.getString(2));
                 admin.setEmail(result.getString(4));
           
-                admin.setTelephone(result.getInt(5));
+                admin.setTelephone(result.getString(5));
                 admin.setAdresse(result.getString(6));
                 admin.setLogin(result.getString(7));
                 admin.setPass(result.getString(8));
@@ -80,7 +80,7 @@ public class AdminDAO implements IAdminDAO{
     public ArrayList<String> SelectLogin(String pattern) {
         //Authentification 
         try {
-            String requete = "select login from administrateur where login like'" + pattern + "%'";
+            String requete = "select login from user where login like'" + pattern + "%' and role='administrateur'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
@@ -99,14 +99,14 @@ public class AdminDAO implements IAdminDAO{
     @Override
     public void insertAdmin(Admin admin) {
         try {
-            String requete = "INSERT INTO `administrateur`(`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`) VALUES (null,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`) VALUES (null,?,?,?,?,?,?,?)";
             
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, admin.getPrenom());
             ps.setString(2, admin.getNom());
             ps.setString(3, admin.getEmail());
          
-            ps.setInt(4, admin.getTelephone());
+            ps.setString(4, admin.getTelephone());
             ps.setString(5, admin.getAdresse());
             ps.setString(6, admin.getLogin());
             ps.setString(7, admin.getPass());
@@ -149,7 +149,7 @@ public class AdminDAO implements IAdminDAO{
     public Admin findAdministrateurByLogin(String login) {
         // return admin par id
       Admin admin =null;
-        String requete = "select * from administrateur where login='"+login+"'";
+        String requete = "select * from user where login= '"+login+"' and role='administrateur'";
         try {
            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -189,7 +189,7 @@ public class AdminDAO implements IAdminDAO{
                 String userprenom = rs.getString("prenom");
                 String usernom = rs.getString("nom");
                 String useremail = rs.getString("email");
-                int usertelephone = rs.getInt("telephone");
+                String usertelephone = rs.getString("telephone");
                 String useradresse = rs.getString("adresse");
                 String userlogin = rs.getString("login");
                  String userpass = rs.getString("pass");
@@ -214,7 +214,7 @@ public class AdminDAO implements IAdminDAO{
                 pstmt.setString(1, user.getPrenom());
                 pstmt.setString(2, user.getNom());
                 pstmt.setString(3, user.getEmail());
-                pstmt.setInt(5, user.getTelephone());
+                pstmt.setString(5, user.getTelephone());
                 pstmt.setString(4, user.getAdresse());
                 pstmt.setString(6, user.getLogin());
                 pstmt.setString(7, user.getPass());

@@ -58,7 +58,7 @@ public class ClientDAO implements IClientDAO{
                 client.setNom(result.getString(2));
                 client.setEmail(result.getString(4));
                
-                client.setTelephone(result.getInt(5));
+                client.setTelephone(result.getString(5));
                 client.setAdresse(result.getString(6));
                 client.setLogin(result.getString(7));
                 client.setPass(result.getString(8));
@@ -103,7 +103,7 @@ public class ClientDAO implements IClientDAO{
             ps.setString(1, client.getNom());
                  ps.setString(3, client.getEmail());
           
-            ps.setInt(4, client.getTelephone());
+            ps.setString(4, client.getTelephone());
             ps.setString(5, client.getAdresse());
             ps.setString(6, client.getLogin());
             ps.setString(7, client.getPass());
@@ -144,7 +144,7 @@ public class ClientDAO implements IClientDAO{
     @Override
     public Client findClientByLogin(String login) {
         Client client =null;
-        String requete = "select * from client where login='"+login+"'";
+        String requete = "select * from client where login='"+login+"'  and role='client'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
@@ -177,7 +177,7 @@ public class ClientDAO implements IClientDAO{
                 client.setNom(resultat.getString(2));
                 client.setPrenom(resultat.getString(3));
                 client.setEmail(resultat.getString(4));
-                client.setTelephone(resultat.getInt(5));
+                client.setTelephone(resultat.getString(5));
                 client.setAdresse(resultat.getString(6));
                 client.setLogin(resultat.getString(7));
                 client.setPass(resultat.getString(8));

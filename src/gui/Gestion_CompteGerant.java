@@ -386,7 +386,7 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
     private void jB_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ajouterActionPerformed
         // TODO add your handling code here:
 
-       Gerant gerant = new   Gerant(WIDTH,jTF_nom.getText() , jTF_email.getText(), jTF_prenom.getText(), Integer.parseInt(jTF_telephone.getText()), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
+       Gerant gerant = new   Gerant(WIDTH,jTF_nom.getText() , jTF_email.getText(), jTF_prenom.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
       GerantDAO gerantDAO=new GerantDAO();
         gerantDAO.ajoutGerant(gerant);
         JOptionPane.showMessageDialog(this, "Vous avez ajouté un gerant!!");

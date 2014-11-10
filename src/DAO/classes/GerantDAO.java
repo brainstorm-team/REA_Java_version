@@ -55,7 +55,7 @@ public class GerantDAO implements IGerantDAO {
                 gerant.setNom(result.getString(3));
                 gerant.setEmail(result.getString(4));
              
-                gerant.setTelephone(result.getInt(5));
+                gerant.setTelephone(result.getString(5));
                 gerant.setAdresse(result.getString(6));
                  gerant.setLogin(result.getString(7));
                gerant.setPass(result.getString(8));
@@ -100,7 +100,7 @@ public class GerantDAO implements IGerantDAO {
             ps.setString(2, gerant.getNom());
              ps.setString(3, gerant.getEmail());
          
-            ps.setInt(4,gerant.getTelephone() );
+            ps.setString(4,gerant.getTelephone() );
             ps.setString(5, gerant.getAdresse());
             ps.setString(6, gerant.getLogin());
             ps.setString(7, gerant.getPass());
@@ -139,7 +139,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public Gerant findGerantByLogin(String login) {
         Gerant gerant =null;
-        String requete = "select Id , login,pass from gerant where login='"+login+"'";
+        String requete = "select Id , login,pass from gerant where login='"+login+"' and  and role='gerant'";
         try {
            Statement statement =  connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);

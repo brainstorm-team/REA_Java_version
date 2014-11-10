@@ -312,10 +312,10 @@ public class Inscription extends javax.swing.JFrame {
            Pattern pattern2 = Pattern.compile(prenom);
          Matcher matcher2 = pattern2.matcher(client.getPrenom());
          
-    client.setTelephone(Integer.parseInt(TfTel.getText()));
+    client.setTelephone(TfTel.getText());
         client.setPass(TfMP1.getText().toString());
         client.setAdresse(TfAdr.getText().toString());
-        client.setTelephone(Integer.parseInt(TfTel.getText()));
+        client.setTelephone(TfTel.getText());
      
          client.setLogin(TfLogin.getText().toString());
         
@@ -348,11 +348,11 @@ public class Inscription extends javax.swing.JFrame {
             if (client.getPrenom().length() > 30) {
                 throw new AdminException("prenom est trop long");
             }
-            if (client.getTelephone() == 0) {
+            if (client.getTelephone().equals("")) {
 
                 throw new AdminException("Tapez votre Telephone svp ");
             }
-            if (client.getTelephone()%9 != 0) {
+            if (client.getTelephone().length() > 12) {
                 throw new AdminException("Telephone est trop long");
             }
             if (client.getEmail().equals("")) {

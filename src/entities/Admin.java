@@ -11,7 +11,7 @@ package entities;
  */
 public class Admin extends Utilisateur{
 
-    public Admin(int Id, String nom, String prenom, String email, int telephone, String adresse, String login, String pass) {
+    public Admin(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass) {
         super(Id, nom, prenom, email, telephone, adresse, login, pass);
     }
 

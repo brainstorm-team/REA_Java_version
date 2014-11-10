@@ -14,12 +14,12 @@ public class Utilisateur {
     protected String nom;
     protected String prenom;
     protected String email; 
-    protected int telephone;
+    protected String telephone;
     protected String adresse;
     protected String login; 
     protected String pass;
 
-    public Utilisateur(int Id, String nom, String prenom, String email, int telephone, String adresse, String login, String pass) {
+    public Utilisateur(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass) {
         this.Id = Id;
         this.nom = nom;
         this.prenom = prenom;
@@ -54,7 +54,7 @@ public class Utilisateur {
         return email;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
@@ -86,7 +86,7 @@ public class Utilisateur {
         this.email = email;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
