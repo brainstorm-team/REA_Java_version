@@ -18,11 +18,7 @@ public class Gerant extends Utilisateur{
     public Gerant() {
     }
     
-    /**
-     * 
-     Possibilite d'ajout des attributs
-     * 
-     */
+    
     
     
 }

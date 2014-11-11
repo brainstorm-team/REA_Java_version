@@ -49,9 +49,9 @@ public class Acceuil_admin extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bt_deconnecter = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bt_gestion_compte_client = new javax.swing.JButton();
+        bt_gestion_compte_gerant = new javax.swing.JButton();
+        bt_visualiser_stat = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -107,25 +107,39 @@ public class Acceuil_admin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Gestion des comptes clients");
+        bt_gestion_compte_client.setText("Gestion des comptes clients");
+        bt_gestion_compte_client.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_gestion_compte_clientActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Gestion des comptes gérants");
+        bt_gestion_compte_gerant.setText("Gestion des comptes gérants");
+        bt_gestion_compte_gerant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_gestion_compte_gerantActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Visualiser statistique");
+        bt_visualiser_stat.setText("Visualiser statistique");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bt_mon_compte)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(bt_a_propos)
-                    .addComponent(jButton3)
-                    .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_mon_compte)
+                            .addComponent(bt_gestion_compte_client)
+                            .addComponent(bt_gestion_compte_gerant)
+                            .addComponent(bt_a_propos)
+                            .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_visualiser_stat)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -147,12 +161,12 @@ public class Acceuil_admin extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(bt_mon_compte)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(bt_gestion_compte_client)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(bt_gestion_compte_gerant)
+                        .addGap(27, 27, 27)
+                        .addComponent(bt_visualiser_stat)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(24, 24, 24)
                         .addComponent(bt_a_propos))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -196,6 +210,18 @@ public class Acceuil_admin extends javax.swing.JFrame {
         this.setVisible(false);
         pack();
     }//GEN-LAST:event_bt_deconnecterActionPerformed
+
+    private void bt_gestion_compte_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_clientActionPerformed
+        Gestion_CompteClient gcc = new Gestion_CompteClient();
+        gcc.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_gestion_compte_clientActionPerformed
+
+    private void bt_gestion_compte_gerantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_gerantActionPerformed
+       Gestion_CompteGerant gcg = new Gestion_CompteGerant();
+       gcg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_gestion_compte_gerantActionPerformed
     
     /**
      * @param args the command line arguments
@@ -248,10 +274,10 @@ public class Acceuil_admin extends javax.swing.JFrame {
     private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_deconnecter;
+    private javax.swing.JButton bt_gestion_compte_client;
+    private javax.swing.JButton bt_gestion_compte_gerant;
     private javax.swing.JButton bt_mon_compte;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bt_visualiser_stat;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;

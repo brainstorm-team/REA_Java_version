@@ -94,7 +94,7 @@ public class GerantDAO implements IGerantDAO {
     @Override
     public void ajoutGerant(Gerant gerant) {
         try {
-            String requete = "INSERT INTO `user`(`Id`, `prenom`, `nom`, `email`,`telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?) where role='gerant'";
+            String requete = "INSERT INTO `user`(`prenom`, `nom`, `email`,`telephone`, `adresse`, `login`, `pass` , role)VALUES (?,?,?,?,?,?,?,'gerant') ";
              PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, gerant.getPrenom());
             ps.setString(2, gerant.getNom());

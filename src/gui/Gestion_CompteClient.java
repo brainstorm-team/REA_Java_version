@@ -4,7 +4,6 @@
  */
 package gui;
 
-
 import DAO.classes.ClientDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 
@@ -24,7 +23,6 @@ import technique.DataSource;
 
 import technique.TableClient;
 
-
 /**
  *
  * @author anwer
@@ -34,29 +32,23 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
     /**
      * Creates new form SuperAdmin
      */
-    
-
- 
- 
-    public void update(){
+    public void update() {
 //      String requete = "select * from administrateur";
 //            PreparedStatement ps;
 //        try {
 //            ps = MyConnection.getInstance().prepareStatement(requete);
 //            ResultSet result = ps.executeQuery();
-           JTab_admin.setModel(new TableClient());
+        JTab_admin.setModel(new TableClient());
 //        } catch (SQLException ex) {
 //            Logger.getLogger(SuperAdmin.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //            
-    
-    
+
     }
-    
-    
+
     public Gestion_CompteClient() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -188,7 +180,7 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setText("EmailL");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(10, 130, 50, 20);
+        jLabel8.setBounds(10, 100, 50, 20);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setText("Login");
@@ -205,7 +197,7 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setText("Téléphone");
         jPanel4.add(jLabel11);
-        jLabel11.setBounds(10, 100, 70, 14);
+        jLabel11.setBounds(10, 130, 70, 20);
         jPanel4.add(jTF_password);
         jTF_password.setBounds(110, 220, 100, 27);
         jPanel4.add(jTF_nom);
@@ -337,11 +329,11 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -349,10 +341,9 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
 
     private void jB_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ajouterActionPerformed
         // TODO add your handling code here:
-      
-     
-      Client client=new  Client(WIDTH,jTF_nom.getText() , jTF_prenom.getText(), jTF_email.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
-        ClientDAO clientDAO=new ClientDAO();
+
+        Client client = new Client(WIDTH, jTF_nom.getText(), jTF_prenom.getText(), jTF_email.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
+        ClientDAO clientDAO = new ClientDAO();
         clientDAO.ajoutClient(client);
         JOptionPane.showMessageDialog(this, " vous avez ajouter un client!!");
         update();
@@ -363,62 +354,62 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
     private void jB_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_clearActionPerformed
         // TODO add your handling code here:
         Jtf_id.setText("");
-        jTF_nom.setText("");       
+        jTF_nom.setText("");
         jTF_prenom.setText("");
         jTF_telephone.setText("");
         jTF_email.setText("");
         jTF_postal.setText("");
-         jTF_login.setText("");
-         jTF_password.setText("");
-        
-                
+        jTF_login.setText("");
+        jTF_password.setText("");
+
+
     }//GEN-LAST:event_jB_clearActionPerformed
 
     private void JTab_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTab_adminMouseClicked
         // TODO add your handling code here:
-         int row =  JTab_admin.getSelectedRow();
-        System.out.println(""+row);
+        int row = JTab_admin.getSelectedRow();
+        System.out.println("" + row);
         //int id =(int) (jTable1.getValueAt(row, 0));
-        String nom =( JTab_admin.getValueAt(row, 1).toString());
-        String prenom =( JTab_admin.getValueAt(row, 2).toString());
-        String telphone =( JTab_admin.getValueAt(row, 3).toString());
-        String email =( JTab_admin.getValueAt(row, 4).toString());
-        String adresse =( JTab_admin.getValueAt(row, 5).toString());
-        String login =( JTab_admin.getValueAt(row, 6).toString());
-        String password =( JTab_admin.getValueAt(row, 6).toString());
-       Jtf_id.setText(( JTab_admin.getValueAt(row, 0).toString()));
-      jTF_nom.setText(nom);
-     jTF_prenom.setText(prenom);
-      jTF_telephone.setText(telphone);
-     jTF_email.setText(email);
-     jTF_postal.setText(adresse);
-    jTF_login.setText(login);
-     jTF_password.setText(password);
+        String nom = (JTab_admin.getValueAt(row, 1).toString());
+        String prenom = (JTab_admin.getValueAt(row, 2).toString());
+        String telphone = (JTab_admin.getValueAt(row, 3).toString());
+        String email = (JTab_admin.getValueAt(row, 4).toString());
+        String adresse = (JTab_admin.getValueAt(row, 5).toString());
+        String login = (JTab_admin.getValueAt(row, 6).toString());
+        String password = (JTab_admin.getValueAt(row, 6).toString());
+        Jtf_id.setText((JTab_admin.getValueAt(row, 0).toString()));
+        jTF_nom.setText(nom);
+        jTF_prenom.setText(prenom);
+        jTF_telephone.setText(telphone);
+        jTF_email.setText(email);
+        jTF_postal.setText(adresse);
+        jTF_login.setText(login);
+        jTF_password.setText(password);
     }//GEN-LAST:event_JTab_adminMouseClicked
 
     private void jB_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_modifierActionPerformed
         // TODO add your handling code here:
         try {
-            String value1=Jtf_id.getText();
-             String value2=jTF_nom.getText();
-              String value3=jTF_prenom.getText();
-               String value4=jTF_telephone.getText();
-                String value5=jTF_email.getText();
-                String value6=jTF_postal.getText(); 
-                 String value7=jTF_login.getText();
-                  String value8=jTF_password.getText();
-                  
-                  String requete="UPDATE  `data`.`client` SET  `prenom` =  '"+value3+"',\n" +
-"`nom` =  '"+value2+"',\n" +
-"`email` =  '"+value5+"',\n" +
-"`telephone` =  '"+value4+"',\n" +
-"`adresse` =  '"+value6+"',\n" +
-"`login` =  '"+value7+"',\n" +
-"`pass` =  '"+value8+"' WHERE  `client`.`Id` ='"+value1+"';";
-            PreparedStatement ps =  DataSource.getInstance().prepareStatement(requete);
+            String value1 = Jtf_id.getText();
+            String value2 = jTF_nom.getText();
+            String value3 = jTF_prenom.getText();
+            String value4 = jTF_telephone.getText();
+            String value5 = jTF_email.getText();
+            String value6 = jTF_postal.getText();
+            String value7 = jTF_login.getText();
+            String value8 = jTF_password.getText();
+
+            String requete = "UPDATE  `user` SET  `prenom` =  '" + value3 + "',\n"
+                    + "`nom` =  '" + value2 + "',\n"
+                    + "`email` =  '" + value5 + "',\n"
+                    + "`telephone` =  '" + value4 + "',\n"
+                    + "`adresse` =  '" + value6 + "',\n"
+                    + "`login` =  '" + value7 + "',\n"
+                    + "`pass` =  '" + value8 + "' WHERE  `user`.`Id` ='" + value1 + "';";
+            PreparedStatement ps = DataSource.getInstance().prepareStatement(requete);
             ps.executeUpdate();
-              JOptionPane.showMessageDialog(this, "Vous avez modifier un client!!");
-            
+            JOptionPane.showMessageDialog(this, "Vous avez modifier un client!!");
+
         } catch (SQLException | HeadlessException e) {
         }
         update();
@@ -426,31 +417,31 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
 
     private void jB_suuprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_suuprimerActionPerformed
         // TODO add your handling code here:
-        int p=JOptionPane.showConfirmDialog(null, "vous voulez le supprimer ","delete",JOptionPane.YES_NO_OPTION);
-        if(p==0){
+        int p = JOptionPane.showConfirmDialog(null, "vous voulez le supprimer ", "delete", JOptionPane.YES_NO_OPTION);
+        if (p == 0) {
             try {
-                String value1=Jtf_id.getText();
-                
-           String requete="DELETE FROM `client` WHERE  `client`.`Id` ='"+value1+"';";
-            PreparedStatement ps =  DataSource.getInstance().prepareStatement(requete);
-               ps.executeUpdate();
-                 JOptionPane.showMessageDialog(this, "Vous avez supprimer un client!!");
+                String value1 = Jtf_id.getText();
+
+                String requete = "DELETE FROM `user` WHERE  `user`.`Id` ='" + value1 + "' and role='client';";
+                PreparedStatement ps = DataSource.getInstance().prepareStatement(requete);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Vous avez supprimer un client!!");
             } catch (SQLException ex) {
                 Logger.getLogger(Gestion_CompteClient.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+
         }
         update();
     }//GEN-LAST:event_jB_suuprimerActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Gestion_CompteGerant admin=new  Gestion_CompteGerant();
-          admin.setVisible(true);
+        Gestion_CompteGerant admin = new Gestion_CompteGerant();
+        admin.setVisible(true);
         this.setVisible(false);
         pack();
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -459,25 +450,25 @@ public class Gestion_CompteClient extends javax.swing.JFrame {
 //          admin.setVisible(true);
 //        this.setVisible(false);
 //        pack();
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-       Chart admin=new Chart();
-          admin.setVisible(true);
+        Chart admin = new Chart();
+        admin.setVisible(true);
         this.setVisible(false);
         pack();
-         
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         Gestion_CompteClient admin=new Gestion_CompteClient();
-          admin.setVisible(true);
+        Gestion_CompteClient admin = new Gestion_CompteClient();
+        admin.setVisible(true);
         this.setVisible(false);
         pack();
-         
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

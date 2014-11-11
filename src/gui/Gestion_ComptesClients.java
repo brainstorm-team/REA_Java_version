@@ -16,6 +16,7 @@ public class Gestion_ComptesClients extends javax.swing.JFrame {
      */
     public Gestion_ComptesClients() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

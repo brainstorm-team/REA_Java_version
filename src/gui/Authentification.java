@@ -68,7 +68,9 @@ public class Authentification extends javax.swing.JFrame {
         if(user != null){
         if(user.getRole().equals("client")){
             if (user.getPass().equals(pass.getText())) {           
-                //JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                Util.id_agent_connecte = user.getId();
+                Util.role_agent_connecte = "client";
+                
                 Acceuil_client acc = new Acceuil_client();
                 acc.setVisible(true);
                 this.setVisible(false);
@@ -79,7 +81,8 @@ public class Authentification extends javax.swing.JFrame {
         if(user.getRole().equals("gerant")){
         
         if (user.getPass().equals(pass.getText())) {           
-                //JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                Util.id_agent_connecte = user.getId();
+                Util.role_agent_connecte = "gerant";
                 Acceuil_gerant acc = new Acceuil_gerant();
                 acc.setVisible(true);
                 this.setVisible(false);         
@@ -90,7 +93,8 @@ public class Authentification extends javax.swing.JFrame {
         }  if(user.getRole().equals("administrateur")){
         
         if (user.getPass().equals(pass.getText())) {           
-                //sJOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                Util.id_agent_connecte = user.getId();
+                Util.role_agent_connecte = "administrateur";
                 Acceuil_admin acc = new Acceuil_admin();
                 acc.setVisible(true);
                 this.setVisible(false);

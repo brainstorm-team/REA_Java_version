@@ -36,11 +36,12 @@ public class Inscription extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    private static boolean isValideTel(String Tel)
-    {
-	if( Tel!=null && Tel.trim().length()>0 )
-		return Tel.matches("[+]+[[0-9]{3}|[0-9]{2}]+[0-9]{2}+[0-9]{3}+[0-9]{3}?");
-	return false;
+
+    private static boolean isValideTel(String Tel) {
+        if (Tel != null && Tel.trim().length() > 0) {
+            return Tel.matches("[+]+[[0-9]{3}|[0-9]{2}]+[0-9]{2}+[0-9]{3}+[0-9]{3}?");
+        }
+        return false;
     }
 
     /**
@@ -67,10 +68,11 @@ public class Inscription extends javax.swing.JFrame {
         TfTel = new javax.swing.JTextField();
         TfNom = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cmdValiderInscri = new javax.swing.JButton();
         motDePasse2 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         TfMP1 = new javax.swing.JPasswordField();
+        cmdValiderInscri = new javax.swing.JButton();
+        bt_retour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,19 +138,6 @@ public class Inscription extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabel8.setText("Inscrivez Vous !");
 
-        cmdValiderInscri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cmdValiderInscri.setText("Valider");
-        cmdValiderInscri.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmdValiderInscriMouseClicked(evt);
-            }
-        });
-        cmdValiderInscri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdValiderInscriActionPerformed(evt);
-            }
-        });
-
         motDePasse2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 motDePasse2ActionPerformed(evt);
@@ -198,9 +187,7 @@ public class Inscription extends javax.swing.JFrame {
                                 .addGap(100, 100, 100)
                                 .addComponent(TfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(90, 90, 90)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cmdValiderInscri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -250,25 +237,52 @@ public class Inscription extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(TfMP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addComponent(motDePasse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(cmdValiderInscri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(motDePasse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
+
+        cmdValiderInscri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmdValiderInscri.setText("Valider");
+        cmdValiderInscri.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmdValiderInscriMouseClicked(evt);
+            }
+        });
+        cmdValiderInscri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdValiderInscriActionPerformed(evt);
+            }
+        });
+
+        bt_retour.setText("Retour Authentification");
+        bt_retour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_retourActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(cmdValiderInscri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(137, 137, 137)
+                        .addComponent(bt_retour)))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 100, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdValiderInscri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_retour))
+                .addGap(0, 52, Short.MAX_VALUE))
         );
 
         pack();
@@ -300,102 +314,100 @@ public class Inscription extends javax.swing.JFrame {
 
     private void cmdValiderInscriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdValiderInscriMouseClicked
               // TODO add your handling code here:
-               
+        
     }//GEN-LAST:event_cmdValiderInscriMouseClicked
 
     private void cmdValiderInscriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValiderInscriActionPerformed
         
-       
-            
-               String EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-              String nom="^[a-zA-Z]+$";
-              String prenom="^[a-zA-Z]+$";
-              
-              
-          Client user=new Client();
-          user.setPrenom(TfPrenom.getText().toString());
+        String EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        String nom = "^[a-zA-Z]+$";
+        String prenom = "^[a-zA-Z]+$";
+        
+        Client user = new Client();
+        user.setPrenom(TfPrenom.getText().toString());
         user.setNom(TfNom.getText().toString());
         user.setEmail(TfEmail.getText().toString());
-          Pattern pattern = Pattern.compile(EMAIL);
-         Matcher matcher = pattern.matcher(user.getEmail());
-          Pattern pattern1 = Pattern.compile(nom);
-         Matcher matcher1 = pattern1.matcher(user.getNom());
-           Pattern pattern2 = Pattern.compile(prenom);
-         Matcher matcher2 = pattern2.matcher(user.getPrenom());
-         
+        Pattern pattern = Pattern.compile(EMAIL);
+        Matcher matcher = pattern.matcher(user.getEmail());
+        Pattern pattern1 = Pattern.compile(nom);
+        Matcher matcher1 = pattern1.matcher(user.getNom());
+        Pattern pattern2 = Pattern.compile(prenom);
+        Matcher matcher2 = pattern2.matcher(user.getPrenom());
+        
         user.setTelephone(TfTel.getText());
         user.setPass(TfMP1.getText().toString());
         user.setAdresse(TfAdr.getText().toString());
         user.setTelephone(TfTel.getText());
-     
-         user.setLogin(TfLogin.getText().toString());
+        
+        user.setLogin(TfLogin.getText().toString());
         
         String motdepasse2 = motDePasse2.getText().toString();
         
-        
-       ClientDAO clientDAO = ClientDAO.getInstance() ;
+        ClientDAO clientDAO = ClientDAO.getInstance();
         try {
-
+            
             if (user.getNom().equals("")) {
                 throw new AdminException("svp ! tapez votre nom");
             }
-              if (!matcher1.matches()) {
-                       throw new AdminException("tapez un nom valide svp");
-                   }
+            if (!matcher1.matches()) {
+                throw new AdminException("tapez un nom valide svp");
+            }
             
             if (user.getNom().length() > 30) {
                 throw new AdminException("nom est trop long");
             }
             if (user.getPrenom().equals("")) {
-
+                
                 throw new AdminException("Tapez votre Prenom svp ");
             }
-              if (!matcher2.matches()) {
-                       throw new AdminException("tapez un prenom valide svp");
-                   }
+            if (!matcher2.matches()) {
+                throw new AdminException("tapez un prenom valide svp");
+            }
             if (user.getPrenom().length() > 30) {
                 throw new AdminException("prenom est trop long");
             }
             if (user.getTelephone().equals("")) {
-
+                
                 throw new AdminException("Tapez votre Telephone svp ");
             }
-             if (isValideTel(user.getTelephone()) == false) {
-          throw new AdminException( "Veuillez saisir votre numéro de télèphone correctement !");}
+            if (isValideTel(user.getTelephone()) == false) {
+                throw new AdminException("Veuillez saisir votre numéro de télèphone correctement !");
+            }
             if (user.getTelephone().length() > 30) {
                 throw new AdminException("Telephone est trop long");
             }
             if (user.getEmail().equals("")) {
-
+                
                 throw new AdminException("Tapez votre Emailsvp ");
             }
-             if (!matcher.matches()) {
-                       throw new AdminException("tapez  une adresse  email valide svp");
-                   }
+            if (!matcher.matches()) {
+                throw new AdminException("tapez  une adresse  email valide svp");
+            }
             if (user.getEmail().length() > 30) {
                 throw new AdminException("Email est trop long");
             }
-             if (user.getAdresse().equals("")) {
-
+            if (user.getAdresse().equals("")) {
+                
                 throw new AdminException("Tapez votre Adresse svp ");
             }
             if (user.getAdresse().length() > 30) {
                 throw new AdminException("Adresse est trop long");
             }
             
-             if (user.getLogin().equals("")) {
+            if (user.getLogin().equals("")) {
                 throw new AdminException("tapez votre Login de passe svp ");
             }
+            
             if (user.getLogin().length() > 30) {
                 throw new AdminException("login est trop long");
             }
-              if (user.getPass().equals("")) {
+            if (user.getPass().equals("")) {
                 throw new AdminException("tapez votre mot de passe svp ");
             }
             if (user.getPass().length() > 30) {
                 throw new AdminException("mot de passe  est trop long");
             }
-           
+            
             if (motdepasse2.equals("")) {
                 throw new AdminException("retapez votre  mot de passe svp ");
             }
@@ -409,7 +421,7 @@ public class Inscription extends javax.swing.JFrame {
             Authentification au = new Authentification();
             au.setVisible(true);
             this.setVisible(false);
-         
+            
         } catch (AdminException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
@@ -419,6 +431,12 @@ public class Inscription extends javax.swing.JFrame {
     private void motDePasse2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motDePasse2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_motDePasse2ActionPerformed
+
+    private void bt_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_retourActionPerformed
+        Authentification au = new Authentification();
+        au.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_retourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,9 +471,9 @@ public class Inscription extends javax.swing.JFrame {
             public void run() {
                 try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-               
-                new Inscription().setVisible(true);
-                 } catch (ParseException ex) {
+                    
+                    new Inscription().setVisible(true);
+                } catch (ParseException ex) {
                     Logger.getLogger(Inscription.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Inscription.class.getName()).log(Level.SEVERE, null, ex);
@@ -471,6 +489,7 @@ public class Inscription extends javax.swing.JFrame {
     private javax.swing.JTextField TfNom;
     private javax.swing.JTextField TfPrenom;
     private javax.swing.JTextField TfTel;
+    private javax.swing.JButton bt_retour;
     private javax.swing.JButton cmdValiderInscri;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

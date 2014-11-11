@@ -1,4 +1,5 @@
 package gui;
+
 import DAO.classes.GerantDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Gerant;
@@ -28,17 +29,15 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
      */
     public Gestion_CompteGerant() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
-    
-    
-      public void update(){
+    public void update() {
 
-          jTable1.setModel(new TableGerant());
-           
-    
-    
+        jTable1.setModel(new TableGerant());
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,10 +48,10 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bt_gestion_compte_gerant = new javax.swing.JButton();
+        bt_gestion_compte_client = new javax.swing.JButton();
+        bt_mon_compte = new javax.swing.JButton();
+        bt_statistique = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,31 +85,31 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton1.setText("Gestion compte Gerant");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_gestion_compte_gerant.setText("Gestion compte Gerant");
+        bt_gestion_compte_gerant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_gestion_compte_gerantActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Gestion de compte Client");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_gestion_compte_client.setText("Gestion de compte Client");
+        bt_gestion_compte_client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_gestion_compte_clientActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Mon compte ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_mon_compte.setText("Mon compte ");
+        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_mon_compteActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Visualiser statistique ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bt_statistique.setText("Visualiser statistique ");
+        bt_statistique.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bt_statistiqueActionPerformed(evt);
             }
         });
 
@@ -122,24 +121,23 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bt_gestion_compte_gerant, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(bt_statistique, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(bt_mon_compte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_gestion_compte_client, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(bt_gestion_compte_gerant, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_gestion_compte_client, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(bt_statistique, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -280,7 +278,7 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(37, 37, 37)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
@@ -331,50 +329,50 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_gestion_compte_gerantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_gerantActionPerformed
         // TODO add your handling code here:
-        Gestion_CompteGerant admin=new  Gestion_CompteGerant();
-          admin.setVisible(true);
+        Gestion_CompteGerant admin = new Gestion_CompteGerant();
+        admin.setVisible(true);
         this.setVisible(false);
         pack();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bt_gestion_compte_gerantActionPerformed
+
+    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
         // TODO add your handling code here:
-         // compteAdmin_principale admin=new compteAdmin_principale();
+        // compteAdmin_principale admin=new compteAdmin_principale();
 //          admin.setVisible(true);
 //        this.setVisible(false);
 //        pack();
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bt_mon_compteActionPerformed
+
+    private void bt_statistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_statistiqueActionPerformed
         // TODO add your handling code here:
-        Chart chart=new Chart();
+        Chart chart = new Chart();
         chart.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bt_statistiqueActionPerformed
 
     private void jB_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_modifierActionPerformed
         // TODO add your handling code here:
         try {
-            String value1=Jtf_id.getText();
-            String value2=jTF_nom.getText();
-            String value3=jTF_prenom.getText();
-            String value4=jTF_telephone.getText();
-            String value5=jTF_email.getText();
-            String value6=jTF_postal.getText();
-            String value7=jTF_login.getText();
-            String value8=jTF_password.getText();
+            String value1 = Jtf_id.getText();
+            String value2 = jTF_nom.getText();
+            String value3 = jTF_prenom.getText();
+            String value4 = jTF_telephone.getText();
+            String value5 = jTF_email.getText();
+            String value6 = jTF_postal.getText();
+            String value7 = jTF_login.getText();
+            String value8 = jTF_password.getText();
 
-            String requete="UPDATE  `data`.`gerant` SET  `prenom` =  '"+value3+"',\n" +
-            "`nom` =  '"+value2+"',\n" +
-            "`email` =  '"+value5+"',\n" +
-            "`telephone` =  '"+value4+"',\n" +
-            "`adresse` =  '"+value6+"',\n" +
-            "`login` =  '"+value7+"',\n" +
-            "`pass` =  '"+value8+"' WHERE  `gerant`.`Id` ='"+value1+"';";
-            PreparedStatement ps =  DataSource.getInstance().prepareStatement(requete);
+            String requete = "UPDATE  `data`.`user` SET  `prenom` =  '" + value3 + "',\n"
+                    + "`nom` =  '" + value2 + "',\n"
+                    + "`email` =  '" + value5 + "',\n"
+                    + "`telephone` =  '" + value4 + "',\n"
+                    + "`adresse` =  '" + value6 + "',\n"
+                    + "`login` =  '" + value7 + "',\n"
+                    + "`pass` =  '" + value8 + "' WHERE  `user`.`Id` ='" + value1 + "';";
+            PreparedStatement ps = DataSource.getInstance().prepareStatement(requete);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "Vous avez modifier un gerant!!");
 
@@ -386,24 +384,24 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
     private void jB_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ajouterActionPerformed
         // TODO add your handling code here:
 
-       Gerant gerant = new   Gerant(WIDTH,jTF_nom.getText() , jTF_email.getText(), jTF_prenom.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
-      GerantDAO gerantDAO=new GerantDAO();
+        Gerant gerant = new Gerant(WIDTH, jTF_nom.getText(), jTF_email.getText(), jTF_prenom.getText(), jTF_telephone.getText(), jTF_postal.getText(), jTF_login.getText(), jTF_password.getText());
+        GerantDAO gerantDAO = new GerantDAO();
         gerantDAO.ajoutGerant(gerant);
         JOptionPane.showMessageDialog(this, "Vous avez ajouté un gerant!!");
-        update();
+        update(); //referech de la page encore 
 
         //JTab_admin.jB_ajouter(new Object[]{});
     }//GEN-LAST:event_jB_ajouterActionPerformed
 
     private void jB_suuprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_suuprimerActionPerformed
         // TODO add your handling code here:
-        int p=JOptionPane.showConfirmDialog(null, "vous voulez le supprimer ","delete",JOptionPane.YES_NO_OPTION);
-        if(p==0){
+        int p = JOptionPane.showConfirmDialog(null, "vous voulez le supprimer ", "delete", JOptionPane.YES_NO_OPTION);
+        if (p == 0) {
             try {
-                String value1=Jtf_id.getText();
+                String value1 = Jtf_id.getText();
 
-                String requete="DELETE FROM `gerant` WHERE  `gerant`.`Id` ='"+value1+"';";
-                PreparedStatement ps =  DataSource.getInstance().prepareStatement(requete);
+                String requete = "DELETE FROM `user` WHERE  `user`.`Id` ='" + value1 + "';";
+                PreparedStatement ps = DataSource.getInstance().prepareStatement(requete);
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Vous avez supprimer gerant!!");
             } catch (SQLException ex) {
@@ -430,33 +428,33 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int row = jTable1.getSelectedRow();
-        System.out.println(""+row);
-        //int id =(int) (jTable1.getValueAt(row, 0));
-        String nom =(jTable1.getValueAt(row, 1).toString());
-        String prenom =(jTable1.getValueAt(row, 2).toString());
-        String telphone =(jTable1.getValueAt(row, 3).toString());
-        String email =(jTable1.getValueAt(row, 4).toString());
-        String adresse =(jTable1.getValueAt(row, 5).toString());
-        String login =(jTable1.getValueAt(row, 6).toString());
-        String password =(jTable1.getValueAt(row, 6).toString());
-       Jtf_id.setText((jTable1.getValueAt(row, 0).toString()));
-      jTF_nom.setText(nom);
-     jTF_prenom.setText(prenom);
-      jTF_telephone.setText(telphone);
-     jTF_email.setText(email);
-     jTF_postal.setText(adresse);
-    jTF_login.setText(login);
-     jTF_password.setText(password);
-       
+        System.out.println("" + row);
+        int id =(int) (jTable1.getValueAt(row, 0));
+        String nom = (jTable1.getValueAt(row, 1).toString());
+        String prenom = (jTable1.getValueAt(row, 2).toString());
+        String telphone = (jTable1.getValueAt(row, 3).toString());
+        String email = (jTable1.getValueAt(row, 4).toString());
+        String adresse = (jTable1.getValueAt(row, 5).toString());
+        String login = (jTable1.getValueAt(row, 6).toString());
+        String password = (jTable1.getValueAt(row, 7).toString());
+        Jtf_id.setText((jTable1.getValueAt(row, 0).toString()));
+        jTF_nom.setText(nom);
+        jTF_prenom.setText(prenom);
+        jTF_telephone.setText(telphone);
+        jTF_email.setText(email);
+        jTF_postal.setText(adresse);
+        jTF_login.setText(login);
+        jTF_password.setText(password);
+
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bt_gestion_compte_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_clientActionPerformed
         // TODO add your handling code here:
-          Gestion_CompteClient admin=new Gestion_CompteClient();
-          admin.setVisible(true);
+        Gestion_CompteClient admin = new Gestion_CompteClient();
+        admin.setVisible(true);
         this.setVisible(false);
         pack();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bt_gestion_compte_clientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -488,7 +486,7 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() { 
+            public void run() {
                 try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     new Gestion_CompteGerant().setVisible(true);
@@ -502,14 +500,14 @@ public class Gestion_CompteGerant extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Jtf_id;
+    private javax.swing.JButton bt_gestion_compte_client;
+    private javax.swing.JButton bt_gestion_compte_gerant;
+    private javax.swing.JButton bt_mon_compte;
+    private javax.swing.JButton bt_statistique;
     private javax.swing.JButton jB_ajouter;
     private javax.swing.JButton jB_clear;
     private javax.swing.JButton jB_modifier;
     private javax.swing.JButton jB_suuprimer;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
