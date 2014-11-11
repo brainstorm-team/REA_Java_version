@@ -7,6 +7,7 @@ package DAO.classes;
 
 import DAO.interfaces.IAdminDAO;
 import entities.Admin;
+import entities.Utilisateur;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -223,6 +224,37 @@ public class AdminDAO implements IAdminDAO{
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, "update failed", ex);
             }
         }
+    }
+    public Utilisateur findUserByLogin (String login){// return admin par id
+      Utilisateur admin =null;
+        String requete = "SELECT * FROM `user` where login='"+login+"'";
+        try {
+           Statement statement = connection.createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+            while(resultat.next()){
+               admin = new Utilisateur();
+               admin.setId(resultat.getInt(1));
+                admin.setPrenom(resultat.getString(2));
+                admin.setNom(resultat.getString(3));
+                admin.setEmail(resultat.getString(4));
+          
+                admin.setTelephone(resultat.getString(5));
+                admin.setAdresse(resultat.getString(6));
+                 admin.setLogin(resultat.getString(7));
+                admin.setPass(resultat.getString(8));
+                admin.setRole(resultat.getString(9));
+                
+            }
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des administrateurs "+ex.getMessage());
+        }
+        return admin;
+//         public void refrech(){
+//         
+//         }
+        
+        
     }
     
 }

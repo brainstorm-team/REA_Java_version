@@ -50,7 +50,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        bt_refrech = new javax.swing.JButton();
+        bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -114,10 +114,10 @@ public class Acceuil_gerant extends javax.swing.JFrame {
 
         jLabel1.setText("Liste des offres disponibles :");
 
-        bt_refrech.setText("Refrech");
-        bt_refrech.addActionListener(new java.awt.event.ActionListener() {
+        bt_deconnecter.setText("Déconnecter");
+        bt_deconnecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_refrechActionPerformed(evt);
+                bt_deconnecterActionPerformed(evt);
             }
         });
 
@@ -136,37 +136,38 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1)
-                        .addGap(191, 191, 191)
-                        .addComponent(bt_refrech))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bt_mes_offres)
                             .addComponent(bt_mon_compte)
                             .addComponent(bt_a_propos)
                             .addComponent(bt_recherche)
                             .addComponent(bt_validation_offres))
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(217, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_deconnecter)
+                        .addGap(193, 193, 193))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(16, 16, 16)
                         .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1))
-                    .addComponent(bt_refrech))
-                .addGap(12, 12, 12)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(bt_deconnecter))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(57, 57, 57)
                         .addComponent(bt_mon_compte)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_mes_offres)
@@ -176,7 +177,10 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_a_propos))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,13 +215,12 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
-    private void bt_refrechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refrechActionPerformed
-        table_offres = new javax.swing.JTable();
-
-        table_offres.setModel(new ListOffreValide());
-
-        jScrollPane1.setViewportView(table_offres);
-    }//GEN-LAST:event_bt_refrechActionPerformed
+    private void bt_deconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deconnecterActionPerformed
+        Authentification au = new Authentification();
+        au.setVisible(true);
+        this.setVisible(false);
+        pack();
+    }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
         Client_MesOffres mo = new Client_MesOffres();
@@ -281,10 +284,10 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
-    private javax.swing.JButton bt_refrech;
     private javax.swing.JButton bt_validation_offres;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

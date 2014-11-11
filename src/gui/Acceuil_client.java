@@ -175,6 +175,11 @@ public class Acceuil_client extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
 
         jButton1.setText("Déconnecter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
 
         pack();
@@ -224,6 +229,13 @@ public class Acceuil_client extends javax.swing.JFrame {
     private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
         
     }//GEN-LAST:event_table_offresMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Authentification au = new Authentification();
+        au.setVisible(true);
+        this.setVisible(false);
+        pack();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments

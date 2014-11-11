@@ -6,6 +6,7 @@
 package DAO.interfaces;
 
 import entities.Admin;
+import entities.Utilisateur;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface IAdminDAO {
     Admin findAdministrateurByLogin (String login);
     Admin findById(int id);
     void update(Admin user) ;
+    Utilisateur findUserByLogin (String login);
 }

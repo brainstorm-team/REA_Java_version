@@ -6,7 +6,6 @@
 package gui;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
-import entities.Offre;
 import entities.Util;
 import java.text.ParseException;
 import java.util.logging.Level;

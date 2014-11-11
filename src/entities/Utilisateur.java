@@ -73,6 +73,11 @@ public class Utilisateur {
         return pass;
     }
 
+    public String getRole() {
+        return role;
+    }
+    
+
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -105,12 +110,9 @@ public class Utilisateur {
         this.pass = pass;
     }
 
-    
-    
-    
-    
-    
-    
+    public void setRole(String role) {
+        this.role = role;
+    }   
 }
     
 
