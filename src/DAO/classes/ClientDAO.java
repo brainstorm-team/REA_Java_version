@@ -16,14 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 import technique.DataSource;
 
-
 /**
  *
  * @author jemacom
  */
-public class ClientDAO implements IClientDAO{
+public class ClientDAO implements IClientDAO {
 
-      /*********Singleton*********/
+    /**
+     * *******Singleton********
+     */
     private static ClientDAO instance;
 
     public static ClientDAO getInstance() {
@@ -32,40 +33,41 @@ public class ClientDAO implements IClientDAO{
         }
         return instance;
     }
-    
-    private java.sql.Connection connection;
 
+    private java.sql.Connection connection;
 
     public ClientDAO() {
         connection = DataSource.getInstance();
     }
-    /*******************************/
-    
-    
+
+    /**
+     * ****************************
+     */
+
     @Override
     public ArrayList<Client> SelectClient() {
-                try {
-        
+        try {
+
             String requete = "select * from user where role='client'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
             ArrayList<Client> clients = new ArrayList<>();
             while (result.next()) {
-               Client client = new Client();
+                Client client = new Client();
                 client.setId(result.getInt(1));
                 client.setPrenom(result.getString(3));
                 client.setNom(result.getString(2));
                 client.setEmail(result.getString(4));
-               
+
                 client.setTelephone(result.getString(5));
                 client.setAdresse(result.getString(6));
                 client.setLogin(result.getString(7));
                 client.setPass(result.getString(8));
-              
+
                 clients.add(client);
-                
-                  System.out.println("clients "+client.getLogin());
+
+                System.out.println("clients " + client.getLogin());
             }
             return clients;
         } catch (Exception ee) {
@@ -73,7 +75,6 @@ public class ClientDAO implements IClientDAO{
         }
         return null;
     }
-    
 
     @Override
     public ArrayList<String> SelectLogin(String pattern) {//authentification
@@ -83,7 +84,7 @@ public class ClientDAO implements IClientDAO{
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
             Client client = new Client();
-            ArrayList<String> tclient= new ArrayList<>();
+            ArrayList<String> tclient = new ArrayList<>();
             while (result.next()) {
                 tclient.add(result.getString(1));
             }
@@ -96,17 +97,18 @@ public class ClientDAO implements IClientDAO{
 
     @Override
     public void ajoutClient(Client client) {
-          try {
-            String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`)VALUES (null,?,?,?,?,?,?,?) where role='client'";
-             PreparedStatement ps = connection.prepareStatement(requete);
-            ps.setString(2, client.getPrenom());
-            ps.setString(1, client.getNom());
-                 ps.setString(3, client.getEmail());
-          
+        try {
+            String requete = "INSERT INTO user (`prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass` , role )VALUES (?,?,?,?,?,?,?,'client')";
+            PreparedStatement ps = connection.prepareStatement(requete);
+            ps.setString(1, client.getPrenom());
+            ps.setString(2, client.getNom());
+            ps.setString(3, client.getEmail());
+
             ps.setString(4, client.getTelephone());
             ps.setString(5, client.getAdresse());
             ps.setString(6, client.getLogin());
             ps.setString(7, client.getPass());
+          
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("erreur dans la methode ajout client " + e.getMessage() + " " + e.getLocalizedMessage());
@@ -130,10 +132,10 @@ public class ClientDAO implements IClientDAO{
     public void updateClient(String login, String password) {
         String requete = "UPDATE user SET pass=? WHERE login=? and role='client' ";
         try {
-            PreparedStatement ps =  connection.prepareStatement(requete);
+            PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, password);
             ps.setString(2, login);
-           
+
             ps.executeUpdate();
             System.out.println("client update");
         } catch (SQLException ex) {
@@ -143,34 +145,35 @@ public class ClientDAO implements IClientDAO{
 
     @Override
     public Client findClientByLogin(String login) {
-        Client client =null;
-        String requete = "select * from user where login='"+login+"'  and role='client'";
+        Client client = null;
+        String requete = "select * from user where login='" + login + "'  and role='client'";
         try {
-           Statement statement =  connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            while(resultat.next()){
-               client  = new  Client();
-               client.setId(resultat.getInt(1)) ;
-               client.setLogin(resultat.getString(7));
-               client.setPass(resultat.getString(8));
+            while (resultat.next()) {
+                client = new Client();
+                client.setId(resultat.getInt(1));
+                client.setLogin(resultat.getString(7));
+                client.setPass(resultat.getString(8));
             }
         } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des client "+ex.getMessage());
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des client " + ex.getMessage());
         }
         return client;
-        
+
     }
+
     @Override
-     public   List<Client> DiplayAllClient(){
-         List<Client> listeClient = new ArrayList<>();
+    public List<Client> DiplayAllClient() {
+        List<Client> listeClient = new ArrayList<>();
 
         String requete = "select * from user role='client'";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
 
-             while (resultat.next()) {
+            while (resultat.next()) {
                 Client client = new Client();
 
                 client.setId(resultat.getInt(1));
@@ -181,7 +184,6 @@ public class ClientDAO implements IClientDAO{
                 client.setAdresse(resultat.getString(6));
                 client.setLogin(resultat.getString(7));
                 client.setPass(resultat.getString(8));
-                
 
                 listeClient.add(client);
             }
@@ -193,5 +195,5 @@ public class ClientDAO implements IClientDAO{
 
             return null;
         }
-     }
+    }
 }

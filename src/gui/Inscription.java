@@ -10,6 +10,7 @@ import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Admin;
 import entities.Client;
 import entities.Gerant;
+import entities.Utilisateur;
 import exception.AdminException;
 
 import java.text.ParseException;
@@ -34,6 +35,12 @@ public class Inscription extends javax.swing.JFrame {
     public Inscription() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    private static boolean isValideTel(String Tel)
+    {
+	if( Tel!=null && Tel.trim().length()>0 )
+		return Tel.matches("[+]+[[0-9]{3}|[0-9]{2}]+[0-9]{2}+[0-9]{3}+[0-9]{3}?");
+	return false;
     }
 
     /**
@@ -297,218 +304,115 @@ public class Inscription extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdValiderInscriMouseClicked
 
     private void cmdValiderInscriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValiderInscriActionPerformed
-
+        
        
             
                String EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
               String nom="^[a-zA-Z]+$";
               String prenom="^[a-zA-Z]+$";
               
-           Client client= new Client();
-          client.setPrenom(TfPrenom.getText().toString());
-        client.setNom(TfNom.getText().toString());
-        client.setEmail(TfEmail.getText().toString());
+              
+          Client user=new Client();
+          user.setPrenom(TfPrenom.getText().toString());
+        user.setNom(TfNom.getText().toString());
+        user.setEmail(TfEmail.getText().toString());
           Pattern pattern = Pattern.compile(EMAIL);
-         Matcher matcher = pattern.matcher(client.getEmail());
+         Matcher matcher = pattern.matcher(user.getEmail());
           Pattern pattern1 = Pattern.compile(nom);
-         Matcher matcher1 = pattern1.matcher(client.getNom());
+         Matcher matcher1 = pattern1.matcher(user.getNom());
            Pattern pattern2 = Pattern.compile(prenom);
-         Matcher matcher2 = pattern2.matcher(client.getPrenom());
+         Matcher matcher2 = pattern2.matcher(user.getPrenom());
          
-    client.setTelephone(TfTel.getText());
-        client.setPass(TfMP1.getText().toString());
-        client.setAdresse(TfAdr.getText().toString());
-        client.setTelephone(TfTel.getText());
+        user.setTelephone(TfTel.getText());
+        user.setPass(TfMP1.getText().toString());
+        user.setAdresse(TfAdr.getText().toString());
+        user.setTelephone(TfTel.getText());
      
-         client.setLogin(TfLogin.getText().toString());
+         user.setLogin(TfLogin.getText().toString());
         
         String motdepasse2 = motDePasse2.getText().toString();
         
         
-       ClientDAO admindao = new ClientDAO ();
-       
-        
-
+       ClientDAO clientDAO = ClientDAO.getInstance() ;
         try {
 
-            if (client.getNom().equals("")) {
+            if (user.getNom().equals("")) {
                 throw new AdminException("svp ! tapez votre nom");
             }
               if (!matcher1.matches()) {
-                       throw new AdminException("tapez  un    nom  valide svp");
+                       throw new AdminException("tapez un nom valide svp");
                    }
             
-            if (client.getNom().length() > 30) {
+            if (user.getNom().length() > 30) {
                 throw new AdminException("nom est trop long");
             }
-            if (client.getPrenom().equals("")) {
+            if (user.getPrenom().equals("")) {
 
                 throw new AdminException("Tapez votre Prenom svp ");
             }
               if (!matcher2.matches()) {
                        throw new AdminException("tapez un prenom valide svp");
                    }
-            if (client.getPrenom().length() > 30) {
+            if (user.getPrenom().length() > 30) {
                 throw new AdminException("prenom est trop long");
             }
-            if (client.getTelephone().equals("")) {
+            if (user.getTelephone().equals("")) {
 
                 throw new AdminException("Tapez votre Telephone svp ");
             }
-            if (client.getTelephone().length() > 12) {
+             if (isValideTel(user.getTelephone()) == false) {
+          throw new AdminException( "Veuillez saisir votre numéro de télèphone correctement !");}
+            if (user.getTelephone().length() > 30) {
                 throw new AdminException("Telephone est trop long");
             }
-            if (client.getEmail().equals("")) {
+            if (user.getEmail().equals("")) {
 
                 throw new AdminException("Tapez votre Emailsvp ");
             }
              if (!matcher.matches()) {
                        throw new AdminException("tapez  une adresse  email valide svp");
                    }
-            if (client.getEmail().length() > 30) {
+            if (user.getEmail().length() > 30) {
                 throw new AdminException("Email est trop long");
             }
-             if (client.getAdresse().equals("")) {
+             if (user.getAdresse().equals("")) {
 
                 throw new AdminException("Tapez votre Adresse svp ");
             }
-            if (client.getAdresse().length() > 30) {
+            if (user.getAdresse().length() > 30) {
                 throw new AdminException("Adresse est trop long");
             }
             
-             if (client.getLogin().equals("")) {
+             if (user.getLogin().equals("")) {
                 throw new AdminException("tapez votre Login de passe svp ");
             }
-            if (client.getLogin().length() > 30) {
+            if (user.getLogin().length() > 30) {
                 throw new AdminException("login est trop long");
             }
-              if (client.getPass().equals("")) {
+              if (user.getPass().equals("")) {
                 throw new AdminException("tapez votre mot de passe svp ");
             }
-            if (client.getPass().length() > 30) {
+            if (user.getPass().length() > 30) {
                 throw new AdminException("mot de passe  est trop long");
             }
            
             if (motdepasse2.equals("")) {
                 throw new AdminException("retapez votre  mot de passe svp ");
             }
-            if (!motdepasse2.equals(client.getPass())) {
+            if (!motdepasse2.equals(user.getPass())) {
                 throw new AdminException(" les deux mot de passe ne sont pas identique");
             }
             
-            admindao.ajoutClient(client);
+            clientDAO.ajoutClient(user);
             JOptionPane.showMessageDialog(null, "client ajouter", "OK", JOptionPane.OK_CANCEL_OPTION);
-            cmdValiderInscri.setEnabled(true);//ouis chager false
+            cmdValiderInscri.setEnabled(false);//ouis chager false
+            Authentification au = new Authentification();
+            au.setVisible(true);
+            this.setVisible(false);
          
         } catch (AdminException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-                   
-              
-//         if (combox1.getSelectedItem().toString().equals("gerant")) { 
-//              String EMAIL ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-//              String nom="^[a-zA-Z]+$";
-//              String prenom="^[a-zA-Z]+$";
-//        Gerant gerant= new Gerant();
-//          gerant.setPrenom(TfPrenom.getText().toString());
-//        gerant.setNom(TfNom.getText().toString());
-//       gerant.setEmail(TfEmail.getText().toString());
-//     Pattern pattern = Pattern.compile(EMAIL);
-//         Matcher matcher = pattern.matcher( gerant.getEmail());
-//         Pattern pattern1 = Pattern.compile(nom);
-//         Matcher matcher1 = pattern1.matcher(gerant.getNom());
-//           Pattern pattern2 = Pattern.compile(prenom);
-//         Matcher matcher2 = pattern2.matcher(gerant.getPrenom());
-//         
-//    gerant.setTelephone(TfTel.getText());
-//        gerant.setPass(TfMP1.getText().toString());
-//        gerant.setAdresse(TfAdr.getText().toString());
-//        gerant.setTelephone(TfTel.getText());
-//     
-//         gerant.setLogin(TfLogin.getText().toString());
-//        
-//        String motdepasse2 = motDePasse2.getText().toString();
-//        
-//        
-//       GerantDAO gerantDAO= new GerantDAO  ();
-//       
-//        
-//
-//        try {
-//
-//            if (gerant.getNom().equals("")) {
-//                throw new AdminException("svp ! tapez votre nom");
-//            }
-//            if (!matcher1.matches()) {
-//                       throw new AdminException("tapez  un    nom  valide svp");
-//                   }
-//            
-//            if (gerant.getNom().length() > 30) {
-//                throw new AdminException("nom est trop long");
-//            }
-//            if (gerant.getPrenom().equals("")) {
-//
-//                throw new AdminException("Tapez votre Prenom svp ");
-//            }
-//            if (!matcher2.matches()) {
-//                       throw new AdminException("tapez un prenom valide svp");
-//                   }
-//            if (gerant.getPrenom().length() > 30) {
-//                throw new AdminException("prenom est trop long");
-//            }
-//            if (gerant.getTelephone().equals("")) {
-//
-//                throw new AdminException("Tapez votre Telephone svp ");
-//            }
-//            if (gerant.getTelephone().length() > 30) {
-//                throw new AdminException("Telephone est trop long");
-//            }
-//            if (gerant.getEmail().equals("")) {
-//
-//                throw new AdminException("Tapez votre Emailsvp ");
-//            }
-//             if (!matcher.matches()) {
-//                       throw new AdminException("tapez  une adresse  email valide svp");
-//                   }
-//            if (gerant.getEmail().length() > 30) {
-//                throw new AdminException("Email est trop long");
-//            }
-//             if (gerant.getAdresse().equals("")) {
-//
-//                throw new AdminException("Tapez votre Adresse svp ");
-//            }
-//            if (gerant.getAdresse().length() > 30) {
-//                throw new AdminException("Adresse est trop long");
-//            }
-//            
-//             if (gerant.getLogin().equals("")) {
-//                throw new AdminException("tapez votre Login de passe svp ");
-//            }
-//            if (gerant.getLogin().length() > 30) {
-//                throw new AdminException("login est trop long");
-//            }
-//              if (gerant.getPass().equals("")) {
-//                throw new AdminException("tapez votre mot de passe svp ");
-//            }
-//            if (gerant.getPass().length() > 30) {
-//                throw new AdminException("mot de passe  est trop long");
-//            }
-//           
-//            if (motdepasse2.equals("")) {
-//                throw new AdminException("retapez votre  mot de passe svp ");
-//            }
-//            if (!motdepasse2.equals(gerant.getPass())) {
-//                throw new AdminException(" les deux mot de passe ne sont pas identique");
-//            }
-//            
-//            gerantDAO.ajoutGerant(gerant);
-//            JOptionPane.showMessageDialog(null, "gerant ajouter", "OK", JOptionPane.OK_CANCEL_OPTION);
-//            cmdValiderInscri.setEnabled(true);//ouis chager false
-//         
-//        } catch (AdminException e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
-//        }
-//        }           
 
     }//GEN-LAST:event_cmdValiderInscriActionPerformed
 

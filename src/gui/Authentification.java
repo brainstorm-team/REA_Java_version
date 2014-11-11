@@ -63,52 +63,12 @@ public class Authentification extends javax.swing.JFrame {
     *soit en click sur le button "Se connecter" soit en tapant sur ENTRER
     */
     private void seConnecter(){
-//       Admin agent  = AdminDAO.getInstance().findAdministrateurByLogin(login.getText());
-//      Client agent1 = ClientDAO.getInstance().findClientByLogin(login.getText());
-//      Gerant agent2 = GerantDAO.getInstance().findGerantByLogin(login.getText());
-//      if( agent != null){
-//          if(agent.getPass().equals(pass.getText())){
-//              Acceuil_admin aa = new Acceuil_admin();
-//              System.out.println("id agent = "+agent.getId());
-//              Util.id_agent_connecte = agent.getId();
-//              System.out.println("Id agent connecte = "+Util.id_agent_connecte);
-//              Util.role_agent_connecte = "admin";
-//              aa.setVisible(true);
-//              this.setVisible(false);
-//          }
-//      }else if( agent1 != null){
-//          if(agent1.getPass().equals(pass.getText())){
-//              Acceuil_client ac = new Acceuil_client();
-//              System.out.println("id agent = "+agent1.getId());
-//              Util.id_agent_connecte = agent1.getId();
-//              System.out.println("Id agent connecte = "+Util.id_agent_connecte);
-//              Util.role_agent_connecte = "client";
-//              ac.setVisible(true);
-//              System.out.println(Util.id_agent_connecte);
-//              this.setVisible(false);
-//          }
-//      }
-//      else if (agent2 != null){
-//          if (agent2.getPass().equals(pass.getText())){
-//              Acceuil_gerant ag = new Acceuil_gerant();
-//              System.out.println("id agent = "+agent2.getId());
-//               Util.id_agent_connecte = agent2.getId();
-//               Util.role_agent_connecte = "gerant";
-//               System.out.println("Id agent connecte = "+Util.id_agent_connecte);
-//              System.out.println(Util.id_agent_connecte);
-//               ag.setVisible(true);
-//              this.setVisible(false);
-//          }
-//      }
-//      else {
-//          JOptionPane.showMessageDialog(null, "Login incorrect ! ou pass incorrect ", "Error", 1);
-//      } 
         Utilisateur user =new Utilisateur();
         user =AdminDAO.getInstance().findUserByLogin(login.getText());
         if(user != null){
         if(user.getRole().equals("client")){
             if (user.getPass().equals(pass.getText())) {           
-                JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                //JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
                 Acceuil_client acc = new Acceuil_client();
                 acc.setVisible(true);
                 this.setVisible(false);
@@ -119,7 +79,7 @@ public class Authentification extends javax.swing.JFrame {
         if(user.getRole().equals("gerant")){
         
         if (user.getPass().equals(pass.getText())) {           
-                JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                //JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
                 Acceuil_gerant acc = new Acceuil_gerant();
                 acc.setVisible(true);
                 this.setVisible(false);         
@@ -130,7 +90,7 @@ public class Authentification extends javax.swing.JFrame {
         }  if(user.getRole().equals("administrateur")){
         
         if (user.getPass().equals(pass.getText())) {           
-                JOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
+                //sJOptionPane.showMessageDialog(null, "Authentification avecc succes! ", "ok", 1);
                 Acceuil_admin acc = new Acceuil_admin();
                 acc.setVisible(true);
                 this.setVisible(false);
