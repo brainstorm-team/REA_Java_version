@@ -3,16 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Acceuil_gerant.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Inscription.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Gerant_ValideOffre.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Gerant_MesOffres.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/DAO/classes/OffreDAO.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/DAO/interfaces/IOffreDAO.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/ListMesOffres.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/ValidationOffre.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/Authentification.java</file>
-            <file>file:/home/jemacom/netbeans/Agence_immobiliere_v1/src/gui/ListOffreValide.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Client_AjoutOffre.java</file>
         </group>
     </open-files>
 </project-private>

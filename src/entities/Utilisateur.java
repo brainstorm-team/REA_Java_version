@@ -18,8 +18,9 @@ public class Utilisateur {
     protected String adresse;
     protected String login; 
     protected String pass;
+    protected String role;
 
-    public Utilisateur(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass) {
+    public Utilisateur(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass , String role) {
         this.Id = Id;
         this.nom = nom;
         this.prenom = prenom;
@@ -28,6 +29,8 @@ public class Utilisateur {
         this.adresse = adresse;
         this.login = login;
         this.pass = pass;
+        this.role = role;
+        
     }
 
     public Utilisateur() {

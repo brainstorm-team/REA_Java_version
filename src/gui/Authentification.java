@@ -69,8 +69,9 @@ public class Authentification extends javax.swing.JFrame {
           if(agent.getPass().equals(pass.getText())){
               Acceuil_admin aa = new Acceuil_admin();
               System.out.println("id agent = "+agent.getId());
-              Util.id_agent_connecte = agent.getId(); 
-              Util.role_agent_connecte = "ADMIN";
+              Util.id_agent_connecte = agent.getId();
+              System.out.println("Id agent connecte = "+Util.id_agent_connecte);
+              Util.role_agent_connecte = "admin";
               aa.setVisible(true);
               this.setVisible(false);
           }
@@ -78,8 +79,9 @@ public class Authentification extends javax.swing.JFrame {
           if(agent1.getPass().equals(pass.getText())){
               Acceuil_client ac = new Acceuil_client();
               System.out.println("id agent = "+agent1.getId());
-               Util.id_agent_connecte = agent1.getId();
-               Util.role_agent_connecte = "CLIENT";
+              Util.id_agent_connecte = agent1.getId();
+              System.out.println("Id agent connecte = "+Util.id_agent_connecte);
+              Util.role_agent_connecte = "client";
               ac.setVisible(true);
               System.out.println(Util.id_agent_connecte);
               this.setVisible(false);
@@ -90,7 +92,8 @@ public class Authentification extends javax.swing.JFrame {
               Acceuil_gerant ag = new Acceuil_gerant();
               System.out.println("id agent = "+agent2.getId());
                Util.id_agent_connecte = agent2.getId();
-               Util.role_agent_connecte = "GERANT";
+               Util.role_agent_connecte = "gerant";
+               System.out.println("Id agent connecte = "+Util.id_agent_connecte);
               System.out.println(Util.id_agent_connecte);
                ag.setVisible(true);
               this.setVisible(false);
@@ -231,7 +234,7 @@ public class Authentification extends javax.swing.JFrame {
 
     private void bt_se_connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_se_connecterActionPerformed
        seConnecter();
-        System.out.println("bouton se connecter presser");
+        
     }//GEN-LAST:event_bt_se_connecterActionPerformed
 
     private void bt_inscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inscrireActionPerformed

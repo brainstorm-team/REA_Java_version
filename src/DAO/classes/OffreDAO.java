@@ -57,7 +57,7 @@ public class OffreDAO implements IOffreDAO {
     @Override
     public void insertOffre(Offre offre) {
 
-        String AJOUT_OFFRE = "insert into offre (titre , type , categorie ,ville, prix , surface , description , validation , Id_client , Id_gerant) values (?,?,?,?,?,?,?,?,?,?)";
+        String AJOUT_OFFRE = "insert into offre (titre , type , categorie ,ville, prix , surface , description , validation , Id_user ) values (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(AJOUT_OFFRE);
             ps.setString(1, offre.getTitre());
@@ -69,17 +69,8 @@ public class OffreDAO implements IOffreDAO {
             ps.setInt(6, offre.getSurface());
             ps.setString(7, offre.getDescription());
             ps.setBoolean(8, offre.isValidation());
-            if (Util.role_agent_connecte.equals("CLIENT")){
-                ps.setInt(9 , Util.id_agent_connecte);
-                ps.setInt(10, 0);
-            }else if (Util.role_agent_connecte.equals("GERANT")){
-                ps.setInt(9, 0);
-                ps.setInt(10 , Util.id_agent_connecte);    
-            }
-            else{
-                ps.setInt(9, 0);
-                ps.setInt(10, 0);
-            }
+            ps.setInt(9 , Util.id_agent_connecte);
+            
             ps.executeUpdate();
             System.out.println("Insertion ........");
         } catch (SQLException ex) {

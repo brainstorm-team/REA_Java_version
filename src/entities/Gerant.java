@@ -12,7 +12,7 @@ package entities;
 public class Gerant extends Utilisateur{
 
     public Gerant(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass) {
-        super(Id, nom, prenom, email, telephone, adresse, login, pass);
+        super(Id, nom, prenom, email, telephone, adresse, login, pass , "gerant");
     }
 
     public Gerant() {
