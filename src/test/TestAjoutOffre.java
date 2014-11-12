@@ -13,7 +13,7 @@ import DAO.classes.OffreDAO;
  */
 public class TestAjoutOffre {
     public static void main(String[] args) {
-        OffreDAO offreDAO = new OffreDAO();
+        OffreDAO offreDAO = OffreDAO.getInstance();
         
     }
 }

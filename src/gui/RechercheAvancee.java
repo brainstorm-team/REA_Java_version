@@ -36,8 +36,6 @@ public class RechercheAvancee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        titre = new javax.swing.JTextField();
         prixMin = new javax.swing.JTextField();
         prixMax = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -64,14 +62,6 @@ public class RechercheAvancee extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Titre : ");
-
-        titre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titreActionPerformed(evt);
-            }
-        });
 
         prixMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,9 +174,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bt_acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))))
+                        .addComponent(jLabel2)))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
@@ -211,7 +199,6 @@ public class RechercheAvancee extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel5)))
-                            .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
@@ -224,11 +211,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,7 +227,7 @@ public class RechercheAvancee extends javax.swing.JFrame {
                                 .addComponent(bt_mes_offres)
                                 .addGap(29, 29, 29))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -281,10 +264,6 @@ public class RechercheAvancee extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void titreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titreActionPerformed
-
     private void prixMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prixMinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_prixMinActionPerformed
@@ -292,46 +271,26 @@ public class RechercheAvancee extends javax.swing.JFrame {
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
     if (check_photos.isSelected()){
                 
+               Util.typeR = cb_type.getSelectedItem().toString();
+               Util.categorieR = ls_categorie.getSelectedValue().toString();
+               Util.prixMin = Double.parseDouble(prixMin.getText());
+               Util.prixMax = Double.parseDouble(prixMax.getText());
+               Util.surfaceMin = Integer.parseInt(surfaceMin.getText());
+               Util.surfaceMax = Integer.parseInt(surfaceMax.getText());
+               
                ResultatAvecPhotos rap = new ResultatAvecPhotos();
                rap.setVisible(true);
                this.setVisible(false);
                // this.setVisible(false); /*Pour cacher la page courante*/
            }
            else
-           {
-               /*Enregistrement des infos de l'offre à rechercher dans Util*/
-               /*if (titre.getText() == null){
-                   Util.offreRecherchee.setTitre("");
-               }else{
-                   Util.offreRecherchee.setTitre(titre.getText());
-               }
-               if (cb_type.getSelectedItem().toString() == null){
-                   Util.offreRecherchee.setType("");
-               }else{
-                   Util.offreRecherchee.setType(cb_type.getSelectedItem().toString());
-               }
-               if (ls_categorie.getSelectedValue().toString() == null){
-                   Util.offreRecherchee.setCategorie("");
-               }else{
-                   Util.offreRecherchee.setCategorie(ls_categorie.getSelectedValue().toString());
-               }
-               if (cb_ville.getSelectedItem().toString() == null){
-                   Util.offreRecherchee.setVille("");
-               }else{
-               Util.offreRecherchee.setVille(cb_ville.getSelectedItem().toString());
-               }*/
-               Util.titreR = titre.getText();
+           {  
                Util.typeR = cb_type.getSelectedItem().toString();
                Util.categorieR = ls_categorie.getSelectedValue().toString();
-               Util.villeR = cb_ville.getSelectedItem().toString();
-               
                Util.prixMin = Double.parseDouble(prixMin.getText());
                Util.prixMax = Double.parseDouble(prixMax.getText());
-               Util.surfaceMax = Integer.parseInt(surfaceMax.getText());
                Util.surfaceMin = Integer.parseInt(surfaceMin.getText());
-               
-               /*FIn enregistrement*/
-               
+               Util.surfaceMax = Integer.parseInt(surfaceMax.getText());
                ResultatSansPhotos rsp = new ResultatSansPhotos();
                rsp.setVisible(true);
                this.setVisible(false);
@@ -425,7 +384,6 @@ public class RechercheAvancee extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_type;
     private javax.swing.JComboBox cb_ville;
     private javax.swing.JCheckBox check_photos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -441,6 +399,5 @@ public class RechercheAvancee extends javax.swing.JFrame {
     private javax.swing.JTextField prixMin;
     private javax.swing.JTextField surfaceMax;
     private javax.swing.JTextField surfaceMin;
-    private javax.swing.JTextField titre;
     // End of variables declaration//GEN-END:variables
 }

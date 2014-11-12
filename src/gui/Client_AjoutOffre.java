@@ -86,7 +86,8 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
         err_titre = new javax.swing.JLabel();
         bt_pacourir = new javax.swing.JButton();
         label_image = new javax.swing.JLabel();
-        frame_image = new javax.swing.JInternalFrame();
+        label = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -228,25 +229,18 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
                 bt_pacourirActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_pacourir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 111, -1));
+        getContentPane().add(bt_pacourir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 111, -1));
 
         label_image.setMaximumSize(new java.awt.Dimension(323, 0));
         getContentPane().add(label_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 29, -1, 323));
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, -1));
 
-        frame_image.setVisible(true);
-
-        javax.swing.GroupLayout frame_imageLayout = new javax.swing.GroupLayout(frame_image.getContentPane());
-        frame_image.getContentPane().setLayout(frame_imageLayout);
-        frame_imageLayout.setHorizontalGroup(
-            frame_imageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        frame_imageLayout.setVerticalGroup(
-            frame_imageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(frame_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 320, 260));
+        jLabel5.setIcon(new javax.swing.ImageIcon("/home/jemacom/interface_acceuil_java.png")); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jLabel5.setDoubleBuffered(true);
+        jLabel5.setFocusCycleRoot(true);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 420, 260));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -317,7 +311,9 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
     private void bt_pacourirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pacourirActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
-        File f = fc.getSelectedFile();
+        String f = fc.getSelectedFile().getAbsolutePath().toString();
+        label.setIcon(new javax.swing.ImageIcon(f)); 
+        
         try{
             FileInputStream fin = new FileInputStream(f);
             int len = (int)f.length();
@@ -392,12 +388,12 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_ville;
     private javax.swing.JTextArea description;
     private javax.swing.JLabel err_titre;
-    private javax.swing.JInternalFrame frame_image;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -409,6 +405,7 @@ public class Client_AjoutOffre extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel label;
     private javax.swing.JLabel label_image;
     private javax.swing.JLabel lable_page;
     private javax.swing.JList ls_categorie;

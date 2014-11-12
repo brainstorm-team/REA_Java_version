@@ -40,7 +40,7 @@ public class OffreDAO implements IOffreDAO {
     private Connection connection;
 
 
-    public OffreDAO() {
+    private OffreDAO() {
         connection = DataSource.getInstance();
     }
     /*******************************/
@@ -310,19 +310,19 @@ public class OffreDAO implements IOffreDAO {
     
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "select * from offre where (titre like ? )and ( type like  ? ) and (categorie like ? )and ( ville like ? )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?)";
+        String requete = "select * from offre where ( type like  ? ) and (categorie like ? )and ( ville like ? )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete); 
-            ps.setString(1, "%"+Util.titreR+"%");
-            ps.setString(2, "%"+Util.typeR+"%");
-            ps.setString(3, "%"+Util.categorieR+"%");
-            ps.setString(4, "%"+Util.villeR+"%");
             
-            ps.setDouble(5, Util.prixMin);
-            ps.setDouble(6, Util.prixMax);
-            ps.setInt(7, Util.surfaceMin);
-            ps.setInt(8, Util.surfaceMax);
+            ps.setString(1, "%"+Util.typeR+"%");
+            ps.setString(2, "%"+Util.categorieR+"%");
+            ps.setString(3, "%"+Util.villeR+"%");
+            
+            ps.setDouble(4, Util.prixMin);
+            ps.setDouble(5, Util.prixMax);
+            ps.setInt(6, Util.surfaceMin);
+            ps.setInt(7, Util.surfaceMax);
             
             
             ResultSet resultat = ps.executeQuery();
