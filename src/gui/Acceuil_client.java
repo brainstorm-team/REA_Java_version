@@ -90,6 +90,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        bt_contact = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -116,7 +117,6 @@ public class Acceuil_client extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_mon_compte.setText("Mon compte");
         bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,6 @@ public class Acceuil_client extends javax.swing.JFrame {
                 bt_mon_compteActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mon_compte, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 53, -1, -1));
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +131,6 @@ public class Acceuil_client extends javax.swing.JFrame {
                 bt_rechercheActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_recherche, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 180, -1, -1));
 
         table_offres.setModel(new ListOffreValide());
         table_offres.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,10 +140,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table_offres);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, 481, 321));
-
         acceuil.setText("Acceuil client:");
-        getContentPane().add(acceuil, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 16, 110, 25));
 
         bt_mes_favoris.setText("Mes favoris");
         bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +148,6 @@ public class Acceuil_client extends javax.swing.JFrame {
                 bt_mes_favorisActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mes_favoris, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 93, -1, -1));
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +155,6 @@ public class Acceuil_client extends javax.swing.JFrame {
                 bt_a_proposActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_a_propos, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 221, -1, -1));
 
         bt_mes_offres.setText("Mes offres");
         bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
@@ -169,10 +162,8 @@ public class Acceuil_client extends javax.swing.JFrame {
                 bt_mes_offresActionPerformed(evt);
             }
         });
-        getContentPane().add(bt_mes_offres, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 133, -1, -1));
 
         jLabel1.setText("Liste des offres disponibles :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 18, -1, -1));
 
         jButton1.setText("Déconnecter");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +171,74 @@ public class Acceuil_client extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
+
+        bt_contact.setText("Contact");
+        bt_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_contactActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_mon_compte)
+                            .addComponent(bt_mes_favoris)
+                            .addComponent(bt_mes_offres)
+                            .addComponent(bt_recherche)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_a_propos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addGap(12, 12, 12)
+                .addComponent(bt_mon_compte)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_mes_favoris)
+                        .addGap(11, 11, 11)
+                        .addComponent(bt_mes_offres)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_recherche)
+                        .addGap(11, 11, 11)
+                        .addComponent(bt_contact)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_a_propos))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,7 +285,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_mes_offresActionPerformed
 
     private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
-        
+   
     }//GEN-LAST:event_table_offresMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -236,6 +294,12 @@ public class Acceuil_client extends javax.swing.JFrame {
         this.setVisible(false);
         pack();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed
+        Message_client mc = new Message_client();
+        mc.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_contactActionPerformed
     
     /**
      * @param args the command line arguments
@@ -285,6 +349,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_contact;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;

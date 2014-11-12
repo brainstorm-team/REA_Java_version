@@ -1,50 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
-/**
- *
- * @author jemacom
- */
 public class Message {
-    private int id ; 
-    private String type; 
-    private String contenu; 
 
-    public Message(int id, String type, String contenu) {
-        this.id = id;
-        this.type = type;
-        this.contenu = contenu;
+    private int idMessage;
+    private String message;
+    private String sujet;
+    private String reponsemsg;
+    private Utilisateur Utilisateur;
+
+//private java.sql.Date datede;	
+    public int getIdmessage() {
+        return idMessage;
     }
 
-    public int getId() {
-        return id;
+    public void setIdMessage(int idMessage) {
+        this.idMessage = idMessage;
     }
 
-    public String getType() {
-        return type;
+    public String getMessage() {
+        return message;
     }
 
-    public String getContenu() {
-        return contenu;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getSujet() {
+        return sujet;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSujet(String sujet) {
+        this.sujet = sujet;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public String getReponsemsg() {
+        return reponsemsg;
     }
-    
-    
-    
-    
+
+    public void setReponsemsg(String reponsemsg) {
+        this.reponsemsg = reponsemsg;
+
+    }
+
+    public Utilisateur getUtilisateur() {
+        return Utilisateur;
+    }
+
+    /**
+     * @param depot the depot to set
+     */
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.Utilisateur = utilisateur;
+    }
+
 }

@@ -52,6 +52,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
+        bt_Feedbacks = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -128,6 +129,13 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
+        bt_Feedbacks.setText("Feedbacks");
+        bt_Feedbacks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_FeedbacksActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,19 +145,20 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_mes_offres)
                             .addComponent(bt_mon_compte)
-                            .addComponent(bt_a_propos)
+                            .addComponent(bt_mes_offres)
+                            .addComponent(bt_validation_offres)
                             .addComponent(bt_recherche)
-                            .addComponent(bt_validation_offres))
+                            .addComponent(bt_a_propos)
+                            .addComponent(bt_Feedbacks))
                         .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(217, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
                         .addComponent(bt_deconnecter)
                         .addGap(193, 193, 193))))
         );
@@ -167,20 +176,22 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                             .addComponent(bt_deconnecter))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(45, 45, 45)
                         .addComponent(bt_mon_compte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(bt_mes_offres)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_validation_offres)
-                        .addGap(7, 7, 7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_Feedbacks)
+                        .addGap(11, 11, 11)
                         .addComponent(bt_a_propos))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,6 +244,12 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         gvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_validation_offresActionPerformed
+
+    private void bt_FeedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_FeedbacksActionPerformed
+        Compte_gerant cg = new Compte_gerant();
+        cg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_FeedbacksActionPerformed
     
     /**
      * @param args the command line arguments
@@ -283,6 +300,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acceuil;
+    private javax.swing.JButton bt_Feedbacks;
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_mes_offres;
