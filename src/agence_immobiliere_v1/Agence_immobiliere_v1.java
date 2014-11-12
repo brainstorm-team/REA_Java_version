@@ -6,7 +6,6 @@
 package agence_immobiliere_v1;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
-import gui.Acceuil_client;
 import gui.Authentification;
 import java.text.ParseException;
 import java.util.logging.Level;

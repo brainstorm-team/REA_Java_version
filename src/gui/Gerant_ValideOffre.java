@@ -6,6 +6,7 @@
 package gui;
 
 import DAO.classes.FavorisDAO;
+import DAO.classes.OffreDAO;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,8 +55,8 @@ public class Gerant_ValideOffre extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                int row =table.getSelectedRow(); 
                System.out.println("my id "+table.getModel().getValueAt(table.getSelectedRow(), 10));
-                FavorisDAO.getInstance().deleteFavoris((int)table.getModel().getValueAt(table.getSelectedRow(), 10));
-                table.setModel(new ListFavoris());
+                OffreDAO.getInstance().validerOffre((int)table.getModel().getValueAt(table.getSelectedRow(), 10));
+                table.setModel(new ListOffreNonValide());
             }
         });
         
