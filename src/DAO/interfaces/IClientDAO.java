@@ -6,6 +6,7 @@
 package DAO.interfaces;
 
 import entities.Client;
+import entities.Utilisateur;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface IClientDAO {
     void deleteClient(String login);
     void updateClient(String login, String password);
     Client findClientByLogin (String login);
-    //Client findClientById (int id);
+    Utilisateur findUserByLogin (String login);
     List<Client> DiplayAllClient();
     
     

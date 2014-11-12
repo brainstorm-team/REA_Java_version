@@ -7,6 +7,7 @@ package DAO.classes;
 
 import DAO.interfaces.IGerantDAO;
 import entities.Gerant;
+import entities.Utilisateur;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -155,10 +156,39 @@ public class GerantDAO implements IGerantDAO {
         }
         return gerant;
     }
-      
-      
-      
-   
+
+    @Override
+    public Utilisateur findUserByLogin(String login) {
+        Utilisateur gerant = null;
+        String requete = "SELECT * FROM `user` where login='" + login + "'";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+            while (resultat.next()) {
+                gerant = new Utilisateur();
+                gerant.setId(resultat.getInt(1));
+                gerant.setPrenom(resultat.getString(2));
+                gerant.setNom(resultat.getString(3));
+                gerant.setEmail(resultat.getString(4));
+
+                gerant.setTelephone(resultat.getString(5));
+                gerant.setAdresse(resultat.getString(6));
+                gerant.setLogin(resultat.getString(7));
+                gerant.setPass(resultat.getString(8));
+                gerant.setRole(resultat.getString(9));
+
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des administrateurs " + ex.getMessage());
+        }
+        return gerant;
+//         public void refrech(){
+//         
+//         }
+
     }
+}
+
     
 

@@ -6,6 +6,7 @@
 package gui;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import entities.Util;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -27,8 +28,9 @@ public class Acceuil_admin extends javax.swing.JFrame {
      */
     public Acceuil_admin() {
         initComponents();
+        login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
         this.setLocationRelativeTo(null);
-        acceuil.setIcon(createIcon("/images/home.gif"));
+        login_agent_connecte.setIcon(createIcon("/images/home.gif"));
     }
 
     /**
@@ -46,7 +48,7 @@ public class Acceuil_admin extends javax.swing.JFrame {
         bt_mon_compte = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_offres = new javax.swing.JTable();
-        acceuil = new javax.swing.JLabel();
+        login_agent_connecte = new javax.swing.JLabel();
         bt_a_propos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bt_deconnecter = new javax.swing.JButton();
@@ -90,7 +92,7 @@ public class Acceuil_admin extends javax.swing.JFrame {
         table_offres.setModel(new ListOffreNonValide());
         jScrollPane1.setViewportView(table_offres);
 
-        acceuil.setText("Acceuil :");
+        login_agent_connecte.setText("Acceuil admin:");
 
         bt_a_propos.setText("A propos");
         bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +125,11 @@ public class Acceuil_admin extends javax.swing.JFrame {
         });
 
         bt_visualiser_stat.setText("Visualiser statistique");
+        bt_visualiser_stat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_visualiser_statActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,25 +139,32 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_mon_compte)
-                            .addComponent(bt_gestion_compte_client)
-                            .addComponent(bt_gestion_compte_gerant)
-                            .addComponent(bt_a_propos)
-                            .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_a_propos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_mon_compte))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_gestion_compte_client))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_gestion_compte_gerant))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(bt_visualiser_stat)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_deconnecter)
-                        .addGap(77, 77, 77))))
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,14 +172,14 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(acceuil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
                         .addComponent(bt_mon_compte)
                         .addGap(18, 18, 18)
                         .addComponent(bt_gestion_compte_client)
                         .addGap(18, 18, 18)
                         .addComponent(bt_gestion_compte_gerant)
-                        .addGap(27, 27, 27)
+                        .addGap(21, 21, 21)
                         .addComponent(bt_visualiser_stat)
                         .addGap(18, 18, 18)
                         .addComponent(bt_a_propos))
@@ -175,8 +189,8 @@ public class Acceuil_admin extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(bt_deconnecter))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,10 +220,12 @@ public class Acceuil_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_deconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deconnecterActionPerformed
+        
         Authentification au = new Authentification();
         au.setVisible(true);
         this.setVisible(false);
         pack();
+        System.exit(WIDTH);
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_gestion_compte_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_clientActionPerformed
@@ -223,6 +239,10 @@ public class Acceuil_admin extends javax.swing.JFrame {
        gcg.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_gestion_compte_gerantActionPerformed
+
+    private void bt_visualiser_statActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_visualiser_statActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_visualiser_statActionPerformed
     
     /**
      * @param args the command line arguments
@@ -272,7 +292,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel acceuil;
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_gestion_compte_client;
@@ -284,6 +303,7 @@ public class Acceuil_admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel login_agent_connecte;
     private javax.swing.JTable table_offres;
     // End of variables declaration//GEN-END:variables
 

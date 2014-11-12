@@ -20,6 +20,8 @@ public class Utilisateur {
     protected String pass;
     protected String role;
 
+    
+    
     public Utilisateur(int Id, String nom, String prenom, String email, String telephone, String adresse, String login, String pass , String role) {
         this.Id = Id;
         this.nom = nom;

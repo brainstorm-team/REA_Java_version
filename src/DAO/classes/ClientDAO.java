@@ -8,6 +8,7 @@ package DAO.classes;
 import DAO.interfaces.IClientDAO;
 import entities.Client;
 import entities.Offre;
+import entities.Utilisateur;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -196,4 +197,37 @@ public class ClientDAO implements IClientDAO {
             return null;
         }
     }
-}
+
+    @Override
+    public Utilisateur findUserByLogin(String login) {
+        Utilisateur client = null;
+        String requete = "SELECT * FROM `user` where login='" + login + "'";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+            while (resultat.next()) {
+                client = new Utilisateur();
+                client.setId(resultat.getInt(1));
+                client.setPrenom(resultat.getString(2));
+                client.setNom(resultat.getString(3));
+                client.setEmail(resultat.getString(4));
+
+                client.setTelephone(resultat.getString(5));
+                client.setAdresse(resultat.getString(6));
+                client.setLogin(resultat.getString(7));
+                client.setPass(resultat.getString(8));
+                client.setRole(resultat.getString(9));
+
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des administrateurs " + ex.getMessage());
+        }
+        return client;
+//         public void refrech(){
+//         
+//         }
+
+    }
+    }
+

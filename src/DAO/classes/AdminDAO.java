@@ -22,9 +22,11 @@ import technique.DataSource;
  *
  * @author jemacom
  */
-public class AdminDAO implements IAdminDAO{
-    
-    /*********Singleton*********/
+public class AdminDAO implements IAdminDAO {
+
+    /**
+     * *******Singleton********
+     */
     private static AdminDAO instance;
 
     public static AdminDAO getInstance() {
@@ -33,41 +35,43 @@ public class AdminDAO implements IAdminDAO{
         }
         return instance;
     }
-    
-    private java.sql.Connection connection;
 
+    private java.sql.Connection connection;
 
     public AdminDAO() {
         connection = DataSource.getInstance();
     }
-    /*******************************/
+
+    /**
+     * ****************************
+     */
 
     @Override
     public List<Admin> SelectAdmin() {
         String requete = "select * from user where role='administrateur'";
-        try{    
-        PreparedStatement ps;
+        try {
+            PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
-            
+
             ArrayList<Admin> tadmin = new ArrayList<>();
-            
+
             while (result.next()) {
-               Admin admin = new Admin();
-               
+                Admin admin = new Admin();
+
                 admin.setId(result.getInt(1));
                 admin.setPrenom(result.getString(3));
                 admin.setNom(result.getString(2));
                 admin.setEmail(result.getString(4));
-          
+
                 admin.setTelephone(result.getString(5));
                 admin.setAdresse(result.getString(6));
                 admin.setLogin(result.getString(7));
                 admin.setPass(result.getString(8));
-              
+
                 tadmin.add(admin);
-                
-                  System.out.println("admin "+admin.getLogin());
+
+                System.out.println("admin " + admin.getLogin());
             }
             return tadmin;
         } catch (Exception ee) {
@@ -84,7 +88,7 @@ public class AdminDAO implements IAdminDAO{
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
-            Admin admin = new   Admin();
+            Admin admin = new Admin();
             ArrayList<String> tadmin = new ArrayList<>();
             while (result.next()) {
                 tadmin.add(result.getString(1));
@@ -100,12 +104,12 @@ public class AdminDAO implements IAdminDAO{
     public void insertAdmin(Admin admin) {
         try {
             String requete = "INSERT INTO `user` (`Id`, `prenom`, `nom`, `email`, `telephone`, `adresse`, `login`, `pass`) VALUES (null,?,?,?,?,?,?,?) where role='administrateur'";
-            
+
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, admin.getPrenom());
             ps.setString(2, admin.getNom());
             ps.setString(3, admin.getEmail());
-         
+
             ps.setString(4, admin.getTelephone());
             ps.setString(5, admin.getAdresse());
             ps.setString(6, admin.getLogin());
@@ -121,10 +125,10 @@ public class AdminDAO implements IAdminDAO{
         //apdate selon login et pass
         String requete = "UPDATE user SET pass=? WHERE login=? and role='administrateur'";
         try {
-            PreparedStatement ps =  connection.prepareStatement(requete);
+            PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, password);
             ps.setString(2, login);
-           
+
             ps.executeUpdate();
             System.out.println("admin update");
         } catch (SQLException ex) {
@@ -136,7 +140,7 @@ public class AdminDAO implements IAdminDAO{
     public void deleteAdmin(String login) {
         String requete = "delete from user where login=? and role='administrateur'";
         try {
-            PreparedStatement ps =connection.prepareStatement(requete);
+            PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, login);
             ps.execute();
             System.out.println("administrateur supprimée");
@@ -148,43 +152,40 @@ public class AdminDAO implements IAdminDAO{
     @Override
     public Admin findAdministrateurByLogin(String login) {
         // return admin par id
-      Admin admin =null;
-        String requete = "select * from user where login= '"+login+"' and role='administrateur'";
+        Admin admin = null;
+        String requete = "select * from user where login= '" + login + "' and role='administrateur'";
         try {
-           Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            while(resultat.next()){
-               admin = new Admin();
-               admin.setId(1);
-               admin.setLogin(resultat.getString(7));
-               admin.setPass(resultat.getString(8));
+            while (resultat.next()) {
+                admin = new Admin();
+                admin.setId(1);
+                admin.setLogin(resultat.getString(7));
+                admin.setPass(resultat.getString(8));
             }
         } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des administrateurs "+ex.getMessage());
+            System.out.println("erreur lors du chargement des administrateurs " + ex.getMessage());
         }
         return admin;
-//         public void refrech(){
-//         
-//         }
-        
-        
     }
 
+    
+    
+    
     @Override
     public Admin findById(int id) {
-        String SQL_FIND =  "SELECT * FROM user WHERE id=? and role='administrateur'";
-       Admin found = null;
-        
+        String SQL_FIND = "SELECT * FROM user WHERE id=? and role='administrateur'";
+        Admin found = null;
+
         PreparedStatement pstmt = null;
-        ResultSet rs = null;       
-        
-        try{
-            
+        ResultSet rs = null;
+
+        try {
+
             pstmt = connection.prepareStatement(SQL_FIND);
             pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 int userId = rs.getInt("id");
                 String userprenom = rs.getString("prenom");
                 String usernom = rs.getString("nom");
@@ -192,23 +193,22 @@ public class AdminDAO implements IAdminDAO{
                 String usertelephone = rs.getString("telephone");
                 String useradresse = rs.getString("adresse");
                 String userlogin = rs.getString("login");
-                 String userpass = rs.getString("pass");
-                
-                 found = new Admin(userId,usernom,userprenom,useremail,usertelephone,useradresse,userlogin, userpass);      
+                String userpass = rs.getString("pass");
+
+                found = new Admin(userId, usernom, userprenom, useremail, usertelephone, useradresse, userlogin, userpass);
             }
 
-                
-        }catch(SQLException  ex){
-           Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, "find failed", ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, "find failed", ex);
         }
         return found;
     }
 
     @Override
     public void update(Admin user) {
-        if(findById(user.getId())!= null){
+        if (findById(user.getId()) != null) {
             PreparedStatement pstmt = null;
-            String SQL_UPDATE =  "UPDATE user SET prenom=?, nom=?, email=?,  telephone=?,adresse=?,login=?,pass=? WHERE id=? and role='administrateur'";
+            String SQL_UPDATE = "UPDATE user SET prenom=?, nom=?, email=?,  telephone=?,adresse=?,login=?,pass=? WHERE id=? and role='administrateur'";
             try {
                 pstmt = connection.prepareStatement(SQL_UPDATE);
                 pstmt.setString(1, user.getPrenom());
@@ -225,38 +225,32 @@ public class AdminDAO implements IAdminDAO{
             }
         }
     }
-    public Utilisateur findUserByLogin (String login){// return admin par id
-      Utilisateur admin =null;
-        String requete = "SELECT * FROM `user` where login='"+login+"'";
+
+    @Override
+    public Utilisateur findUserByLogin(String login) {// return admin par id
+        Utilisateur admin = null;
+        String requete = "SELECT * FROM `user` where login='" + login + "'";
         try {
-           Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            while(resultat.next()){
-               admin = new Utilisateur();
-               admin.setId(resultat.getInt(1));
+            while (resultat.next()) {
+                
+                admin = new Utilisateur();
+                admin.setId(resultat.getInt(1));
                 admin.setPrenom(resultat.getString(2));
                 admin.setNom(resultat.getString(3));
                 admin.setEmail(resultat.getString(4));
-          
+
                 admin.setTelephone(resultat.getString(5));
                 admin.setAdresse(resultat.getString(6));
-                 admin.setLogin(resultat.getString(7));
+                admin.setLogin(resultat.getString(7));
                 admin.setPass(resultat.getString(8));
                 admin.setRole(resultat.getString(9));
-                
+
             }
         } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des administrateurs "+ex.getMessage());
+            System.out.println("erreur lors du chargement des administrateurs " + ex.getMessage());
         }
         return admin;
-//         public void refrech(){
-//         
-//         }
-        
-        
     }
-    
 }
-    
-

@@ -6,6 +6,7 @@
 package DAO.interfaces;
 
 import entities.Gerant;
+import entities.Utilisateur;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,7 @@ public interface IGerantDAO {
     void deleteGerant(String login);
     void updateGerant(String login, String password);
     Gerant findGerantByLogin (String login);
+    Utilisateur findUserByLogin (String login);
     
     
 }

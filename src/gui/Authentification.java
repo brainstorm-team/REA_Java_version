@@ -6,13 +6,7 @@
 package gui;
 
 import DAO.classes.AdminDAO;
-import DAO.classes.ClientDAO;
-import DAO.classes.GerantDAO;
-import DAO.interfaces.IAdminDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
-import entities.Admin;
-import entities.Client;
-import entities.Gerant;
 import entities.Util;
 import entities.Utilisateur;
 import java.awt.KeyEventDispatcher;
@@ -24,7 +18,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import sun.swing.AccumulativeRunnable;
 
 /**
  *
@@ -32,81 +25,102 @@ import sun.swing.AccumulativeRunnable;
  */
 public class Authentification extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form Authentification
      */
     public Authentification() {
         initComponents();
         this.setLocationRelativeTo(null);
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher(){
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
-                
-                    switch (e.getID()) {
+
+                switch (e.getID()) {
                     case KeyEvent.KEY_PRESSED:
                         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                             seConnecter();
                         }
                         break;
-                        default :
-                    return false;
+                    default:
+                        return false;
                 }
                 return false;
-            }     
-    
+            }
+
         });
-        
-        
+
     }
-    /**On a besoin de cette fonction pour se connecter 
-    *soit en click sur le button "Se connecter" soit en tapant sur ENTRER
-    */
-    private void seConnecter(){
-        Utilisateur user =new Utilisateur();
-        user =AdminDAO.getInstance().findUserByLogin(login.getText());
-        if(user != null){
-        if(user.getRole().equals("client")){
-            if (user.getPass().equals(pass.getText())) {           
-                Util.id_agent_connecte = user.getId();
-                Util.role_agent_connecte = "client";
-                
-                Acceuil_client acc = new Acceuil_client();
-                acc.setVisible(true);
-                this.setVisible(false);
-            }  else {
-                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);}
-        
+
+    /**
+     * On a besoin de cette fonction pour se connecter soit en click sur le
+     * button "Se connecter" soit en tapant sur ENTRER
+     */
+    private void seConnecter() {
+        Utilisateur user = new Utilisateur();
+        user = AdminDAO.getInstance().findUserByLogin(login.getText());
+        if (user != null) {
+            if (user.getRole().equals("client")) {
+                if (user.getPass().equals(pass.getText())) {
+                    Util.id_agent_connecte = user.getId();
+                    Util.role_agent_connecte = "client";
+                    Util.login_agent_connecte = user.getLogin();
+                    Util.nom_agent_connecte=user.getNom();
+                    Util.prenom_agent_connecte = user.getPrenom();
+                    Util.adresse_agent_connecte = user.getAdresse();
+                    Util.email_agent_connecte = user.getEmail();
+                    Util.telephone_agent_connecte = user.getTelephone();
+
+                    Acceuil_client acc = new Acceuil_client();
+                    acc.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);
+                }
+
+            }
+            if (user.getRole().equals("gerant")) {
+
+                if (user.getPass().equals(pass.getText())) {
+                    Util.id_agent_connecte = user.getId();
+                    Util.role_agent_connecte = "gerant";
+                    Util.login_agent_connecte = user.getLogin();
+                    Util.nom_agent_connecte = user.getNom();
+                    Util.prenom_agent_connecte = user.getPrenom();
+                    Util.adresse_agent_connecte = user.getAdresse();
+                    Util.email_agent_connecte = user.getEmail();
+                    Util.telephone_agent_connecte = user.getTelephone();
+
+                    Acceuil_gerant acc = new Acceuil_gerant();
+                    acc.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);
+                }
+            }
+            if (user.getRole().equals("administrateur")) {
+
+                if (user.getPass().equals(pass.getText())) {
+                    Util.id_agent_connecte = user.getId();
+                    Util.role_agent_connecte = "administrateur";
+                    Util.login_agent_connecte = user.getLogin();
+                    Util.nom_agent_connecte=user.getNom();
+                    Util.prenom_agent_connecte = user.getPrenom();
+                    Util.adresse_agent_connecte = user.getAdresse();
+                    Util.email_agent_connecte = user.getEmail();
+                    Util.telephone_agent_connecte = user.getTelephone();
+
+                    Acceuil_admin acc = new Acceuil_admin();
+                    acc.setVisible(true);
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);
         }
-        if(user.getRole().equals("gerant")){
-        
-        if (user.getPass().equals(pass.getText())) {           
-                Util.id_agent_connecte = user.getId();
-                Util.role_agent_connecte = "gerant";
-                Acceuil_gerant acc = new Acceuil_gerant();
-                acc.setVisible(true);
-                this.setVisible(false);         
-            }  else {
-                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);}
-        
-        
-        }  if(user.getRole().equals("administrateur")){
-        
-        if (user.getPass().equals(pass.getText())) {           
-                Util.id_agent_connecte = user.getId();
-                Util.role_agent_connecte = "administrateur";
-                Acceuil_admin acc = new Acceuil_admin();
-                acc.setVisible(true);
-                this.setVisible(false);
-                
-            }  else {
-                    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);}
-        
-        }}
-        else {    JOptionPane.showMessageDialog(null, "Mot de passe incorrect", "Error", 1);
-        }
-        
-        
 
     }
 
@@ -238,8 +252,8 @@ public class Authentification extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_se_connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_se_connecterActionPerformed
-       seConnecter();
-        
+        seConnecter();
+
     }//GEN-LAST:event_bt_se_connecterActionPerformed
 
     private void bt_inscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inscrireActionPerformed
@@ -281,18 +295,16 @@ public class Authentification extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                try{
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-                    
+
                     new Authentification().setVisible(true);
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
+                } catch (UnsupportedLookAndFeelException | ParseException ex) {
                     Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-               
+
             }
         });
     }
