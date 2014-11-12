@@ -8,14 +8,13 @@ package gui;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import sun.nio.ch.sctp.Shutdown;
 
 /**
  *
@@ -28,7 +27,7 @@ public class Acceuil_admin extends javax.swing.JFrame {
      */
     public Acceuil_admin() {
         initComponents();
-        login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
+        login_agent_connecte.setText("Bonjour  " + Util.login_agent_connecte + " ;) ");
         this.setLocationRelativeTo(null);
         login_agent_connecte.setIcon(createIcon("/images/home.gif"));
     }
@@ -197,53 +196,62 @@ public class Acceuil_admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-            CompteAdmin ca = new CompteAdmin();
-            ca.setVisible(true);
-            this.setVisible(false);
+        CompteAdmin ca = new CompteAdmin();
+        ca.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
-    private ImageIcon createIcon(String path){
+    private ImageIcon createIcon(String path) {
         URL url = getClass().getResource(path);
-        if (url == null){
-            System.err.println("Unable de load the image !"+path);
+        if (url == null) {
+            System.err.println("Unable de load the image !" + path);
             return null;
         }
-        
+
         ImageIcon icon = new ImageIcon(url);
         return icon;
-        
+
     }
     private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
         Apropos ap = new Apropos();
         ap.setVisible(true);
-        
+
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_deconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deconnecterActionPerformed
-        
+        Util.id_agent_connecte = 0;
+        Util.role_agent_connecte = "";
+        Util.login_agent_connecte = "";
+        Util.nom_agent_connecte = "";
+        Util.prenom_agent_connecte = "";
+        Util.adresse_agent_connecte = "";
+        Util.email_agent_connecte = "";
+        Util.telephone_agent_connecte ="";
         Authentification au = new Authentification();
         au.setVisible(true);
         this.setVisible(false);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
-        System.exit(WIDTH);
+//        System.exit(WIDTH);
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_gestion_compte_clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_clientActionPerformed
         Gestion_CompteClient gcc = new Gestion_CompteClient();
         gcc.setVisible(true);
         this.setVisible(false);
+       
     }//GEN-LAST:event_bt_gestion_compte_clientActionPerformed
 
     private void bt_gestion_compte_gerantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_gestion_compte_gerantActionPerformed
-       Gestion_CompteGerant gcg = new Gestion_CompteGerant();
-       gcg.setVisible(true);
+        Gestion_CompteGerant gcg = new Gestion_CompteGerant();
+        gcg.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_gestion_compte_gerantActionPerformed
 
     private void bt_visualiser_statActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_visualiser_statActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_visualiser_statActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -275,12 +283,11 @@ public class Acceuil_admin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-                    
+
                     new Acceuil_admin().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Acceuil_admin.class.getName()).log(Level.SEVERE, null, ex);

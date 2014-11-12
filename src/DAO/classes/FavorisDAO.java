@@ -106,6 +106,35 @@ public class FavorisDAO implements IFavorisDAO{
             System.out.println("erreur lors de la suppression aux favoris " + ex.getMessage());
         }
     }
+
+    @Override
+    public boolean rechercherFavoris(int ID) {
+        String requete  = "select * from favoris where Id_client = ?";
+        try{
+            PreparedStatement ps = connection.prepareStatement(requete);
+            ps.setInt(1 , Util.id_agent_connecte);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()){
+                int Id_offre = resultat.getInt(3);
+                if (ID == Id_offre){
+                    return true;
+                }
+            }
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(FavorisDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return true;
+        }
+    }
+
+    @Override
+    public String evaluationFavoris(int ID) {
+        if (rechercherFavoris(ID)){
+            return "*";
+        }
+        else 
+            return "";
+    }
 }
 
 

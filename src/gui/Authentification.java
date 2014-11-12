@@ -6,7 +6,7 @@
 package gui;
 
 import DAO.classes.AdminDAO;
-import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
 import entities.Util;
 import entities.Utilisateur;
 import java.awt.KeyEventDispatcher;
@@ -298,7 +298,7 @@ public class Authentification extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
+                    UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
 
                     new Authentification().setVisible(true);
                 } catch (UnsupportedLookAndFeelException | ParseException ex) {

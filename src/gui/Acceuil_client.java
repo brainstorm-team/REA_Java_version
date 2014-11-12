@@ -19,7 +19,9 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -63,8 +65,17 @@ public class Acceuil_client extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                int row =table_offres.getSelectedRow(); 
-               System.out.println("my id "+table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
-                FavorisDAO.getInstance().insertFavoris((int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
+               int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
+               boolean trouve = FavorisDAO.getInstance().rechercherFavoris(ID);
+               if (trouve){
+                   JOptionPane.showMessageDialog(null, "l'offre est déjà dans la votre liste favoris", "Information", 1);
+               }else{
+                    System.out.println("my id "+table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
+                    FavorisDAO.getInstance().insertFavoris(ID);
+                    JOptionPane.showMessageDialog(null, "L'offre est MAINTENANT dans votre liste favoris !", "Information", 1);
+               }
+               
+              
                
             }
         });
@@ -283,16 +294,27 @@ public class Acceuil_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_mes_offresActionPerformed
 
     private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
-   
+        if (evt.getClickCount() == 2) {
+                new DetailOffre().setVisible(true);
+            }
+        
     }//GEN-LAST:event_table_offresMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        Util.id_agent_connecte = 0;
+        Util.role_agent_connecte = "";
+        Util.login_agent_connecte = "";
+        Util.nom_agent_connecte = "";
+        Util.prenom_agent_connecte = "";
+        Util.adresse_agent_connecte = "";
+        Util.email_agent_connecte = "";
+        Util.telephone_agent_connecte ="";        
         Authentification au = new Authentification();
         au.setVisible(true);
         this.setVisible(false);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
-        System.exit(WIDTH);
+//        System.exit(WIDTH);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed

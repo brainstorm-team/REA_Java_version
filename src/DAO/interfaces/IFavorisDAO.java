@@ -16,4 +16,6 @@ public interface IFavorisDAO {
     void insertFavoris(int id);
     void deleteFavoris(int id);
     List<Offre> DisplayAllFavoris();
+    boolean rechercherFavoris(int ID);
+    String evaluationFavoris(int ID );
 }

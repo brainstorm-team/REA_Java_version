@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import DAO.classes.FavorisDAO;
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
 import entities.Offre;
@@ -17,12 +18,12 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ListOffreValide extends AbstractTableModel{
     
-    String [] header={"Titre","Type", "Catégorie", "Ville", "Prix", "Surface"};
+    String [] header={"Titre","Type", "Catégorie", "Ville", "Prix", "Surface" , "Favoris"};
     List<Offre> offres=new ArrayList<>();
     
     public ListOffreValide() {
         IOffreDAO offreDAO=OffreDAO.getInstance();
-        offres=offreDAO.getAllUnValidatedOffers();
+        offres=offreDAO.getAllValidatedOffers();
     
     }
     @Override
@@ -53,6 +54,8 @@ public class ListOffreValide extends AbstractTableModel{
                 return offres.get(rowIndex).getPrix();
             case 5: 
                 return offres.get(rowIndex).getSurface();
+            case 6:
+                return FavorisDAO.getInstance().evaluationFavoris(offres.get(rowIndex).getId());
             //Pour pouvoir recuperer l'id de l'offre dans le table 
             case 10:
                 return offres.get(rowIndex).getId();

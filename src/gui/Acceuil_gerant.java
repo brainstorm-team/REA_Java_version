@@ -7,12 +7,14 @@ package gui;
 
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
+import java.awt.Frame;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -225,12 +227,23 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_deconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deconnecterActionPerformed
-        
+        Util.id_agent_connecte = 0;
+        Util.role_agent_connecte = "";
+        Util.login_agent_connecte = "";
+        Util.nom_agent_connecte = "";
+        Util.prenom_agent_connecte = "";
+        Util.adresse_agent_connecte = "";
+        Util.email_agent_connecte = "";
+        Util.telephone_agent_connecte ="";        
         Authentification au = new Authentification();
         au.setVisible(true);
         this.setVisible(false);
+        for (Frame f : JFrame.getFrames()) {
+            f.dispose();
+        }
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
-        System.exit(WIDTH);
+//        System.exit(WIDTH);
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
