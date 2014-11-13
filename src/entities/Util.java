@@ -35,7 +35,7 @@ public class Util {
     public static Double prixMax ; 
     public static int surfaceMin ;
     public static int surfaceMax ; 
-    
+    public static int IdMessageAR; //Id message à répondre
     public static int idOffreASupprimer;
  
     

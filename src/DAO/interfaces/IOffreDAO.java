@@ -26,6 +26,9 @@ public interface IOffreDAO {
     List<Offre> getClientMesOffres();
     List<Offre> getGerantMesOffres();
     List<Offre> recherche();
-    
+    public int TotalnombreOffre();
+    int nombreOffreNOnvalide();
+    int nombreOffre();
+   
 
 }

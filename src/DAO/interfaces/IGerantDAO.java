@@ -8,6 +8,7 @@ package DAO.interfaces;
 import entities.Gerant;
 import entities.Utilisateur;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,6 @@ public interface IGerantDAO {
     void updateGerant(String login, String password);
     Gerant findGerantByLogin (String login);
     Utilisateur findUserByLogin (String login);
-    
-    
+    int nombreGerant();
+    List<Gerant> DisplayStat();
 }

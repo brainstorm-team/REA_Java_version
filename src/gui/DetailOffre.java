@@ -27,15 +27,13 @@ public class DetailOffre extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public DetailOffre(String categorie, String description, Double prix, int surface, String titre, String type, String ville) {
-//        this.categorie.setText(categorie);
-//        this.description.setText(description);
-//        this.prix.setText(prix.toString());
-//        this.surface.setText(surface+"");
-//        this.type.setText(type);
-//        this.ville.setText(ville);
+    public DetailOffre(String titre, String type, String categorie, String ville) {
+
+        this.type.setText(type);
+        this.categorie.setText(categorie);
+        this.titre.setText(titre);
+        this.ville.setText(ville);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -249,9 +247,9 @@ public class DetailOffre extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_commenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_commenterActionPerformed
-        Commentaire_client cc = new Commentaire_client();
-        cc.setVisible(true);
-        this.setVisible(false);
+//        Commentaire_client cc = new Commentaire_client();
+//        cc.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_bt_commenterActionPerformed
 
     private void bt_retourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_retourActionPerformed
@@ -290,7 +288,7 @@ public class DetailOffre extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     new DetailOffre().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
@@ -298,7 +296,7 @@ public class DetailOffre extends javax.swing.JFrame {
                 } catch (ParseException ex) {
                     Logger.getLogger(DetailOffre.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         });
     }

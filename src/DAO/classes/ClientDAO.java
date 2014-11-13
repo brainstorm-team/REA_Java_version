@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import technique.DataSource;
 
 /**
@@ -44,7 +46,24 @@ public class ClientDAO implements IClientDAO {
     /**
      * ****************************
      */
+    @Override
+    public int nombreClient() {
+       String n = null;
+        try {
+            String requete="SELECT COUNT(*) from user where `role`='client'";
+           
+                    Statement statement = DataSource.getInstance().createStatement();
+            ResultSet nb = statement.executeQuery(requete);
 
+            while(nb.next()){
+            
+             n=nb.getString("COUNT(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return Integer.parseInt(n);
+    } 
     @Override
     public ArrayList<Client> SelectClient() {
         try {

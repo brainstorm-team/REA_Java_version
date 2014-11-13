@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import technique.DataSource;
 
 /**
@@ -51,8 +50,62 @@ public class OffreDAO implements IOffreDAO {
      * qui prend par défault la date now() de système  CURRENT_TIMESTAMP
      */
     
-    
-    
+    @Override
+    public int nombreOffre() {
+         String n = null;
+        try {
+            String requete="SELECT COUNT(*) from offre where `validation`='1' ";
+           
+                    Statement statement = DataSource.getInstance().createStatement();
+            ResultSet nb = statement.executeQuery(requete);
+
+            while(nb.next()){
+            
+             n=nb.getString("COUNT(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OffreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return Integer.parseInt(n);
+    }
+    @Override
+    public int nombreOffreNOnvalide() {
+         String n = null;
+        try {
+            String requete="SELECT COUNT(*) from offre where `validation`='0' ";
+           
+                    Statement statement = DataSource.getInstance().createStatement();
+            ResultSet nb = statement.executeQuery(requete);
+
+            while(nb.next()){
+            
+             n=nb.getString("COUNT(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OffreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return Integer.parseInt(n);
+    }
+
+    @Override
+    public int TotalnombreOffre() {
+       String n = null;
+        try {
+            String requete="SELECT COUNT(*) from offre ";
+           
+                    Statement statement = DataSource.getInstance().createStatement();
+            ResultSet nb = statement.executeQuery(requete);
+
+            while(nb.next()){
+            
+             n=nb.getString("COUNT(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OffreDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return Integer.parseInt(n);
+    }
+
     
     @Override
     public void insertOffre(Offre offre) {
@@ -344,8 +397,6 @@ public class OffreDAO implements IOffreDAO {
                 offreR.setIdClient(resultat.getInt(10));
                 offreR.setIdGerant(resultat.getInt(11));
                 
-                
-
                 listeOffres.add(offreR);
             }
 

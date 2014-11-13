@@ -5,25 +5,14 @@
  */
 package gui;
 
-import DAO.classes.FavorisDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -57,7 +46,6 @@ public class Compte_client extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
-        bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         login_agent_connecte = new javax.swing.JLabel();
         bt_mes_favoris = new javax.swing.JButton();
@@ -93,13 +81,6 @@ public class Compte_client extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bt_mon_compte.setText("Mon compte");
-        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mon_compteActionPerformed(evt);
-            }
-        });
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -146,8 +127,18 @@ public class Compte_client extends javax.swing.JFrame {
         });
 
         bt_message.setText("Message");
+        bt_message.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_messageActionPerformed(evt);
+            }
+        });
 
         bt_commentaire.setText("Commentaire");
+        bt_commentaire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_commentaireActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,21 +149,27 @@ public class Compte_client extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_a_propos)
-                            .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_mes_offres)
-                            .addComponent(bt_mes_favoris)
-                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(248, 248, 248)
-                        .addComponent(bt_message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_mes_offres))
+                                .addGap(248, 248, 248)
+                                .addComponent(bt_message, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(93, 93, 93)
+                        .addComponent(bt_desconnecter)
+                        .addGap(102, 102, 102))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_recherche)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
-                        .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(93, 93, 93)
-                .addComponent(bt_desconnecter)
-                .addGap(102, 102, 102))
+                        .addComponent(bt_mes_favoris)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_recherche)
+                            .addComponent(bt_a_propos))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,36 +178,25 @@ public class Compte_client extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_desconnecter))
-                .addGap(69, 69, 69)
-                .addComponent(bt_mon_compte)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(bt_mes_favoris))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(bt_message, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addComponent(bt_mes_offres)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_recherche)
-                    .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(bt_contact)
+                .addGap(79, 79, 79)
+                .addComponent(bt_mes_favoris)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_message, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_mes_offres))
+                .addGap(26, 26, 26)
+                .addComponent(bt_recherche)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_contact))
+                .addGap(20, 20, 20)
                 .addComponent(bt_a_propos)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-        CompteClient cc = new CompteClient();
-        cc.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path) {
         URL url = getClass().getResource(path);
@@ -265,10 +251,30 @@ public class Compte_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_desconnecterActionPerformed
 
     private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed
-        Message_client mc = new Message_client();
+        Message_Client mc = new Message_Client();
         mc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_contactActionPerformed
+
+    private void bt_messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_messageActionPerformed
+
+        this.setVisible(false);
+        ListMessageClient add = new ListMessageClient();
+        add.setVisible(true);
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_messageActionPerformed
+
+    private void bt_commentaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_commentaireActionPerformed
+
+        
+        this.setVisible(false);
+        ListCommentaire_client add = new ListCommentaire_client();
+        add.setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_commentaireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,7 +330,6 @@ public class Compte_client extends javax.swing.JFrame {
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_message;
-    private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

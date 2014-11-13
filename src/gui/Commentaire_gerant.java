@@ -18,17 +18,17 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author CLIENT
  */
-public class Commentaire_client extends javax.swing.JFrame {
+public class Commentaire_gerant extends javax.swing.JFrame {
 
     /**
      */
-    public Commentaire_client() {
+    public Commentaire_gerant() {
         initComponents();
                 this.setLocationRelativeTo(null);
 
     }
 
-    public Commentaire_client(int a, String c, String d) {
+    public Commentaire_gerant(int a, String c, String d) {
 
         initComponents();
         //JOptionPane.showMessageDialog(null, a);
@@ -62,6 +62,7 @@ public class Commentaire_client extends javax.swing.JFrame {
         clientInput = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         idinput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,10 +84,15 @@ public class Commentaire_client extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 30));
 
-        jButton2.setText("Mes favoris");
+        jButton2.setText("Mes offres");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 30));
 
-        jButton4.setText("Recherche Avancee");
+        jButton4.setText("Validation des offres");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -100,15 +106,15 @@ public class Commentaire_client extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 30));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 150, 30));
 
-        jButton7.setText("Contact");
+        jButton7.setText("Recherche avancee");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 30));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 30));
 
         commentaireclientInput.setText("Client");
         getContentPane().add(commentaireclientInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 75, 130));
@@ -144,12 +150,20 @@ public class Commentaire_client extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 490, -1, -1));
 
+        jButton9.setText("A propos");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 150, 30));
+
         idinput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idinputActionPerformed(evt);
             }
         });
-        getContentPane().add(idinput, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, -1));
+        getContentPane().add(idinput, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,6 +214,14 @@ public class Commentaire_client extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     private void idinputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idinputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idinputActionPerformed
@@ -221,13 +243,13 @@ public class Commentaire_client extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Commentaire_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Commentaire_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Commentaire_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Commentaire_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Commentaire_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Commentaire_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Commentaire_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Commentaire_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -238,9 +260,9 @@ public class Commentaire_client extends javax.swing.JFrame {
                                     try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
 
-   new Commentaire_client().setVisible(true);
+   new Commentaire_gerant().setVisible(true);
                                     } catch (        UnsupportedLookAndFeelException | ParseException ex) {
-                    Logger.getLogger(Commentaire_client.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Commentaire_gerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
 
@@ -259,6 +281,7 @@ public class Commentaire_client extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label2;

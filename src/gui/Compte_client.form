@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JMenu" name="jMenu1">
       <Properties>
@@ -64,30 +64,41 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="login_agent_connecte" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                          <Component id="bt_a_propos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_contact" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                          <Component id="bt_mes_offres" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_mes_favoris" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_mon_compte" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="login_agent_connecte" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                                  <Component id="bt_mes_offres" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                              <Component id="bt_message" pref="182" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="bt_contact" min="-2" pref="97" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="bt_commentaire" min="-2" pref="182" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                      <Component id="bt_message" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Component id="bt_desconnecter" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="bt_recherche" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="282" max="32767" attributes="0"/>
-                      <Component id="bt_commentaire" min="-2" pref="182" max="-2" attributes="0"/>
+                      <Component id="bt_mes_favoris" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="bt_recherche" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="bt_a_propos" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-              <Component id="bt_desconnecter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,43 +110,28 @@
                   <Component id="login_agent_connecte" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="bt_desconnecter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-              <Component id="bt_mon_compte" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="bt_mes_favoris" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="bt_message" min="-2" pref="38" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="bt_mes_offres" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+              <Component id="bt_mes_favoris" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_recherche" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bt_commentaire" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="bt_message" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="bt_mes_offres" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="bt_contact" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="bt_recherche" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="bt_commentaire" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="bt_contact" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="bt_a_propos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="209" max="32767" attributes="0"/>
+              <EmptySpace pref="266" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="bt_mon_compte">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mon compte"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mon_compteActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="bt_recherche">
       <Properties>
         <Property name="text" type="java.lang.String" value="Recherche Avancee"/>
@@ -193,11 +189,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Message"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_messageActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_commentaire">
       <Properties>
         <Property name="text" type="java.lang.String" value="Commentaire"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_commentaireActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

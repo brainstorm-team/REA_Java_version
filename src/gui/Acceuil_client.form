@@ -66,29 +66,25 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="login_agent_connecte" min="-2" pref="183" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="bt_desconnecter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="login_agent_connecte" min="-2" pref="183" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="443" max="32767" attributes="0"/>
-                      <Component id="bt_desconnecter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="bt_a_propos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_contact" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                          <Component id="bt_recherche" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_mes_offres" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_mes_favoris" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bt_mon_compte" min="-2" pref="130" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="686" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="bt_recherche" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_mes_offres" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_mes_favoris" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_contact" min="-2" pref="97" max="-2" attributes="0"/>
+                  <Component id="bt_feedbacks" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_a_propos" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="116" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="686" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,16 +106,16 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                      <Component id="bt_mon_compte" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="bt_mes_favoris" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_mes_offres" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_recherche" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_contact" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bt_feedbacks" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_a_propos" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -134,14 +130,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="bt_mon_compte">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mon compte"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_mon_compteActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="bt_recherche">
       <Properties>
         <Property name="text" type="java.lang.String" value="Recherche Avancee"/>
@@ -220,6 +208,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_contactActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_feedbacks">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feedbacks"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_feedbacksActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

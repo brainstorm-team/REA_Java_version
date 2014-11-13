@@ -3,15 +3,30 @@
  * and open the template in the editor.
  */
 package gui;
+
+import DAO.classes.ClientDAO;
+import DAO.classes.GerantDAO;
+import DAO.classes.OffreDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import entities.Gerant;
+import java.awt.Color;
 import java.text.ParseException;
-import  java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -22,28 +37,25 @@ public class Chart extends javax.swing.JFrame {
     /**
      * Creates new form Chart
      */
- private void clock(){
- 
- 
-Calendar cal=new GregorianCalendar();
-int day=cal.get(Calendar.DAY_OF_MONTH);
- int mont=cal.get(Calendar.MONTH);
- int month=mont+1;
- int year =cal.get(Calendar.YEAR);
- int seconde=cal.get(Calendar.SECOND);
- int minute=cal.get(Calendar.MINUTE);
- int heure =cal.get(Calendar.HOUR);
- Lab_date.setText("Date :"+day+"/"+month+"/"+year);
- 
- 
- }
- 
- 
+    private void clock() {
+
+        Calendar cal = new GregorianCalendar();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int mont = cal.get(Calendar.MONTH);
+        int month = mont + 1;
+        int year = cal.get(Calendar.YEAR);
+        int seconde = cal.get(Calendar.SECOND);
+        int minute = cal.get(Calendar.MINUTE);
+        int heure = cal.get(Calendar.HOUR);
+        Lab_date.setText("Date :" + day + "/" + month + "/" + year);
+
+    }
+
     public Chart() {
         initComponents();
+        this.setLocationRelativeTo(null);
         clock();
-         
-        
+
     }
 
     /**
@@ -62,14 +74,13 @@ int day=cal.get(Calendar.DAY_OF_MONTH);
         jPanel3 = new javax.swing.JPanel();
         jB_availability = new javax.swing.JButton();
         jB_percentage = new javax.swing.JButton();
-        jB_scorebar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jCBox_selectPramter = new javax.swing.JComboBox();
-        jB_ok = new javax.swing.JButton();
         Lab_date = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setLayout(null);
 
@@ -77,7 +88,7 @@ int day=cal.get(Calendar.DAY_OF_MONTH);
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("graph of the particular parameter");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(350, 100, 180, 20);
+        jLabel1.setBounds(410, 90, 180, 20);
 
         jPanel2.setLayout(null);
 
@@ -106,45 +117,43 @@ int day=cal.get(Calendar.DAY_OF_MONTH);
         jB_availability.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jB_availability.setText("Availability bar chart");
         jB_availability.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jB_availability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_availabilityActionPerformed(evt);
+            }
+        });
         jPanel3.add(jB_availability);
-        jB_availability.setBounds(10, 12, 220, 20);
+        jB_availability.setBounds(10, 20, 220, 40);
 
         jB_percentage.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jB_percentage.setText("Availability percentage  bar");
         jB_percentage.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel3.add(jB_percentage);
-        jB_percentage.setBounds(10, 59, 220, 20);
-
-        jB_scorebar.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jB_scorebar.setText("Availability score  bar");
-        jB_scorebar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jB_scorebar.addActionListener(new java.awt.event.ActionListener() {
+        jB_percentage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_scorebarActionPerformed(evt);
+                jB_percentageActionPerformed(evt);
             }
         });
-        jPanel3.add(jB_scorebar);
-        jB_scorebar.setBounds(10, 110, 220, 20);
+        jPanel3.add(jB_percentage);
+        jB_percentage.setBounds(10, 70, 220, 40);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(10, 90, 240, 150);
+        jPanel3.setBounds(10, 90, 240, 120);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setLayout(null);
 
         jCBox_selectPramter.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jCBox_selectPramter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Paramter", "User", "Offer", "Administrator", "" }));
+        jCBox_selectPramter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Utlilisateur", "Offre", "Gerant" }));
+        jCBox_selectPramter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBox_selectPramterActionPerformed(evt);
+            }
+        });
         jPanel4.add(jCBox_selectPramter);
-        jCBox_selectPramter.setBounds(30, 20, 130, 25);
-
-        jB_ok.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jB_ok.setForeground(new java.awt.Color(255, 255, 255));
-        jB_ok.setText("OK");
-        jPanel4.add(jB_ok);
-        jB_ok.setBounds(60, 60, 80, 23);
+        jCBox_selectPramter.setBounds(30, 10, 130, 30);
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(330, 120, 210, 120);
+        jPanel4.setBounds(410, 110, 180, 50);
 
         Lab_date.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Lab_date.setForeground(new java.awt.Color(0, 0, 102));
@@ -175,23 +184,151 @@ int day=cal.get(Calendar.DAY_OF_MONTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBt_backChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_backChartActionPerformed
-        // TODO add your handling code here:
-//        compteAdmin a=new compteAdmin();
-//        a.setVisible(true);
-//        this.setVisible(false); 
-    }//GEN-LAST:event_jBt_backChartActionPerformed
-
-    private void jB_scorebarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_scorebarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jB_scorebarActionPerformed
-
-    private void jBt_backChartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBt_backChartMouseClicked
-        // TODO add your handling code here:
-        // SuperAdmin ins = new SuperAdmin();
-       // ins.setVisible(true);
+        Gestion_CompteClient client = new Gestion_CompteClient();
+        client.setVisible(true);
         this.setVisible(false);
         pack();
+    }//GEN-LAST:event_jBt_backChartActionPerformed
+
+    private void jBt_backChartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBt_backChartMouseClicked
+
+
     }//GEN-LAST:event_jBt_backChartMouseClicked
+
+    private void jB_availabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_availabilityActionPerformed
+        Calendar cal = new GregorianCalendar();
+        int mont = cal.get(Calendar.MONTH);
+        int month = mont + 1;
+        int year = cal.get(Calendar.YEAR);
+        String ané = Integer.toString(year);
+
+        String mois = Integer.toString(month);
+
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Utlilisateur")) {
+
+            int s = ClientDAO.getInstance().nombreClient();
+            int a = GerantDAO.getInstance().nombreGerant();
+
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            dataset.setValue(s, "", "client en " + "" + ané);
+            dataset.setValue(a, "", "gerant en " + "" + ané);
+
+            JFreeChart chart = ChartFactory.createBarChart("diagrame represente nombre de utilisateur", "les utilisateurs", "nombre de utilisateurs", dataset, PlotOrientation.VERTICAL, false, true, false);
+            CategoryPlot categoryPlot = chart.getCategoryPlot();
+            categoryPlot.setRangeCrosshairPaint(Color.BLACK);
+            ChartFrame frame = new ChartFrame("BarChart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+
+        }
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Offre")) {
+            int s = OffreDAO.getInstance().nombreOffre();
+            int c = OffreDAO.getInstance().nombreOffreNOnvalide();
+            int k = OffreDAO.getInstance().TotalnombreOffre();
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+            dataset.setValue(s, "", "valide  ");
+            dataset.setValue(c, "", "non valide");
+            dataset.setValue(k, "dans BD", "total");
+
+            JFreeChart chart = ChartFactory.createBarChart("diagrame representes nombre des offres en " + ané, " etat de offre ", "les nombres des  offres", dataset, PlotOrientation.VERTICAL, false, true, false);
+            CategoryPlot categoryPlot = chart.getCategoryPlot();
+            categoryPlot.setRangeCrosshairPaint(Color.BLACK);
+            ChartFrame frame = new ChartFrame("BarChart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+
+        }
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Gerant")) {
+
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            List<Gerant> listeRes = new ArrayList<Gerant>();
+            listeRes = GerantDAO.getInstance().DisplayStat();
+            for (Gerant r : listeRes) {
+
+                System.out.println(r.getNom() + " --> " + r.getNbre() + " ");
+
+                dataset.setValue(r.getNbre(), "", r.getNom());
+
+            }
+            JFreeChart chart = ChartFactory.createBarChart("diagramme nombre des offres valider par gerant en " + ané, "gerant", "nombre des offres valider", dataset, PlotOrientation.VERTICAL, false, true, false);
+            CategoryPlot categoryPlot = chart.getCategoryPlot();
+            categoryPlot.setRangeCrosshairPaint(Color.BLACK);
+            ChartFrame frame = new ChartFrame("BarChart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+
+        }
+
+
+    }//GEN-LAST:event_jB_availabilityActionPerformed
+
+    private void jCBox_selectPramterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBox_selectPramterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBox_selectPramterActionPerformed
+
+    private void jB_percentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_percentageActionPerformed
+        Calendar cal = new GregorianCalendar();
+        int mont = cal.get(Calendar.MONTH);
+        int month = mont + 1;
+        int year = cal.get(Calendar.YEAR);
+        String ané = Integer.toString(year);
+
+        String mois = Integer.toString(month);
+
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Utlilisateur")) {
+            int s = ClientDAO.getInstance().nombreClient();
+            int a = GerantDAO.getInstance().nombreGerant();
+            DefaultPieDataset dataset = new DefaultPieDataset();
+
+            dataset.setValue("client en " + ané, s);
+            dataset.setValue("gerant en " + ané, a);
+
+            JFreeChart chart = ChartFactory.createPieChart(" nombre des utilisateur en pourcentage ", dataset, true, true, true);
+            PiePlot P = (PiePlot) chart.getPlot();
+
+            ChartFrame frame = new ChartFrame("Pie chart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+        }
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Offre")) {
+            int s = OffreDAO.getInstance().nombreOffre();
+            int c = OffreDAO.getInstance().nombreOffreNOnvalide();
+            int k = OffreDAO.getInstance().TotalnombreOffre();
+            DefaultPieDataset dataset = new DefaultPieDataset();
+
+            dataset.setValue("offre valide " + ané, s);
+            dataset.setValue("offres nom valide  " + ané, c);
+            dataset.setValue("total des offres  " + ané, k);
+
+            JFreeChart chart = ChartFactory.createPieChart("pourcentage de offre ", dataset, true, true, true);
+            PiePlot P = (PiePlot) chart.getPlot();
+            // P.setForegroundAlpha(TOP_ALIGNMENT);
+            ChartFrame frame = new ChartFrame("Pie chart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+
+        }
+        if (jCBox_selectPramter.getSelectedItem().toString().equals("Gerant")) {
+
+            DefaultPieDataset dataset = new DefaultPieDataset();
+            List<Gerant> listeRes = new ArrayList<Gerant>();
+            listeRes = GerantDAO.getInstance().DisplayStat();
+            for (Gerant r : listeRes) {
+
+                dataset.setValue(r.getNom(), r.getNbre());
+
+            }
+            JFreeChart chart = ChartFactory.createPieChart("pourcentage action  des offre valider par un gerant en  " + ané, dataset, true, true, true);
+            PiePlot P = (PiePlot) chart.getPlot();
+            // P.setForegroundAlpha(TOP_ALIGNMENT);
+            ChartFrame frame = new ChartFrame("Pie chart", chart);
+            frame.setVisible(true);
+            frame.setSize(400, 500);
+
+        }
+
+    }//GEN-LAST:event_jB_percentageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,9 +376,7 @@ int day=cal.get(Calendar.DAY_OF_MONTH);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lab_date;
     private javax.swing.JButton jB_availability;
-    private javax.swing.JButton jB_ok;
     private javax.swing.JButton jB_percentage;
-    private javax.swing.JButton jB_scorebar;
     private javax.swing.JButton jBt_backChart;
     private javax.swing.JComboBox jCBox_selectPramter;
     private javax.swing.JLabel jLabel1;

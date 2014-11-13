@@ -46,14 +46,12 @@ public class Compte_gerant extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
-        bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         login_agent_connecte = new javax.swing.JLabel();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
-        bt_Feedbacks = new javax.swing.JButton();
         bt_commentaire = new javax.swing.JButton();
         bt_message = new javax.swing.JButton();
 
@@ -82,13 +80,6 @@ public class Compte_gerant extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bt_mon_compte.setText("Mon compte");
-        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mon_compteActionPerformed(evt);
-            }
-        });
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -127,13 +118,6 @@ public class Compte_gerant extends javax.swing.JFrame {
             }
         });
 
-        bt_Feedbacks.setText("Feedbacks");
-        bt_Feedbacks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_FeedbacksActionPerformed(evt);
-            }
-        });
-
         bt_commentaire.setText("Commentaire");
         bt_commentaire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +126,11 @@ public class Compte_gerant extends javax.swing.JFrame {
         });
 
         bt_message.setText("Message");
+        bt_message.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_messageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,10 +140,7 @@ public class Compte_gerant extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_mon_compte)
-                            .addComponent(bt_a_propos)
-                            .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_deconnecter)
                         .addGap(36, 36, 36))
@@ -163,9 +149,9 @@ public class Compte_gerant extends javax.swing.JFrame {
                             .addComponent(bt_mes_offres)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_validation_offres)
                                     .addComponent(bt_recherche)
-                                    .addComponent(bt_Feedbacks)
-                                    .addComponent(bt_validation_offres))
+                                    .addComponent(bt_a_propos))
                                 .addGap(286, 286, 286)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bt_message, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,33 +168,26 @@ public class Compte_gerant extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addComponent(bt_mon_compte)
-                .addGap(12, 12, 12)
+                .addGap(53, 53, 53)
                 .addComponent(bt_mes_offres)
-                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(bt_message))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_validation_offres)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_recherche)))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_validation_offres)
-                    .addComponent(bt_message))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_recherche)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_Feedbacks)
-                    .addComponent(bt_commentaire))
-                .addGap(11, 11, 11)
-                .addComponent(bt_a_propos)
-                .addContainerGap(200, Short.MAX_VALUE))
+                    .addComponent(bt_commentaire)
+                    .addComponent(bt_a_propos))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-            CompteGerant cg = new CompteGerant();
-            cg.setVisible(true);
-            this.setVisible(false);
-    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){
         URL url = getClass().getResource(path);
@@ -265,15 +244,25 @@ public class Compte_gerant extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bt_validation_offresActionPerformed
 
-    private void bt_FeedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_FeedbacksActionPerformed
-        Compte_gerant cg = new Compte_gerant();
-        cg.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_FeedbacksActionPerformed
-
     private void bt_commentaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_commentaireActionPerformed
+
+        this.setVisible(false);
+        ListCommentaire_Gerant add = new ListCommentaire_Gerant();
+        add.setVisible(true);
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_commentaireActionPerformed
+
+    private void bt_messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_messageActionPerformed
+
+        this.setVisible(false);
+        ListesMessagesGerant add = new ListesMessagesGerant();
+        add.setVisible(true);
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_messageActionPerformed
     
     /**
      * @param args the command line arguments
@@ -327,13 +316,11 @@ public class Compte_gerant extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_Feedbacks;
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_commentaire;
     private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_message;
-    private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JButton bt_validation_offres;
     private javax.swing.JDialog jDialog1;

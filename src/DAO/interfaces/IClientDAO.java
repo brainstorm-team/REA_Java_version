@@ -23,7 +23,6 @@ public interface IClientDAO {
     Client findClientByLogin (String login);
     Utilisateur findUserByLogin (String login);
     List<Client> DiplayAllClient();
-    
-    
+    int nombreClient();
 }
     

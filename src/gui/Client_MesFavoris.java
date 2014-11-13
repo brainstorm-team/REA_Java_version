@@ -83,7 +83,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         bt_acceuil = new javax.swing.JButton();
-        bt_mon_compte = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
@@ -98,13 +97,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
         bt_acceuil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_acceuilActionPerformed(evt);
-            }
-        });
-
-        bt_mon_compte.setText("Mon compte");
-        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mon_compteActionPerformed(evt);
             }
         });
 
@@ -140,7 +132,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_mes_offres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_recherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_a_propos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,8 +152,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(bt_acceuil)
-                        .addGap(28, 28, 28)
-                        .addComponent(bt_mon_compte)
                         .addGap(18, 18, 18)
                         .addComponent(bt_mes_offres)
                         .addGap(18, 18, 18)
@@ -181,12 +170,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
         acc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_acceuilActionPerformed
-
-    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-        CompteClient cc = new CompteClient();
-        cc.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
         Client_MesOffres cmo = new Client_MesOffres();
@@ -261,7 +244,6 @@ public class Client_MesFavoris extends javax.swing.JFrame {
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_acceuil;
     private javax.swing.JButton bt_mes_offres;
-    private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

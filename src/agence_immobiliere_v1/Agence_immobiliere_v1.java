@@ -6,7 +6,6 @@
 package agence_immobiliere_v1;
 
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import gui.Authentification;
 import java.text.ParseException;
@@ -27,7 +26,7 @@ public class Agence_immobiliere_v1 {
      */
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
         try {
-            UIManager.setLookAndFeel(new SyntheticaBlackEyeLookAndFeel());
+            UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
             Authentification a = new Authentification();           
             a.setVisible(true);
         } catch (ParseException ex) {

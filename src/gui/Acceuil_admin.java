@@ -44,7 +44,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
-        bt_mon_compte = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_offres = new javax.swing.JTable();
         login_agent_connecte = new javax.swing.JLabel();
@@ -80,13 +79,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bt_mon_compte.setText("Mon compte");
-        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mon_compteActionPerformed(evt);
-            }
-        });
 
         table_offres.setModel(new ListOffreNonValide());
         jScrollPane1.setViewportView(table_offres);
@@ -138,7 +130,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bt_a_propos)
-                    .addComponent(bt_mon_compte)
                     .addComponent(bt_gestion_compte_client)
                     .addComponent(bt_gestion_compte_gerant)
                     .addComponent(bt_visualiser_stat)
@@ -161,15 +152,13 @@ public class Acceuil_admin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)
-                        .addComponent(bt_mon_compte)
-                        .addGap(18, 18, 18)
+                        .addGap(59, 59, 59)
                         .addComponent(bt_gestion_compte_client)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
                         .addComponent(bt_gestion_compte_gerant)
-                        .addGap(21, 21, 21)
+                        .addGap(27, 27, 27)
                         .addComponent(bt_visualiser_stat)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
                         .addComponent(bt_a_propos))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -183,12 +172,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-        CompteAdmin ca = new CompteAdmin();
-        ca.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path) {
         URL url = getClass().getResource(path);
@@ -238,7 +221,9 @@ public class Acceuil_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_gestion_compte_gerantActionPerformed
 
     private void bt_visualiser_statActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_visualiser_statActionPerformed
-        // TODO add your handling code here:
+        Chart c = new Chart();
+        c.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_bt_visualiser_statActionPerformed
 
     /**
@@ -292,7 +277,6 @@ public class Acceuil_admin extends javax.swing.JFrame {
     private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_gestion_compte_client;
     private javax.swing.JButton bt_gestion_compte_gerant;
-    private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_visualiser_stat;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

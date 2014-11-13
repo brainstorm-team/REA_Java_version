@@ -8,7 +8,6 @@ package gui;
 import DAO.classes.FavorisDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,7 +45,10 @@ public class Acceuil_client extends javax.swing.JFrame {
         popup = new JPopupMenu();
        
         JMenuItem FavorisItem =  new JMenuItem("Ajouter aux favoris");
+        JMenuItem CommentItem = new JMenuItem("Commenter cet offre");
         popup.add(FavorisItem);
+        popup.add(CommentItem);
+        
         table_offres.addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e){
@@ -58,7 +60,7 @@ public class Acceuil_client extends javax.swing.JFrame {
                 System.out.println(row);
                 if (e.getButton() ==  MouseEvent.BUTTON3){
                     popup.show(table , e.getX() , e.getY());
-                    table_offres.setForeground(Color.red);
+                    
                 }
             }
             
@@ -82,6 +84,14 @@ public class Acceuil_client extends javax.swing.JFrame {
                
             }
         });
+        CommentItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
+               
+            }
+        });
     }
 
     /**
@@ -96,7 +106,6 @@ public class Acceuil_client extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
-        bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_offres = new javax.swing.JTable();
@@ -107,6 +116,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bt_desconnecter = new javax.swing.JButton();
         bt_contact = new javax.swing.JButton();
+        bt_feedbacks = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -133,13 +143,6 @@ public class Acceuil_client extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bt_mon_compte.setText("Mon compte");
-        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_mon_compteActionPerformed(evt);
-            }
-        });
 
         bt_recherche.setText("Recherche Avancee");
         bt_recherche.addActionListener(new java.awt.event.ActionListener() {
@@ -195,31 +198,36 @@ public class Acceuil_client extends javax.swing.JFrame {
             }
         });
 
+        bt_feedbacks.setText("Feedbacks");
+        bt_feedbacks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_feedbacksActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_desconnecter)
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                        .addComponent(bt_desconnecter)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_a_propos)
-                            .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_recherche)
-                            .addComponent(bt_mes_offres)
-                            .addComponent(bt_mes_favoris)
-                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
+                    .addComponent(bt_recherche)
+                    .addComponent(bt_mes_offres)
+                    .addComponent(bt_mes_favoris)
+                    .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_feedbacks)
+                    .addComponent(bt_a_propos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,16 +243,16 @@ public class Acceuil_client extends javax.swing.JFrame {
                         .addComponent(bt_desconnecter)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(bt_mon_compte)
-                        .addGap(31, 31, 31)
+                        .addGap(73, 73, 73)
                         .addComponent(bt_mes_favoris)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addComponent(bt_mes_offres)
-                        .addGap(34, 34, 34)
+                        .addGap(18, 18, 18)
                         .addComponent(bt_recherche)
-                        .addGap(30, 30, 30)
+                        .addGap(18, 18, 18)
                         .addComponent(bt_contact)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_feedbacks)
                         .addGap(18, 18, 18)
                         .addComponent(bt_a_propos))
                     .addGroup(layout.createSequentialGroup()
@@ -255,12 +263,6 @@ public class Acceuil_client extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
-        CompteClient cc = new CompteClient();
-        cc.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
     private ImageIcon createIcon(String path){
         URL url = getClass().getResource(path);
@@ -309,7 +311,7 @@ public class Acceuil_client extends javax.swing.JFrame {
 //                String description = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 11);
 //                new DetailOffre( categorie,  description,  prix,  surface,  titre,  type,  ville).setVisible(true);
                 new DetailOffre().setVisible(true);
-            }
+            } 
         
     }//GEN-LAST:event_table_offresMouseClicked
 
@@ -331,10 +333,15 @@ public class Acceuil_client extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_desconnecterActionPerformed
 
     private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed
-        Message_client mc = new Message_client();
-        mc.setVisible(true);
-        this.setVisible(false);
+        Contact_client cc = new Contact_client();
+        cc.setVisible(true);
+        
     }//GEN-LAST:event_bt_contactActionPerformed
+
+    private void bt_feedbacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_feedbacksActionPerformed
+       Compte_client cc = new Compte_client();
+       cc.setVisible(true);
+    }//GEN-LAST:event_bt_feedbacksActionPerformed
     
     /**
      * @param args the command line arguments
@@ -385,9 +392,9 @@ public class Acceuil_client extends javax.swing.JFrame {
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_contact;
     private javax.swing.JButton bt_desconnecter;
+    private javax.swing.JButton bt_feedbacks;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
-    private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

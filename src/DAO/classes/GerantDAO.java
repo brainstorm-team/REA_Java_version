@@ -13,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import technique.DataSource;
 
 /**
@@ -21,7 +24,9 @@ import technique.DataSource;
  */
 public class GerantDAO implements IGerantDAO {
 
-    /*********Singleton*********/
+    /**
+     * *******Singleton********
+     */
     private static GerantDAO instance;
 
     public static GerantDAO getInstance() {
@@ -30,40 +35,67 @@ public class GerantDAO implements IGerantDAO {
         }
         return instance;
     }
-    
-    private java.sql.Connection connection;
 
+    private java.sql.Connection connection;
 
     public GerantDAO() {
         connection = DataSource.getInstance();
     }
-    /*******************************/
-    
-    
+
+    /**
+     * ****************************
+     */
+    public List<Gerant> DisplayStat() {
+            
+        List<Gerant> listeRes= new ArrayList<Gerant>();
+
+        String requete = "SELECT nom, COUNT( * ) \n" +
+"FROM user res, offre r\n" +
+"WHERE res.role =  'gerant'\n" +
+"AND res.Id = r.`Id_gerant` \n" +
+"AND  `validation` =1\n" +
+"GROUP BY res.nom";
+        try {
+                    Statement statement = DataSource.getInstance()
+                   .createStatement();
+            ResultSet nb = statement.executeQuery(requete);
+
+            while(nb.next()){
+                Gerant of =new Gerant ();
+                of.setNom(nb.getString(1));
+                of.setNbre(nb.getInt(2));
+                listeRes.add(of);
+              }
+            return listeRes;
+        } catch (SQLException ex) {
+            System.out.println("erreur lors du chargement des depots "+ex.getMessage());
+            return null;
+        }
+    }
     @Override
     public ArrayList<Gerant> SelectGerant() {
-         try {
-        
+        try {
+
             String requete = "select * from user where role='gerant'";
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
             ArrayList<Gerant> gerants = new ArrayList<>();
             while (result.next()) {
-                 Gerant gerant= new Gerant();
+                Gerant gerant = new Gerant();
                 gerant.setId(result.getInt(1));
                 gerant.setPrenom(result.getString(2));
                 gerant.setNom(result.getString(3));
                 gerant.setEmail(result.getString(4));
-             
+
                 gerant.setTelephone(result.getString(5));
                 gerant.setAdresse(result.getString(6));
-                 gerant.setLogin(result.getString(7));
-               gerant.setPass(result.getString(8));
-              
+                gerant.setLogin(result.getString(7));
+                gerant.setPass(result.getString(8));
+
                 gerants.add(gerant);
-                
-                  System.out.println("Gerant "+gerant.getLogin());
+
+                System.out.println("Gerant " + gerant.getLogin());
             }
             return gerants;
         } catch (Exception ee) {
@@ -71,7 +103,6 @@ public class GerantDAO implements IGerantDAO {
         }
         return null;
     }
-    
 
     @Override
     public ArrayList<String> SelectLogin(String pattern) {
@@ -80,7 +111,7 @@ public class GerantDAO implements IGerantDAO {
             PreparedStatement ps;
             ps = connection.prepareStatement(requete);
             ResultSet result = ps.executeQuery();
-             Gerant gerant = new   Gerant();
+            Gerant gerant = new Gerant();
             ArrayList<String> tgerant = new ArrayList<>();
             while (result.next()) {
                 tgerant.add(result.getString(1));
@@ -96,12 +127,12 @@ public class GerantDAO implements IGerantDAO {
     public void ajoutGerant(Gerant gerant) {
         try {
             String requete = "INSERT INTO `user`(`prenom`, `nom`, `email`,`telephone`, `adresse`, `login`, `pass` , role)VALUES (?,?,?,?,?,?,?,'gerant') ";
-             PreparedStatement ps = connection.prepareStatement(requete);
+            PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, gerant.getPrenom());
             ps.setString(2, gerant.getNom());
-             ps.setString(3, gerant.getEmail());
-         
-            ps.setString(4,gerant.getTelephone() );
+            ps.setString(3, gerant.getEmail());
+
+            ps.setString(4, gerant.getTelephone());
             ps.setString(5, gerant.getAdresse());
             ps.setString(6, gerant.getLogin());
             ps.setString(7, gerant.getPass());
@@ -139,20 +170,20 @@ public class GerantDAO implements IGerantDAO {
 
     @Override
     public Gerant findGerantByLogin(String login) {
-        Gerant gerant =null;
-        String requete = "select Id , login,pass from user where login='"+login+"' and  and role='gerant'";
+        Gerant gerant = null;
+        String requete = "select Id , login,pass from user where login='" + login + "' and  and role='gerant'";
         try {
-           Statement statement =  connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            while(resultat.next()){
-              gerant = new  Gerant();
-              gerant.setId(resultat.getInt(1));
-               gerant.setLogin(resultat.getString(2));
-               gerant.setPass(resultat.getString(3));
+            while (resultat.next()) {
+                gerant = new Gerant();
+                gerant.setId(resultat.getInt(1));
+                gerant.setLogin(resultat.getString(2));
+                gerant.setPass(resultat.getString(3));
             }
         } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("erreur lors du chargement des geran "+ex.getMessage());
+            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des geran " + ex.getMessage());
         }
         return gerant;
     }
@@ -188,7 +219,23 @@ public class GerantDAO implements IGerantDAO {
 //         }
 
     }
+
+    @Override
+    public int nombreGerant() {
+        String n = null;
+        try {
+            String requete = "SELECT COUNT(*) from user where `role`='gerant'";
+
+            Statement statement = DataSource.getInstance().createStatement();
+            ResultSet nb = statement.executeQuery(requete);
+
+            while (nb.next()) {
+
+                n = nb.getString("COUNT(*)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Integer.parseInt(n);
+    }
 }
-
-    
-
