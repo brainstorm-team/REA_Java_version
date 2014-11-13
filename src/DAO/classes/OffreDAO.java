@@ -310,7 +310,7 @@ public class OffreDAO implements IOffreDAO {
     
         List<Offre> listeOffres = new ArrayList<>();
 
-        String requete = "select * from offre where ( type like  ? ) and (categorie like ? )and ( ville like ? )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?)";
+        String requete = "select * from offre where ( type like  ? ) and (categorie like ? )and ( ville like ? )and  (prix > ? ) and (prix < ?) and (surface > ?) and (surface < ?) and (validation = 1)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(requete); 
@@ -445,10 +445,11 @@ public class OffreDAO implements IOffreDAO {
 
     @Override
     public void validerOffre(int id) {
-        String requete = "update offre set validation = 1 where Id= ?";
+        String requete = "update offre set validation = 1 , Id_gerant = ?  where Id= ?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
-            ps.setInt(1, id);
+            ps.setInt(1, Util.id_agent_connecte);
+            ps.setInt(2, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(OffreDAO.class.getName()).log(Level.SEVERE, null, ex);

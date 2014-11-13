@@ -5,24 +5,17 @@
  */
 package gui;
 
-import DAO.classes.ClientDAO;
 import DAO.classes.ImagesDAO;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import DAO.classes.OffreDAO;
 import DAO.interfaces.IOffreDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Offre;
-import entities.Util;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.stage.FileChooser;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;

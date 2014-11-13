@@ -22,12 +22,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class Acceuil_gerant extends javax.swing.JFrame {
+public class MessageGerant extends javax.swing.JFrame {
 
     /**
      * Creates new form Acceuil
      */
-    public Acceuil_gerant() {
+    public MessageGerant() {
         initComponents();
         login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
         this.setLocationRelativeTo(null);
@@ -48,8 +48,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         jDialog2 = new javax.swing.JDialog();
         bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_offres = new javax.swing.JTable();
         login_agent_connecte = new javax.swing.JLabel();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
@@ -57,6 +55,13 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
         bt_Feedbacks = new javax.swing.JButton();
+        lab = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        label_sujet = new javax.swing.JLabel();
+        label_message = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reponse = new javax.swing.JTextArea();
 
         jMenu1.setText("jMenu1");
 
@@ -98,9 +103,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
-        table_offres.setModel(new ListOffreValide());
-        jScrollPane1.setViewportView(table_offres);
-
         login_agent_connecte.setText("Acceuil gérant:");
 
         bt_a_propos.setText("A propos");
@@ -117,7 +119,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Liste des offres disponibles :");
+        jLabel1.setText("Details message : ");
 
         bt_deconnecter.setText("Déconnecter");
         bt_deconnecter.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +142,20 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
+        lab.setText("Sujet :");
+
+        jLabel2.setText("Message : ");
+
+        jLabel3.setText("Reponse :");
+
+        label_sujet.setText("jLabel4");
+
+        label_message.setText("jLabel5");
+
+        reponse.setColumns(20);
+        reponse.setRows(5);
+        jScrollPane1.setViewportView(reponse);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,14 +170,26 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                     .addComponent(bt_a_propos)
                     .addComponent(bt_Feedbacks)
                     .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(381, 381, 381)
-                        .addComponent(bt_deconnecter)))
-                .addGap(36, 36, 36))
+                        .addComponent(bt_deconnecter))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lab, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addGap(50, 50, 50)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label_sujet, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_message, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,21 +206,32 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_mon_compte)
+                    .addComponent(lab, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_sujet, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(bt_mes_offres)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_validation_offres)
+                    .addComponent(jLabel2)
+                    .addComponent(label_message, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_mon_compte)
-                        .addGap(12, 12, 12)
-                        .addComponent(bt_mes_offres)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_validation_offres)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_Feedbacks)
                         .addGap(11, 11, 11)
                         .addComponent(bt_a_propos))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,7 +255,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         
     }
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
-        Recherche ra = new Recherche();
+        RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_rechercheActionPerformed
@@ -248,7 +287,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        Gerant_MesOffres mo = new Gerant_MesOffres();
+        Client_MesOffres mo = new Client_MesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
@@ -282,14 +321,18 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -302,11 +345,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     
-                    new Acceuil_gerant().setVisible(true);
+                    new MessageGerant().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MessageGerant.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MessageGerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -323,10 +366,15 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lab;
+    private javax.swing.JLabel label_message;
+    private javax.swing.JLabel label_sujet;
     private javax.swing.JLabel login_agent_connecte;
-    private javax.swing.JTable table_offres;
+    private javax.swing.JTextArea reponse;
     // End of variables declaration//GEN-END:variables
 
 }

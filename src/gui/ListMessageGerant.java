@@ -22,12 +22,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class Acceuil_gerant extends javax.swing.JFrame {
+public class ListMessageGerant extends javax.swing.JFrame {
 
     /**
      * Creates new form Acceuil
      */
-    public Acceuil_gerant() {
+    public ListMessageGerant() {
         initComponents();
         login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
         this.setLocationRelativeTo(null);
@@ -117,7 +117,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Liste des offres disponibles :");
+        jLabel1.setText("Liste des messages :");
 
         bt_deconnecter.setText("Déconnecter");
         bt_deconnecter.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                     .addComponent(bt_a_propos)
                     .addComponent(bt_Feedbacks)
                     .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -216,7 +216,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         
     }
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
-        Recherche ra = new Recherche();
+        RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_rechercheActionPerformed
@@ -248,7 +248,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        Gerant_MesOffres mo = new Gerant_MesOffres();
+        Client_MesOffres mo = new Client_MesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
@@ -282,14 +282,18 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListMessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListMessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListMessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListMessageGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -302,11 +306,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     
-                    new Acceuil_gerant().setVisible(true);
+                    new ListMessageGerant().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ListMessageGerant.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ListMessageGerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

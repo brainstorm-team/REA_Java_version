@@ -174,7 +174,7 @@ public class CompteGerant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_accueilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_accueilActionPerformed
-        Acceuil_client acc = new Acceuil_client();
+        Acceuil_gerant acc = new Acceuil_gerant();
         acc.setVisible(true);
         this.setVisible(false);
         

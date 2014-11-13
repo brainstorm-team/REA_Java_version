@@ -231,7 +231,7 @@ public class Gerant_MesOffres extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_rechercheActionPerformed
 
     private void bt_ajouter_offreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ajouter_offreActionPerformed
-        Client_AjoutOffre cao = new Client_AjoutOffre();
+        Gerant_AjoutOffre cao = new Gerant_AjoutOffre();
         cao.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_ajouter_offreActionPerformed

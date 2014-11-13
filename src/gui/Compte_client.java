@@ -1,27 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui;
 
+import DAO.classes.FavorisDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
+import entities.Util;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
- * @author CLIENT
+ * @author jemacom
  */
 public class Compte_client extends javax.swing.JFrame {
 
     /**
+     * Creates new form Acceuil
      */
     public Compte_client() {
         initComponents();
-                this.setLocationRelativeTo(null);
+
+        login_agent_connecte.setText("Bonjour  " + Util.login_agent_connecte + " ;) ");
+        this.setLocationRelativeTo(null);
+        login_agent_connecte.setIcon(createIcon("/images/home.gif"));
 
     }
 
@@ -34,193 +54,221 @@ public class Compte_client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jBt_backChart = new javax.swing.JButton();
+        jMenu1 = new javax.swing.JMenu();
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
+        bt_mon_compte = new javax.swing.JButton();
+        bt_recherche = new javax.swing.JButton();
+        login_agent_connecte = new javax.swing.JLabel();
+        bt_mes_favoris = new javax.swing.JButton();
+        bt_a_propos = new javax.swing.JButton();
+        bt_mes_offres = new javax.swing.JButton();
+        bt_desconnecter = new javax.swing.JButton();
+        bt_contact = new javax.swing.JButton();
+        bt_message = new javax.swing.JButton();
+        bt_commentaire = new javax.swing.JButton();
+
+        jMenu1.setText("jMenu1");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Mon compte");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_mon_compte.setText("Mon compte");
+        bt_mon_compte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_mon_compteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Recherche");
-
-        jButton3.setText("Acceuil");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_recherche.setText("Recherche Avancee");
+        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_rechercheActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Contact");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        login_agent_connecte.setText("Acceuil client:");
+
+        bt_mes_favoris.setText("Mes favoris");
+        bt_mes_favoris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bt_mes_favorisActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Feedback");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        bt_a_propos.setText("A propos");
+        bt_a_propos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                bt_a_proposActionPerformed(evt);
             }
         });
 
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton5.setText("Message");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bt_mes_offres.setText("Mes offres");
+        bt_mes_offres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bt_mes_offresActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Commentaire");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bt_desconnecter.setText("Déconnecter");
+        bt_desconnecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bt_desconnecterActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-                .addContainerGap(214, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
-        );
-
-        jBt_backChart.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jBt_backChart.setForeground(new java.awt.Color(255, 255, 255));
-        jBt_backChart.setIcon(new javax.swing.ImageIcon("C:\\Users\\houssem\\Desktop\\Iconic_2190(0)_64 2.png")); // NOI18N
-        jBt_backChart.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBt_backChart.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBt_backChartMouseClicked(evt);
-            }
-        });
-        jBt_backChart.addActionListener(new java.awt.event.ActionListener() {
+        bt_contact.setText("Contact");
+        bt_contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBt_backChartActionPerformed(evt);
+                bt_contactActionPerformed(evt);
             }
         });
+
+        bt_message.setText("Message");
+
+        bt_commentaire.setText("Commentaire");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBt_backChart, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_a_propos)
+                            .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_mes_offres)
+                            .addComponent(bt_mes_favoris)
+                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(248, 248, 248)
+                        .addComponent(bt_message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_recherche)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                        .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(93, 93, 93)
+                .addComponent(bt_desconnecter)
+                .addGap(102, 102, 102))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jBt_backChart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_desconnecter))
+                .addGap(69, 69, 69)
+                .addComponent(bt_mon_compte)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(bt_mes_favoris))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(bt_message, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addComponent(bt_mes_offres)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_recherche)
+                    .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(bt_contact)
+                .addGap(18, 18, 18)
+                .addComponent(bt_a_propos)
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bt_mon_compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mon_compteActionPerformed
+        CompteClient cc = new CompteClient();
+        cc.setVisible(true);
         this.setVisible(false);
+    }//GEN-LAST:event_bt_mon_compteActionPerformed
 
-        Contact_client add=new Contact_client();
-        add.setVisible(true); 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private ImageIcon createIcon(String path) {
+        URL url = getClass().getResource(path);
+        if (url == null) {
+            System.err.println("Unable de load the image !" + path);
+            return null;
+        }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-this.setVisible(false);
-        ListMessage_client add=new ListMessage_client();
-        add.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        ImageIcon icon = new ImageIcon(url);
+        return icon;
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    this.setVisible(false);
-        ListCommentaire_client add=new ListCommentaire_client();
-        add.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
-this.setVisible(false);
-        Compte_client add=new Compte_client();
-        add.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jBt_backChartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBt_backChartMouseClicked
-        // TODO add your handling code here:
-        // SuperAdmin ins = new SuperAdmin();
-        // ins.setVisible(true);
+    }
+    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
+        RechercheAvancee ra = new RechercheAvancee();
+        ra.setVisible(true);
         this.setVisible(false);
+    }//GEN-LAST:event_bt_rechercheActionPerformed
+
+    private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
+        Apropos ap = new Apropos();
+        ap.setVisible(true);
+
+    }//GEN-LAST:event_bt_a_proposActionPerformed
+
+    private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
+        Client_MesFavoris cmf = new Client_MesFavoris();
+        cmf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_favorisActionPerformed
+
+    private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
+        Client_MesOffres mo = new Client_MesOffres();
+        mo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_mes_offresActionPerformed
+
+    private void bt_desconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_desconnecterActionPerformed
+        Util.id_agent_connecte = 0;
+        Util.role_agent_connecte = "";
+        Util.login_agent_connecte = "";
+        Util.nom_agent_connecte = "";
+        Util.prenom_agent_connecte = "";
+        Util.adresse_agent_connecte = "";
+        Util.email_agent_connecte = "";
+        Util.telephone_agent_connecte = "";
+        Authentification au = new Authentification();
+        au.setVisible(true);
+        this.setVisible(false);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
-    }//GEN-LAST:event_jBt_backChartMouseClicked
+//        System.exit(WIDTH);
+    }//GEN-LAST:event_bt_desconnecterActionPerformed
 
-    private void jBt_backChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBt_backChartActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jBt_backChartActionPerformed
+    private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed
+        Message_client mc = new Message_client();
+        mc.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_contactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,41 +287,49 @@ this.setVisible(false);
                 }
             }
         } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(gestcompclient_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Compte_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-  //          java.util.logging.Logger.getLogger(gestcompclient_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Compte_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-    //        java.util.logging.Logger.getLogger(gestcompclient_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Compte_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      //      java.util.logging.Logger.getLogger(gestcompclient_adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Compte_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                                    try {
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
 
-   new Compte_client().setVisible(true);
-                                    } catch (        UnsupportedLookAndFeelException | ParseException ex) {
+                    new Compte_client().setVisible(true);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Compte_client.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
                     Logger.getLogger(Compte_client.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBt_backChart;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_commentaire;
+    private javax.swing.JButton bt_contact;
+    private javax.swing.JButton bt_desconnecter;
+    private javax.swing.JButton bt_mes_favoris;
+    private javax.swing.JButton bt_mes_offres;
+    private javax.swing.JButton bt_message;
+    private javax.swing.JButton bt_mon_compte;
+    private javax.swing.JButton bt_recherche;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel login_agent_connecte;
     // End of variables declaration//GEN-END:variables
+
 }

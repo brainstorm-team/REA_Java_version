@@ -22,12 +22,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class Acceuil_gerant extends javax.swing.JFrame {
+public class CommentaireGerant extends javax.swing.JFrame {
 
     /**
      * Creates new form Acceuil
      */
-    public Acceuil_gerant() {
+    public CommentaireGerant() {
         initComponents();
         login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
         this.setLocationRelativeTo(null);
@@ -48,8 +48,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         jDialog2 = new javax.swing.JDialog();
         bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_offres = new javax.swing.JTable();
         login_agent_connecte = new javax.swing.JLabel();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
@@ -57,6 +55,12 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
         bt_Feedbacks = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        label_moi = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         jMenu1.setText("jMenu1");
 
@@ -98,9 +102,6 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
-        table_offres.setModel(new ListOffreValide());
-        jScrollPane1.setViewportView(table_offres);
-
         login_agent_connecte.setText("Acceuil gérant:");
 
         bt_a_propos.setText("A propos");
@@ -117,7 +118,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Liste des offres disponibles :");
+        jLabel1.setText("Details commentaire :");
 
         bt_deconnecter.setText("Déconnecter");
         bt_deconnecter.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +141,18 @@ public class Acceuil_gerant extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Client :");
+
+        label_moi.setText("MOI :");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,14 +167,22 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                     .addComponent(bt_a_propos)
                     .addComponent(bt_Feedbacks)
                     .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(381, 381, 381)
-                        .addComponent(bt_deconnecter)))
-                .addGap(36, 36, 36))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(284, 284, 284)
+                        .addComponent(bt_deconnecter))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(label_moi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,21 +199,27 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
+                .addComponent(bt_mon_compte)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_mon_compte)
-                        .addGap(12, 12, 12)
-                        .addComponent(bt_mes_offres)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt_mes_offres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_validation_offres)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_recherche)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_Feedbacks)
-                        .addGap(11, 11, 11)
-                        .addComponent(bt_a_propos))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(bt_Feedbacks))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_a_propos)
+                        .addComponent(label_moi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,7 +243,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
         
     }
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
-        Recherche ra = new Recherche();
+        RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_rechercheActionPerformed
@@ -248,7 +275,7 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_deconnecterActionPerformed
 
     private void bt_mes_offresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_offresActionPerformed
-        Gerant_MesOffres mo = new Gerant_MesOffres();
+        Client_MesOffres mo = new Client_MesOffres();
         mo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
@@ -282,14 +309,26 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommentaireGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommentaireGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommentaireGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_gerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommentaireGerant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -302,11 +341,11 @@ public class Acceuil_gerant extends javax.swing.JFrame {
                 try{
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
                     
-                    new Acceuil_gerant().setVisible(true);
+                    new CommentaireGerant().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CommentaireGerant.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Acceuil_gerant.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CommentaireGerant.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -323,10 +362,14 @@ public class Acceuil_gerant extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel label_moi;
     private javax.swing.JLabel login_agent_connecte;
-    private javax.swing.JTable table_offres;
     // End of variables declaration//GEN-END:variables
 
 }

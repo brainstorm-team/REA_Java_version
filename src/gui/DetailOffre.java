@@ -28,12 +28,12 @@ public class DetailOffre extends javax.swing.JFrame {
     }
 
     public DetailOffre(String categorie, String description, Double prix, int surface, String titre, String type, String ville) {
-        this.categorie.setText(categorie);
-        this.description.setText(description);
-        this.prix.setText(prix.toString());
-        this.surface.setText(surface+"");
-        this.type.setText(type);
-        this.ville.setText(ville);
+//        this.categorie.setText(categorie);
+//        this.description.setText(description);
+//        this.prix.setText(prix.toString());
+//        this.surface.setText(surface+"");
+//        this.type.setText(type);
+//        this.ville.setText(ville);
     }
     
 

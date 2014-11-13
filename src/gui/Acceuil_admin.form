@@ -65,31 +65,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                      <Component id="login_agent_connecte" min="-2" pref="114" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bt_a_propos" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bt_mon_compte" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bt_gestion_compte_client" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bt_gestion_compte_gerant" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bt_visualiser_stat" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="bt_a_propos" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_mon_compte" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_gestion_compte_client" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_gestion_compte_gerant" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_visualiser_stat" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="login_agent_connecte" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="143" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">

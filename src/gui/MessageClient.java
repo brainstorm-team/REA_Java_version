@@ -5,25 +5,14 @@
  */
 package gui;
 
-import DAO.classes.FavorisDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -31,57 +20,18 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jemacom
  */
-public class Acceuil_client extends javax.swing.JFrame {
+public class MessageClient extends javax.swing.JFrame {
 
-     private JPopupMenu popup;
     /**
      * Creates new form Acceuil
      */
-    public Acceuil_client() {
+    public MessageClient() {
         initComponents();
-        
-       login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
+
+        login_agent_connecte.setText("Bonjour  " + Util.login_agent_connecte + " ;) ");
         this.setLocationRelativeTo(null);
         login_agent_connecte.setIcon(createIcon("/images/home.gif"));
-        popup = new JPopupMenu();
-       
-        JMenuItem FavorisItem =  new JMenuItem("Ajouter aux favoris");
-        popup.add(FavorisItem);
-        table_offres.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mousePressed(MouseEvent e){
-                JTable table =(JTable) e.getSource();
-                Point p = e.getPoint();
-                int row = table_offres.rowAtPoint(p);
-                
-                
-                System.out.println(row);
-                if (e.getButton() ==  MouseEvent.BUTTON3){
-                    popup.show(table , e.getX() , e.getY());
-                    table_offres.setForeground(Color.red);
-                }
-            }
-            
-        });
-        
-        FavorisItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               int row =table_offres.getSelectedRow(); 
-               int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
-               boolean trouve = FavorisDAO.getInstance().rechercherFavoris(ID);
-               if (trouve){
-                   JOptionPane.showMessageDialog(null, "l'offre est déjà dans la votre liste favoris", "Information", 1);
-               }else{
-                    System.out.println("my id "+table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10));
-                    FavorisDAO.getInstance().insertFavoris(ID);
-                    JOptionPane.showMessageDialog(null, "L'offre est MAINTENANT dans votre liste favoris !", "Information", 1);
-               }
-               
-              
-               
-            }
-        });
+
     }
 
     /**
@@ -98,15 +48,19 @@ public class Acceuil_client extends javax.swing.JFrame {
         jDialog2 = new javax.swing.JDialog();
         bt_mon_compte = new javax.swing.JButton();
         bt_recherche = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_offres = new javax.swing.JTable();
         login_agent_connecte = new javax.swing.JLabel();
         bt_mes_favoris = new javax.swing.JButton();
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         bt_desconnecter = new javax.swing.JButton();
         bt_contact = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        sujet = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        message = new javax.swing.JTextArea();
+        bt_annuler = new javax.swing.JButton();
+        bt_envoyer = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -148,14 +102,6 @@ public class Acceuil_client extends javax.swing.JFrame {
             }
         });
 
-        table_offres.setModel(new ListOffreValide());
-        table_offres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_offresMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(table_offres);
-
         login_agent_connecte.setText("Acceuil client:");
 
         bt_mes_favoris.setText("Mes favoris");
@@ -179,8 +125,6 @@ public class Acceuil_client extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Liste des offres disponibles :");
-
         bt_desconnecter.setText("Déconnecter");
         bt_desconnecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +139,18 @@ public class Acceuil_client extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Sujet :");
+
+        jLabel2.setText("Message");
+
+        message.setColumns(20);
+        message.setRows(5);
+        jScrollPane1.setViewportView(message);
+
+        bt_annuler.setText("Annuler");
+
+        bt_envoyer.setText("Envoyer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,54 +159,77 @@ public class Acceuil_client extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                        .addComponent(bt_desconnecter)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_a_propos)
-                            .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_recherche)
-                            .addComponent(bt_mes_offres)
                             .addComponent(bt_mes_favoris)
-                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bt_recherche)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(bt_mon_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(bt_mes_offres))
+                                        .addGap(176, 176, 176)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(sujet)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))))
+                        .addContainerGap(240, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_a_propos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
+                        .addComponent(bt_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt_desconnecter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_envoyer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(102, 102, 102))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_desconnecter))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(69, 69, 69)
+                        .addComponent(bt_mon_compte))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_desconnecter)))
+                            .addComponent(jLabel1)
+                            .addComponent(sujet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(16, 16, 16)
+                .addComponent(bt_mes_favoris)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(bt_mon_compte)
-                        .addGap(31, 31, 31)
-                        .addComponent(bt_mes_favoris)
                         .addGap(23, 23, 23)
-                        .addComponent(bt_mes_offres)
-                        .addGap(34, 34, 34)
-                        .addComponent(bt_recherche)
-                        .addGap(30, 30, 30)
-                        .addComponent(bt_contact)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bt_mes_offres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(41, 41, 41)
+                                .addComponent(bt_recherche)
+                                .addGap(36, 36, 36)
+                                .addComponent(bt_contact))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(bt_a_propos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(bt_a_propos)
+                        .addContainerGap(209, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_annuler)
+                            .addComponent(bt_envoyer))
+                        .addGap(189, 189, 189))))
         );
 
         pack();
@@ -262,16 +241,16 @@ public class Acceuil_client extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bt_mon_compteActionPerformed
 
-    private ImageIcon createIcon(String path){
+    private ImageIcon createIcon(String path) {
         URL url = getClass().getResource(path);
-        if (url == null){
-            System.err.println("Unable de load the image !"+path);
+        if (url == null) {
+            System.err.println("Unable de load the image !" + path);
             return null;
         }
-        
+
         ImageIcon icon = new ImageIcon(url);
         return icon;
-        
+
     }
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
         RechercheAvancee ra = new RechercheAvancee();
@@ -282,7 +261,7 @@ public class Acceuil_client extends javax.swing.JFrame {
     private void bt_a_proposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_a_proposActionPerformed
         Apropos ap = new Apropos();
         ap.setVisible(true);
-        
+
     }//GEN-LAST:event_bt_a_proposActionPerformed
 
     private void bt_mes_favorisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_mes_favorisActionPerformed
@@ -297,22 +276,6 @@ public class Acceuil_client extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bt_mes_offresActionPerformed
 
-    private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
-        if (evt.getClickCount() == 2) {
-//                int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
-//                String titre = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 0);
-//                String type = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 1);
-//                String categorie = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(),2);
-//                String ville = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 3);
-//                Double prix = (Double) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 4);
-//                int surface = (int) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 5);
-//                String description = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 11);
-//                new DetailOffre( categorie,  description,  prix,  surface,  titre,  type,  ville).setVisible(true);
-                new DetailOffre().setVisible(true);
-            }
-        
-    }//GEN-LAST:event_table_offresMouseClicked
-
     private void bt_desconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_desconnecterActionPerformed
         Util.id_agent_connecte = 0;
         Util.role_agent_connecte = "";
@@ -321,7 +284,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         Util.prenom_agent_connecte = "";
         Util.adresse_agent_connecte = "";
         Util.email_agent_connecte = "";
-        Util.telephone_agent_connecte ="";        
+        Util.telephone_agent_connecte = "";
         Authentification au = new Authentification();
         au.setVisible(true);
         this.setVisible(false);
@@ -335,7 +298,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         mc.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_contactActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -353,29 +316,42 @@ public class Acceuil_client extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acceuil_client.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MessageClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-                    
-                    new Acceuil_client().setVisible(true);
+
+                    new MessageClient().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Acceuil_client.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MessageClient.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Acceuil_client.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MessageClient.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -383,8 +359,10 @@ public class Acceuil_client extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_a_propos;
+    private javax.swing.JButton bt_annuler;
     private javax.swing.JButton bt_contact;
     private javax.swing.JButton bt_desconnecter;
+    private javax.swing.JButton bt_envoyer;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
@@ -392,10 +370,12 @@ public class Acceuil_client extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel login_agent_connecte;
-    private javax.swing.JTable table_offres;
+    private javax.swing.JTextArea message;
+    private javax.swing.JTextField sujet;
     // End of variables declaration//GEN-END:variables
 
 }

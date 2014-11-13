@@ -24,7 +24,7 @@ public class ListOffreValide extends AbstractTableModel{
     public ListOffreValide() {
         IOffreDAO offreDAO=OffreDAO.getInstance();
         offres=offreDAO.getAllValidatedOffers();
-    
+        
     }
     @Override
     public int getRowCount() {

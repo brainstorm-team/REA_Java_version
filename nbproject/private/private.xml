@@ -3,12 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Compte_client.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Commentaire_client.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/DAO/classes/OffreDAO.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/ListMessageGerant.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/ListCommentaireGerant.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/agence_immobiliere_v1/Agence_immobiliere_v1.java</file>
             <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/DetailOffre.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/CommentaireGerant.java</file>
             <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Acceuil_client.java</file>
-            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/entities/Util.java</file>
-            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Authentification.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/ListCommentairesClient.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/entities/Commentaire.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/MessageGerant.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/ListMessagesClient.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/CommentaireClient.java</file>
             <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Acceuil_gerant.java</file>
-            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Acceuil_admin.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/MessageClient.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/CompteGerant.java</file>
+            <file>file:/home/jemacom/NetBeansProjects/Gestion_agence_immobiliere/src/gui/Compte_gerant.java</file>
         </group>
     </open-files>
 </project-private>
