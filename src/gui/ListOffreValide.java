@@ -56,6 +56,8 @@ public class ListOffreValide extends AbstractTableModel{
                 return offres.get(rowIndex).getSurface();
             case 6:
                 return FavorisDAO.getInstance().evaluationFavoris(offres.get(rowIndex).getId());
+            case 11:
+                return offres.get(rowIndex).getDescription();
             //Pour pouvoir recuperer l'id de l'offre dans le table 
             case 10:
                 return offres.get(rowIndex).getId();

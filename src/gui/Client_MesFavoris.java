@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -28,6 +29,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Client_MesFavoris extends javax.swing.JFrame {
 
     private JPopupMenu popup;
+
     /**
      * Creates new form Favoris
      */
@@ -35,34 +37,40 @@ public class Client_MesFavoris extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         popup = new JPopupMenu();
-        
-        JMenuItem DeleteItem =  new JMenuItem("Supprimer favoris");
+
+        JMenuItem DeleteItem = new JMenuItem("Supprimer favoris");
         popup.add(DeleteItem);
-        table.addMouseListener(new MouseAdapter(){
-            public void mousePressed(MouseEvent e){
-                JTable table =(JTable) e.getSource();
+        table.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                JTable table = (JTable) e.getSource();
                 Point p = e.getPoint();
                 int row = table.rowAtPoint(p);
-                
-                
+
                 System.out.println(row);
-                if (e.getButton() ==  MouseEvent.BUTTON3){
-                    popup.show(table , e.getX() , e.getY());
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    popup.show(table, e.getX(), e.getY());
                 }
             }
-            
-        }); 
+
+        });
         DeleteItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               int row =table.getSelectedRow(); 
-               System.out.println("my id "+table.getModel().getValueAt(table.getSelectedRow(), 10));
-                FavorisDAO.getInstance().deleteFavoris((int)table.getModel().getValueAt(table.getSelectedRow(), 10));
-                table.setModel(new ListFavoris());
+                int row = table.getSelectedRow();
+                System.out.println("my id " + table.getModel().getValueAt(table.getSelectedRow(), 10));
+                
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Voulez vous enlever cette offre des favoris ", "Alert", dialogButton);
+                if (dialogResult == 0) {
+                    FavorisDAO.getInstance().deleteFavoris((int) table.getModel().getValueAt(table.getSelectedRow(), 10));
+                    table.setModel(new ListFavoris());
+                } else {
+                    System.out.println("No Option");
+                }
             }
         });
     }
-                
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -187,7 +195,7 @@ public class Client_MesFavoris extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_mes_offresActionPerformed
 
     private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
-        RechercheAvancee ra =  new RechercheAvancee();
+        RechercheAvancee ra = new RechercheAvancee();
         ra.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_rechercheActionPerformed
@@ -235,16 +243,16 @@ public class Client_MesFavoris extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try{
+                try {
                     UIManager.setLookAndFeel(new SyntheticaBlueLightLookAndFeel());
-                    
+
                     new Client_MesFavoris().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(Client_MesFavoris.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
                     Logger.getLogger(Client_MesFavoris.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         });
     }

@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -102,7 +101,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         bt_a_propos = new javax.swing.JButton();
         bt_mes_offres = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bt_desconnecter = new javax.swing.JButton();
         bt_contact = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -178,10 +177,10 @@ public class Acceuil_client extends javax.swing.JFrame {
 
         jLabel1.setText("Liste des offres disponibles :");
 
-        jButton1.setText("Déconnecter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_desconnecter.setText("Déconnecter");
+        bt_desconnecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_desconnecterActionPerformed(evt);
             }
         });
 
@@ -202,7 +201,7 @@ public class Acceuil_client extends javax.swing.JFrame {
                 .addGap(123, 123, 123)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 443, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(bt_desconnecter)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -228,7 +227,7 @@ public class Acceuil_client extends javax.swing.JFrame {
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(bt_desconnecter)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
@@ -295,12 +294,20 @@ public class Acceuil_client extends javax.swing.JFrame {
 
     private void table_offresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_offresMouseClicked
         if (evt.getClickCount() == 2) {
-                new DetailOffre().setVisible(true);
+                int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
+                String titre = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 0);
+                String type = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 1);
+                String categorie = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(),2);
+                String ville = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 3);
+                Double prix = (Double) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 4);
+                int surface = (int) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 5);
+                String description = (String) table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 11);
+                new DetailOffre( categorie,  description,  prix,  surface,  titre,  type,  ville).setVisible(true);
             }
         
     }//GEN-LAST:event_table_offresMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_desconnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_desconnecterActionPerformed
         Util.id_agent_connecte = 0;
         Util.role_agent_connecte = "";
         Util.login_agent_connecte = "";
@@ -315,7 +322,7 @@ public class Acceuil_client extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
 //        System.exit(WIDTH);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_desconnecterActionPerformed
 
     private void bt_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_contactActionPerformed
         Message_client mc = new Message_client();
@@ -371,11 +378,11 @@ public class Acceuil_client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_a_propos;
     private javax.swing.JButton bt_contact;
+    private javax.swing.JButton bt_desconnecter;
     private javax.swing.JButton bt_mes_favoris;
     private javax.swing.JButton bt_mes_offres;
     private javax.swing.JButton bt_mon_compte;
     private javax.swing.JButton bt_recherche;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
