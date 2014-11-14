@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ListCommentaires extends AbstractTableModel{
 
-    String [] tab={"Id", "Commentaire"};
+    String [] tab={"Id", "Commentaire" , "Id offre" , "Id client"};
     List<Commentaire> commentaires=new ArrayList<Commentaire>();
     
     public ListCommentaires() {
@@ -51,7 +51,10 @@ public class ListCommentaires extends AbstractTableModel{
                 return commentaires.get(rowIndex).getIdCommentaire();
             case 1: 
                 return commentaires.get(rowIndex).getCommentaire();
-           
+            case 2:
+                return commentaires.get(rowIndex).getId_offre();
+            case 3:
+                return commentaires.get(rowIndex).getId_client();
             default:
                 return null;
         }

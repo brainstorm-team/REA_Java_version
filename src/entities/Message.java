@@ -6,6 +6,8 @@ public class Message {
     private String message;
     private String sujet;
     private String reponsemsg;
+    private int Id_client;
+    private int Id_gerant;
     private Utilisateur Utilisateur;
 
 //private java.sql.Date datede;	
@@ -39,7 +41,27 @@ public class Message {
 
     public void setReponsemsg(String reponsemsg) {
         this.reponsemsg = reponsemsg;
+        
+    }
 
+    public void setId_client(int Id_client) {
+        this.Id_client = Id_client;
+    }
+
+    public void setId_gerant(int Id_gerant) {
+        this.Id_gerant = Id_gerant;
+    }
+    
+    public int getId_client() {
+        return Id_client;
+    }
+
+    public int getId_gerant() {
+        return Id_gerant;
+    }
+
+    public int getIdMessage() {
+        return idMessage;
     }
 
     public Utilisateur getUtilisateur() {

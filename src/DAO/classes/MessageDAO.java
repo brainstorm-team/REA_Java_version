@@ -6,6 +6,7 @@ package DAO.classes;
 
 import DAO.interfaces.IMessageDAO;
 import entities.Message;
+import entities.Util;
 import technique.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,15 +29,15 @@ public class MessageDAO implements IMessageDAO {
     }
 
     public void insertMessage(Message message) {
-        String requete = "insert into message (message,sujet,reponse) values (?,?,?)";
+        String requete = "insert into message (message,sujet,reponse,Id_client) values (?,?,?,?)";
        try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, message.getMessage());
-          //  ps.setInt(2, message.getUtilisateur().getId());
+            ps.setInt(4,Util.id_agent_connecte);
 
             ps.setString(2, message.getSujet());
             ps.setString(3, message.getReponsemsg());
-            
+       
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Ajout effectuée");
         
@@ -49,13 +50,15 @@ public class MessageDAO implements IMessageDAO {
     }
 
     public void updateMessage(Message message) {
-        String requete = "update message set message=?,sujet=?,reponse=? where Id=?";
+        String requete = "update message set message=?,sujet=?,reponse=? ,Id_client=? ,Id_gerant = ? where Id=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, message.getMessage());
             ps.setString(2, message.getSujet());
             ps.setString(3, message.getReponsemsg());
-            ps.setInt(4, message.getIdmessage());
+            ps.setInt(4,message.getId_client());
+            ps.setInt(5, Util.id_agent_connecte);
+            ps.setInt(6, message.getIdmessage());
 
             ps.executeUpdate();
                         JOptionPane.showMessageDialog(null,"Message envoyer " );

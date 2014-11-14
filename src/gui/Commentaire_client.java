@@ -4,6 +4,7 @@ import DAO.classes.CommentaireDAO;
 import DAO.interfaces.ICommentaireDAO;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Commentaire;
+import entities.Util;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,16 +28,21 @@ public class Commentaire_client extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
     }
+    public Commentaire_client(int Id_offre) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        Util.Id_Offre_commentaire = Id_offre;
+    }
 
     public Commentaire_client(int a, String c, String d) {
 
         initComponents();
         //JOptionPane.showMessageDialog(null, a);
 
-        moiInput.setText(c);
+        clientInput.setText(c);
         clientInput.setText(d);
         String x = Integer.toString(a);
-        idinput.setText(x);
+        
     }
 
     /**
@@ -48,161 +54,78 @@ public class Commentaire_client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        commentaireclientInput = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
-        moiInput = new javax.swing.JTextArea();
-        label2 = new java.awt.Label();
-        jScrollPane2 = new javax.swing.JScrollPane();
         clientInput = new javax.swing.JTextArea();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        idinput = new javax.swing.JTextField();
+        bt_commenter = new javax.swing.JButton();
+        bt_annuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setText("Acceuil");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 149, 150, -1));
-
-        jButton1.setText("Mon compte");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 30));
-
-        jButton2.setText("Mes favoris");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 30));
-
-        jButton4.setText("Recherche Avancee");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 30));
-
-        jButton8.setText("Feedback");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 30));
-
-        jButton7.setText("Contact");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 30));
-
-        commentaireclientInput.setText("Client");
-        getContentPane().add(commentaireclientInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 75, 130));
-
-        moiInput.setColumns(20);
-        moiInput.setRows(5);
-        jScrollPane1.setViewportView(moiInput);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 530, 130));
-
-        label2.setText("Moi");
-        getContentPane().add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 75, 200));
 
         clientInput.setColumns(20);
         clientInput.setRows(5);
-        jScrollPane2.setViewportView(clientInput);
+        jScrollPane1.setViewportView(clientInput);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 530, 200));
-
-        jButton5.setText("Commenter");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bt_commenter.setText("Commenter");
+        bt_commenter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bt_commenterActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 490, -1, -1));
 
-        jButton6.setText("Annuler");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bt_annuler.setText("Annuler");
+        bt_annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bt_annulerActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 490, -1, -1));
 
-        idinput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idinputActionPerformed(evt);
-            }
-        });
-        getContentPane().add(idinput, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bt_commenter)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_annuler))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_annuler)
+                    .addComponent(bt_commenter))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
+    private void bt_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_annulerActionPerformed
         this.setVisible(false);
-        Compte_client add = new Compte_client();
-        add.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_bt_annulerActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void bt_commenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_commenterActionPerformed
         Commentaire com = new Commentaire();
-        com.setCommentaire(moiInput.getText());
+        com.setCommentaire(clientInput.getText());
         com.setReponse(clientInput.getText());
-        com.setIdCommentaire(Integer.parseInt(idinput.getText()));
-
+        com.setId_offre(Util.Id_Offre_commentaire);
+        com.setId_client(Util.id_agent_connecte);
 
 
         ICommentaireDAO msgdao = CommentaireDAO.getInstance();
-        msgdao.updateCommentaire(com);
-
-
-
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void idinputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idinputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idinputActionPerformed
+        msgdao.insertCommentaire(com);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_commenterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,20 +171,9 @@ public class Commentaire_client extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_annuler;
+    private javax.swing.JButton bt_commenter;
     private javax.swing.JTextArea clientInput;
-    private java.awt.Label commentaireclientInput;
-    private javax.swing.JTextField idinput;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private java.awt.Label label2;
-    private javax.swing.JTextArea moiInput;
     // End of variables declaration//GEN-END:variables
 }

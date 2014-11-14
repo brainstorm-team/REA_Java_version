@@ -8,6 +8,11 @@ package gui;
 import de.javasoft.plaf.synthetica.SyntheticaBlueLightLookAndFeel;
 import entities.Util;
 import java.awt.Frame;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -15,6 +20,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -23,7 +31,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author jemacom
  */
 public class Compte_gerant extends javax.swing.JFrame {
-
+    
+    private JPopupMenu popup;
     /**
      * Creates new form Acceuil
      */
@@ -32,6 +41,58 @@ public class Compte_gerant extends javax.swing.JFrame {
         login_agent_connecte.setText("Bonjour  "+Util.login_agent_connecte+" ;) ");
         this.setLocationRelativeTo(null);
         login_agent_connecte.setIcon(createIcon("/images/home.gif"));
+        popup = new JPopupMenu();
+        JMenuItem RepondreCommentaireItem =  new JMenuItem("Repondre a ce commentaire");
+        JMenuItem RepondreMessageItem =  new JMenuItem("Repondre a ce message");
+        
+        popup.add(RepondreCommentaireItem);
+        popup.add(RepondreCommentaireItem);
+        
+        table_commentaire.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                JTable table =(JTable) e.getSource();
+                Point p = e.getPoint();
+                int row = table.rowAtPoint(p);
+                
+                
+                System.out.println(row);
+                if (e.getButton() ==  MouseEvent.BUTTON3){
+                    popup.show(table , e.getX() , e.getY());    
+                }
+            }
+        });
+        RepondreCommentaireItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int ID = (int)table_commentaire.getModel().getValueAt(table_commentaire.getSelectedRow(), 10);
+                new Commentaire_gerant(Util.id_agent_connecte ,ID ).setVisible(true);
+            }
+        });
+        table_message.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                JTable table =(JTable) e.getSource();
+                Point p = e.getPoint();
+                int row = table.rowAtPoint(p);
+                
+                
+                System.out.println(row);
+                if (e.getButton() ==  MouseEvent.BUTTON3){
+                    popup.show(table , e.getX() , e.getY());    
+                }
+            }
+        });
+        RepondreMessageItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int ID = (int)table_message.getModel().getValueAt(table_message.getSelectedRow(), 10);
+                new Commentaire_gerant(Util.id_agent_connecte ,ID ).setVisible(true);
+            }
+        });
+
     }
 
     /**
@@ -52,8 +113,12 @@ public class Compte_gerant extends javax.swing.JFrame {
         bt_mes_offres = new javax.swing.JButton();
         bt_deconnecter = new javax.swing.JButton();
         bt_validation_offres = new javax.swing.JButton();
-        bt_commentaire = new javax.swing.JButton();
-        bt_message = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_message = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_commentaire = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -118,19 +183,15 @@ public class Compte_gerant extends javax.swing.JFrame {
             }
         });
 
-        bt_commentaire.setText("Commentaire");
-        bt_commentaire.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_commentaireActionPerformed(evt);
-            }
-        });
+        table_message.setModel(new ListMessages());
+        jScrollPane1.setViewportView(table_message);
 
-        bt_message.setText("Message");
-        bt_message.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_messageActionPerformed(evt);
-            }
-        });
+        table_commentaire.setModel(new ListCommentaires());
+        jScrollPane2.setViewportView(table_commentaire);
+
+        jLabel1.setText("Liste commentaires :");
+
+        jLabel2.setText("Liste messages :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,51 +200,60 @@ public class Compte_gerant extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_validation_offres)
+                    .addComponent(bt_recherche)
+                    .addComponent(bt_a_propos)
+                    .addComponent(bt_mes_offres))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1))
+                                .addGap(39, 39, 39))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(bt_deconnecter)
                         .addGap(36, 36, 36))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_mes_offres)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bt_validation_offres)
-                                    .addComponent(bt_recherche)
-                                    .addComponent(bt_a_propos))
-                                .addGap(286, 286, 286)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bt_message, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bt_commentaire, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(403, Short.MAX_VALUE))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_deconnecter))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, 53)
-                .addComponent(bt_mes_offres)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(bt_message))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(login_agent_connecte, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_deconnecter)))
+                        .addGap(53, 53, 53)
+                        .addComponent(bt_mes_offres)
                         .addGap(18, 18, 18)
                         .addComponent(bt_validation_offres)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_recherche)))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_commentaire)
-                    .addComponent(bt_a_propos))
-                .addContainerGap(240, Short.MAX_VALUE))
+                        .addComponent(bt_recherche))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_a_propos)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -243,26 +313,6 @@ public class Compte_gerant extends javax.swing.JFrame {
         gvo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bt_validation_offresActionPerformed
-
-    private void bt_commentaireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_commentaireActionPerformed
-
-        this.setVisible(false);
-        ListCommentaire_Gerant add = new ListCommentaire_Gerant();
-        add.setVisible(true);
-        
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_commentaireActionPerformed
-
-    private void bt_messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_messageActionPerformed
-
-        this.setVisible(false);
-        ListesMessagesGerant add = new ListesMessagesGerant();
-        add.setVisible(true);
-        
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_messageActionPerformed
     
     /**
      * @param args the command line arguments
@@ -317,16 +367,20 @@ public class Compte_gerant extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_a_propos;
-    private javax.swing.JButton bt_commentaire;
     private javax.swing.JButton bt_deconnecter;
     private javax.swing.JButton bt_mes_offres;
-    private javax.swing.JButton bt_message;
     private javax.swing.JButton bt_recherche;
     private javax.swing.JButton bt_validation_offres;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel login_agent_connecte;
+    private javax.swing.JTable table_commentaire;
+    private javax.swing.JTable table_message;
     // End of variables declaration//GEN-END:variables
 
 }

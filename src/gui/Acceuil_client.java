@@ -89,7 +89,7 @@ public class Acceuil_client extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                int ID = (int)table_offres.getModel().getValueAt(table_offres.getSelectedRow(), 10);
-               
+               new Commentaire_client(ID).setVisible(true);
             }
         });
     }

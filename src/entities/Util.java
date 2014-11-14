@@ -14,7 +14,7 @@ package entities;
 /*
 Cette classe contient des infos qu'on a besoin de les transmettent entre les fenetres
 */
-public class Util {
+public class Util { 
     
     /*Au moment de l'authentification ces attributs contient les infos de client connecté*/
     public static String nom_agent_connecte; 
@@ -35,9 +35,9 @@ public class Util {
     public static Double prixMax ; 
     public static int surfaceMin ;
     public static int surfaceMax ; 
-    public static int IdMessageAR; //Id message à répondre
+    public static int IdMessageAR;       //Id message à répondre
     public static int idOffreASupprimer;
- 
-    
+    public static int Id_Offre_commentaire;
+    public static int Id_client_commentaire;
     
  }

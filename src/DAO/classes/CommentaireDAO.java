@@ -6,6 +6,7 @@ package DAO.classes;
 
 import DAO.interfaces.ICommentaireDAO;
 import entities.Commentaire;
+import entities.Util;
 import technique.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,12 +29,13 @@ public class CommentaireDAO implements ICommentaireDAO {
     }
 
     public void insertCommentaire(Commentaire commentaire) {
-        String requete = "insert into commentaire (commentaire,reponse) values (?,?)";
+        String requete = "insert into commentaire (commentaire,reponse , Id_offre , Id_client) values (?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
             ps.setString(1, commentaire.getCommentaire());
-            ps.setString(2, commentaire.getReponse());
-
+            ps.setString(2, "");
+            ps.setInt(3, commentaire.getId_offre());
+            ps.setInt(4, Util.id_agent_connecte);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CommentaireDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,12 +47,17 @@ public class CommentaireDAO implements ICommentaireDAO {
         
         
         
-        String requete = "update commentaire set commentaire=? , reponse=? where Id=?";
+        String requete = "update commentaire set commentaire=? , reponse=? , Id_offre = ? , Id_client = ? , Id_gerant = ? where Id=?";
         try {
             PreparedStatement ps = connection.prepareStatement(requete);
+            
             ps.setString(1, commentaire.getCommentaire());
             ps.setString(2, commentaire.getReponse());
-            ps.setInt(3, commentaire.getIdCommentaire());
+            ps.setInt(3, commentaire.getId_offre());
+            ps.setInt(4, commentaire.getId_client());
+            ps.setInt(5, commentaire.getId_gerant());
+            ps.setInt(6, commentaire.getIdCommentaire());
+            
             ps.executeUpdate();
             
             //JOptionPane.showMessageDialog(null, ps);
@@ -122,14 +129,15 @@ public class CommentaireDAO implements ICommentaireDAO {
 
         String requete = "select * from commentaire";
         try {
-            Statement statement = connection
-                    .createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultat = statement.executeQuery(requete);
 
             while (resultat.next()) {
                 Commentaire commentaire = new Commentaire();
                 commentaire.setIdCommentaire(resultat.getInt(1));
                 commentaire.setCommentaire(resultat.getString(2));
+                commentaire.setId_offre(resultat.getInt(4));
+                commentaire.setId_client(resultat.getInt(5));
 
                 listecommentaires.add(commentaire);
             }
