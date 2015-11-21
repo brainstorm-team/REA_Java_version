@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package technique;
 
 import DAO.classes.ClientDAO;
@@ -12,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author anwer
- */
 public class TableClient extends AbstractTableModel {
 
     List<Client> listclient = new ArrayList<Client>();
