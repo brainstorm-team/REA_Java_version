@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package technique;
 
 import DAO.classes.GerantDAO;
@@ -12,15 +8,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class TableGerant extends AbstractTableModel {
-    /*
-     * To change this template, choose Tools | Templates
-     * and open the template in the editor.
-     */
 
-    /**
-     *
-     * @author anwer
-     */
     List<Gerant> listAdmin = new ArrayList<Gerant>();
     String[] header = {"id", "prenom", "nom", "email", "telephone", "adresse", "login", "pass"};
 
