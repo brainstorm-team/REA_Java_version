@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package technique;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author mahdi
- */
 //public class DataSource {
 //
 //    //Properties properties;
@@ -55,7 +46,7 @@ import java.sql.SQLException;
 //}
 public class DataSource {
 
-     private static final  String driver = "com.mysql.jdbc.Driver";
+   private static final  String driver = "com.mysql.jdbc.Driver";
    private static final  String url = "jdbc:mysql://localhost:3306/data";
    private static final  String login = "root";
    private static final  String pwd = "root";
