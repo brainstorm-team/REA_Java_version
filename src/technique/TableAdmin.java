@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package technique;
 
 import DAO.classes.AdminDAO;
@@ -11,10 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author anwer
- */
 public class TableAdmin extends AbstractTableModel {
  List<Admin> listAdmin = new ArrayList<Admin>();
   String []header = {"id","prenom","nom","email","telephone","adresse","login","pass"};
